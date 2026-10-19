@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sit, Stay, Think · the explainer</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..700,100&family=Nunito+Sans:opsz,wght@6..12,400..700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/kit/player.css">
+<style>
+  /* the essay's look: warm cream ground, felted fur, ink faces, one ginger accent */
+  :root {
+    --xp-paper: #f5efe0; --xp-ink: #231d1a; --xp-ink-2: #5b524b; --xp-muted: #8a8077;
+    --xp-accent: #b9773f; --xp-accent-2: #231d1a;
+    --xp-display: "Fraunces", Georgia, serif; --xp-body: "Nunito Sans", sans-serif; --xp-mono: "IBM Plex Mono", ui-monospace, monospace;
+    --xp-line: 1.2px;
+  }
+  body { margin: 0; color: var(--xp-ink); font-family: var(--xp-body); min-height: 100vh;
+    background: #f5efe0 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .25 0 0 0 0 .2 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .page { max-width: 1100px; margin: 0 auto; padding: 24px max(16px, env(safe-area-inset-left, 0px)) 0; }
+  header.top { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  header.top .home { flex-basis: 100%; margin-bottom: 8px; font: 400 13px var(--xp-body); color: var(--xp-muted); text-decoration: none; transition: color .2s; }
+  header.top .home:hover { color: var(--xp-ink); }
+  header.top h1 { margin: 0; font: 600 clamp(32px, 4vw, 46px)/1 var(--xp-display); font-variation-settings: "SOFT" 100; letter-spacing: -0.02em; }
+  header.top h1 span { font: 400 .42em var(--xp-body); color: var(--xp-muted); margin-left: 10px; letter-spacing: 0; }
+  header.top a.essay { font: 400 15px var(--xp-body); color: var(--xp-ink); text-decoration: none; background-image: linear-gradient(currentColor, currentColor); background-size: 100% 1px; background-repeat: no-repeat; background-position: 0 100%; }
+  .xp-card h2 { font-weight: 600; letter-spacing: -0.02em; color: var(--xp-ink); font-variation-settings: "SOFT" 100; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="top"><a class="home" href="http://localhost:8900/" title="Back to the shelf">← Shelf</a><h1>Sit, Stay, Think <span>the explainer</span></h1><a class="essay" href="http://localhost:8903/">Read the essay →</a></header>
+  <div id="explainer"></div>
+</div>
+<script>
+  // an ink pointer with a ginger felt dab, as in the essay
+  window.EXPLAINER_CURSOR = { fill: "#b9773f", line: "#231d1a", texture: "speckle", offset: [1.2, 1.0], tag: { bg: "#231d1a", fg: "#f5efe0", shadow: "#eba796", font: '500 13px "Nunito Sans", sans-serif' } };
+</script>
+<script src="/kit/stage.js"></script>
+<script src="/kit/answer.js"></script>
+<script src="lib/glfur.js"></script>
+<script src="lib/fuzz.js"></script>
+<script src="lib/props.js"></script>
+<script src="style.js"></script>
+<script src="scenes.js"></script>
+<script src="/kit/player.js"></script>
+<script src="/kit/cursor.js"></script>
+</body>
+</html>

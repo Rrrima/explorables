@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lucky</title>
+<meta name="description" content="Run the Talent vs Luck simulation yourself: a thousand people, red and green balls, forty years, and why the richest are rarely the most talented.">
+<link rel="stylesheet" href="css/style.css">
+<style>.bar .home{font-size:13px;opacity:.55;margin-right:16px;text-decoration:none;color:inherit;white-space:nowrap;transition:opacity .2s}.bar .home:hover{opacity:1}</style>
+</head>
+<body>
+<nav class="bar" aria-label="Chapters">
+  <a class="home" href="http://localhost:8900/" title="Back to the shelf">← Shelf</a><a class="brand" href="#top">Lucky</a>
+  <div class="crumbs">
+    <a href="#world">The world</a><a href="#lab" class="keep">Run it</a><a href="#reading">Your run</a><a href="#many">100 lives</a><a href="#place">Where</a><a href="#grants">Grants</a><a href="#limits">Limits</a><a href="http://localhost:8906/" class="keep" style="color:var(--ink);font-weight:600">▶ Watch the explainer</a>
+  </div>
+  <details class="menu">
+    <summary aria-label="Chapters menu">Chapters</summary>
+    <div class="menu-list">
+      <a href="#world">01 · The world</a><a href="#lab">02 · Run it</a><a href="#reading">03 · Your run</a><a href="#many">04 · 100 lives</a><a href="#place">05 · Where</a><a href="#grants">06 · Grants</a><a href="#limits">07 · Limits</a><a href="http://localhost:8906/" class="explainer">▶ Watch the explainer</a>
+    </div>
+  </details>
+</nav>
+
+<header class="hero wrap" id="top">
+  <div>
+    <p class="label">A simulation you can run</p>
+    <h1>Lucky</h1>
+    <p class="lede">Give a thousand people different talents and the same start. Roll <span class="ball g"></span> good luck and <span class="ball r"></span> bad luck across their lives for forty years. Who ends up on top?</p>
+    <p class="mono cite">After Pluchino, Biondo &amp; Rapisarda, “Talent vs Luck”, <em>Advances in Complex Systems</em>, 2018 · Ig Nobel Prize in Economics, 2022</p>
+  </div>
+  <div>
+    <canvas class="hero-canvas" id="c-hero" aria-label="A small world of people with red and green balls drifting among them"></canvas>
+    <p class="mono hero-note">Live: people are ink dots, sized by their wealth</p>
+  </div>
+</header>
+
+<main>
+  <!-- 1 · THE WORLD -->
+  <section class="chapter" id="world">
+    <div class="wrap">
+      <header><span class="chapter-num">01 · The world</span><h2>Four rules and a coin</h2></header>
+      <div class="scrolly" data-scrolly="world">
+        <div class="plate"><canvas id="c-world-story"></canvas><p class="mono caption" id="cap-world"></p></div>
+        <div class="steps">
+          <div class="step"><h3>A thousand people</h3><p>Scatter 1,000 people across a square world of 201 by 201 patches. Its edges wrap around, so nobody lives at the border. They never move.</p></div>
+          <div class="step"><h3>Talent is a bell curve</h3><p>Each person gets a fixed <span class="hl">talent</span> between 0 and 1: intelligence, skill, grit, whatever helps you grab a chance. It follows a normal distribution, averaging 0.6 with a spread of 0.1. Most people sit near the middle; a few are brilliant.</p></div>
+          <div class="step"><h3>Everyone starts equal</h3><p>Each person starts with <span class="hl">10 units of capital</span>, the model’s stand-in for success or wealth. Nobody gets a head start.</p></div>
+          <div class="step"><h3>Then the balls</h3><p>Release 500 events: half <span class="ball g"></span> <span class="g">lucky</span>, half <span class="ball r"></span> <span class="r">unlucky</span>. Every six months each one rolls two patches in a random direction. A good idea, a chance meeting, a lucky break; an illness, a crash, a layoff.</p></div>
+          <div class="step"><h3>Green: talent decides</h3><p>When a <span class="ball g"></span> green ball passes within one patch of you, you flip a weighted coin. With talent 0.62, you have a 62% chance to seize it. Seize it and your capital <span class="hl">doubles</span>. Miss it and nothing happens.</p></div>
+          <div class="step"><h3>Red: talent doesn’t help</h3><p>When a <span class="ball r"></span> red ball reaches you, your capital <span class="hl">halves</span>. No coin, no talent check. A car crash doesn’t care how clever you are.</p></div>
+          <div class="step"><h3>Forty years</h3><p>Run it for 80 steps of six months: a working life from 20 to 60. That’s the whole model. Now you run it.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · THE LAB -->
+  <section class="chapter" id="lab">
+    <div class="wrap">
+      <header><span class="chapter-num">02 · Run it</span><h2>Your world</h2>
+        <p class="lede">Press run and watch the years go by. <span class="if-hover">Hover anyone to see their talent and wealth; click them to follow their life.</span><span class="if-touch">Tap anyone to see their talent and wealth and follow their life.</span> Change the rules and run again.</p></header>
+      <div class="lab">
+        <div class="world-box">
+          <canvas class="world" id="c-world" aria-label="The simulation world"></canvas>
+          <div class="world-tip" id="world-tip"></div>
+          <div class="clock"><span class="yr" id="yr">Age 20</span><span class="mono" id="step-n">year 0 / 40</span></div>
+        </div>
+        <div class="panel">
+          <div class="controls">
+            <div class="btns">
+              <button class="btn primary" id="run">▶ Run</button>
+              <button class="btn" id="stepbtn">+6 months</button>
+              <button class="btn" id="reset">New world</button>
+            </div>
+            <label class="slider">Lucky share of events <output id="o-pL">50%</output><input type="range" id="pL" min="0.1" max="0.9" step="0.05" value="0.5"></label>
+            <label class="slider">Number of events <output id="o-NE">500</output><input type="range" id="NE" min="100" max="1500" step="50" value="500"></label>
+            <label class="slider">Average talent <output id="o-mT">0.60</output><input type="range" id="mT" min="0.3" max="0.9" step="0.05" value="0.6"></label>
+            <label class="slider">Spread of talent <output id="o-sT">0.10</output><input type="range" id="sT" min="0.02" max="0.3" step="0.01" value="0.1"></label>
+            <label class="slider">Years <output id="o-years">40</output><input type="range" id="years" min="10" max="200" step="10" value="40"></label>
+            <label class="slider">Speed <output id="o-speed">×4</output><input type="range" id="speed" min="1" max="20" step="1" value="4"></label>
+            <p class="mono seedline">seed <span id="seed"></span> · paper: 50% · 500 · 0.6 · 0.1 · 40 years</p>
+          </div>
+          <div class="stat-grid">
+            <div class="stat"><div class="n" id="s-top">–</div><div class="l">wealth held by the top 20%</div></div>
+            <div class="stat"><div class="n" id="s-up">–</div><div class="l">people richer than they started</div></div>
+            <div class="stat"><div class="n" id="s-rich">–</div><div class="l">talent of the richest person</div></div>
+            <div class="stat"><div class="n" id="s-gift">–</div><div class="l">wealth of the most talented</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="lab-charts">
+        <div class="mini"><p class="label">Wealth, everyone (log scale)</p><canvas class="chart" id="c-hist" aria-label="Histogram of capital on a log scale"></canvas></div>
+        <div class="mini"><p class="label">Talent against wealth</p><canvas class="chart" id="c-scatter" aria-label="Scatter plot of talent against capital"></canvas></div>
+      </div>
+      <div class="picked" id="picked"></div>
+    </div>
+  </section>
+
+  <!-- 3 · YOUR RUN, READ -->
+  <section class="chapter" id="reading">
+    <div class="wrap">
+      <header><span class="chapter-num">03 · Your run</span><h2>What just happened</h2></header>
+      <div class="scrolly read-scrolly" data-scrolly="read">
+        <div class="plate"><canvas id="c-read" aria-label="Your world's people, rearranged to illustrate each paragraph"></canvas><p class="mono caption" id="cap-read"></p></div>
+        <div class="steps reading prose" id="reading-text"><div class="step on"><p class="empty">Run your world to the end and this section reads it for you, next to what the paper found. Its thousand people will follow you down here.</p></div></div>
+      </div>
+      <div class="results" id="results" hidden>
+        <div class="chart-head"><p class="label" style="margin:0">How the capital ended up · x: capital, y: number of people</p>
+          <div class="seg" role="group" aria-label="Chart scale"><button aria-pressed="true" data-v="lin">People</button><button aria-pressed="false" data-v="log">Log–log</button></div></div>
+        <canvas class="chart wide" id="c-dist" aria-label="Number of people at each level of final capital"></canvas>
+        <p class="mono note" id="dist-note"></p>
+      </div>
+      <div class="lives" id="lives" hidden>
+        <div class="life"><h3 id="life-a-t">The richest</h3><p class="mono" id="life-a-s"></p><canvas id="c-life-a"></canvas></div>
+        <div class="life"><h3 id="life-b-t">The most talented</h3><p class="mono" id="life-b-s"></p><canvas id="c-life-b"></canvas></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · A HUNDRED LIVES -->
+  <section class="chapter" id="many">
+    <div class="wrap">
+      <header><span class="chapter-num">04 · A hundred lives</span><h2>One run is an anecdote</h2>
+        <p class="lede">Any single world could be a fluke. So build a hundred of them, with your settings, and look only at the person who finishes on top of each.</p></header>
+      <div class="experiment">
+        <div class="prose">
+          <div class="btns"><button class="btn primary" id="run100">Run 100 worlds</button></div>
+          <div class="progress"><span id="p100"></span></div>
+          <div id="many-text" style="margin-top:18px"><p class="mono">Takes a second or two.</p></div>
+        </div>
+        <div>
+          <p class="label">Talent of each world’s richest person · against everyone’s</p>
+          <canvas class="chart tall" id="c-many" aria-label="Distribution of the talent of the most successful person in each world"></canvas>
+        </div>
+      </div>
+      <div class="results" id="many-dist" hidden>
+        <div class="chart-head"><p class="label" style="margin:0">All 100 worlds together · x: capital, y: people per world</p>
+          <div class="seg" role="group" aria-label="Chart scale"><button aria-pressed="true" data-v="lin">People</button><button aria-pressed="false" data-v="log">Log–log</button></div></div>
+        <canvas class="chart wide" id="c-many-dist" aria-label="Average number of people at each level of capital across 100 worlds"></canvas>
+        <p class="mono note" id="many-dist-note"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · WHERE YOU'RE BORN -->
+  <section class="chapter" id="place">
+    <div class="wrap">
+      <header><span class="chapter-num">05 · Where you’re born</span><h2>More green balls</h2>
+        <p class="lede">You can’t pick your luck, but a country, a city or a family can tilt the mix. Change the share of lucky events and count how many of the most talented people get ahead.</p></header>
+      <div class="experiment">
+        <div class="prose">
+          <div class="btns"><button class="btn primary" id="runplace">Compare 20%, 50%, 80% lucky</button></div>
+          <div class="progress"><span id="pplace"></span></div>
+          <div id="place-text" style="margin-top:18px"><p>“Talented” here means one spread above average: talent over 0.7, about one person in six. The question is how many of them finish with more than the 10 units they started with.</p></div>
+        </div>
+        <div><p class="label">Talented people who end richer than they started</p><canvas class="chart" id="c-place" aria-label="Bar chart: share of talented people who get ahead, by share of lucky events"></canvas></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · GRANTS -->
+  <section class="chapter" id="grants">
+    <div class="wrap">
+      <header><span class="chapter-num">06 · Handing out grants</span><h2>Reward the winners?</h2>
+        <p class="lede">The authors asked a practical question: if you had money to hand out every five years, say research funding, how should you split it so the most talented people actually get ahead?</p></header>
+      <div class="experiment">
+        <div class="prose">
+          <p>Same budget each time, 10,000 units over forty years (1,250 every five years), split four ways:</p>
+          <ul>
+            <li><strong>Equal:</strong> everyone gets 1.25 units.</li>
+            <li><strong>To the best:</strong> the richest 25% get 5 units each. This is “rewarding success”.</li>
+            <li><strong>Mixed:</strong> half to the richest 25%, half shared by everyone else.</li>
+            <li><strong>Lottery:</strong> 25% of people, drawn at random, get 5 units each.</li>
+          </ul>
+          <div class="btns"><button class="btn primary" id="rungrants">Run each 60 times</button></div>
+          <div class="progress"><span id="pgrants"></span></div>
+          <div id="grants-text" style="margin-top:18px"></div>
+        </div>
+        <div><p class="label">Talented people who end richer than they started</p><canvas class="chart tall" id="c-grants" aria-label="Bar chart: share of talented people who get ahead under each funding rule"></canvas></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · LIMITS -->
+  <section class="chapter" id="limits">
+    <div class="wrap">
+      <header><span class="chapter-num">07 · What it doesn’t prove</span><h2>A toy, honestly read</h2>
+        <p class="lede">The model is deliberately tiny. It shows that luck <em>can</em> outweigh talent under simple rules, not that it does in your life.</p></header>
+      <div class="caveats">
+        <div class="caveat"><h3>Doubling does the work</h3><p>Success multiplies: double or halve. Multiplicative games always end lopsided, even with no talent at all. Make luck add or subtract a fixed amount instead and the extremes shrink.</p></div>
+        <div class="caveat"><h3>Luck ignores wealth</h3><p>Real opportunities find the already successful: connections, capital, attention. Here a green ball is as likely to hit the poor as the rich. Real inequality is probably steeper than this.</p></div>
+        <div class="caveat"><h3>Talent is frozen</h3><p>Nobody learns, moves, or seeks out green balls. In life, talent includes going where the chances are.</p></div>
+        <div class="caveat"><h3>Talent still matters</h3><p>Talented people do better on average, and the top performers lean above average. Talent is <span class="hl">necessary but not sufficient</span>, which is the paper’s own conclusion.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter coda" id="coda">
+    <div class="wrap prose" style="max-width:760px">
+      <h2 style="margin-bottom:22px">So, merit?</h2>
+      <p>If success were mostly talent, the richest person in each world would be the most gifted. In this model they almost never are: they are usually average-plus people who caught a streak of green. The authors call rewarding past success “naive meritocracy”, because it ends up rewarding the lucky and calling it talent. Their alternative is less glamorous: spread the chances wide, and let talent meet more green balls.</p>
+      <h3 style="margin:34px 0 10px">Sources</h3>
+      <ol class="sources">
+        <li>A. Pluchino, A. E. Biondo, A. Rapisarda, “Talent versus luck: the role of randomness in success and failure”, <em>Advances in Complex Systems</em> 21 (2018). <a href="https://arxiv.org/abs/1802.07068">arXiv:1802.07068</a>. All paper figures quoted here are from sections 2–3.</li>
+        <li>The authors’ NetLogo model, “Talent vs Luck” release 1.0.0, <a href="https://www.comses.net/codebases/199a298b-fe95-473e-ad39-0fd69b5ff61c/releases/1.0.0/">CoMSES Computational Model Library</a> (GPL-2.0).</li>
+        <li>The power-law slopes are fitted two ways: the authors’ own method (80 equal-width bins, empty bins dropped, as in their NetLogo plot), which reproduces their −1.27 for a single run, and doubling bins, which give a steeper −2 on the same data. The slope depends on the method.</li>
+        <li>2022 Ig Nobel Prize in Economics: <a href="https://improbable.com/2023/01/09/which-is-more-important-talent-or-luck-2022-ig-informal-lecture/">Improbable Research</a>; <a href="https://csh.ac.at/news/andrea-rapisarda-wins-the-ig-nobel-prize-for-economics/">Complexity Science Hub</a>.</li>
+        <li>R. H. Frank, <em>Success and Luck: Good Fortune and the Myth of Meritocracy</em>, Princeton University Press, 2016.</li>
+      </ol>
+      <p class="mono">The simulation re-implements the model in JavaScript (js/sim.js), following the paper and, where the text leaves details open, the authors’ NetLogo code (<a href="https://www.comses.net/codebases/199a298b-fe95-473e-ad39-0fd69b5ff61c/releases/1.0.0/">CoMSES Model Library</a>): a person meets at most one event per six months, and each event is lucky with 50% probability. Over 2,000 runs it gives a richest-person talent of 0.669 ± 0.094 (paper: 0.667 ± 0.09), about 77% of wealth held by the top 20%, and about 31% of talented people ending ahead (paper: 32%). The paper’s single example run (top 20% holding 80%, richest 2,560 units) sits well inside the spread of this page’s runs.</p>
+    </div>
+  </section>
+</main>
+
+<script src="js/sim.js"></script>
+<script src="js/reference.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

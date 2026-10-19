@@ -1,0 +1,18 @@
+{
+  "title": "{{TITLE}}",
+  "series": "{{TITLE}}, a scrolly essay",
+  "article": { "name": "Read the essay", "url": "" },
+  "style": "describe the look in one sentence: paper, inks, type",
+  "context": "Everything the ask agent should know: the article's thesis, the source papers with full citations, the key numbers, the model's rules.",
+  "segNames": ["Hook", "Idea", "Twist", "Landing"],
+  "props": ["dot"],
+  "music": { "prompt": "light curious explainer music, no vocals, steady and unobtrusive", "duration": 90, "volume": 0.17 },
+  "sfx": {
+    "pop": ["a single soft pop, short", 0.6],
+    "whoosh": ["a soft airy whoosh, quick", 0.8],
+    "ding": ["a small bright ding, short", 1.0],
+    "end": ["a gentle two-note chime, short", 1.4]
+  },
+  "cues": [["pop", 0, 0.4, 0.4], ["whoosh", 1, -0.3, 0.4], ["ding", 2, 0.5, 0.4], ["end", 3, 1.0, 0.5]],
+  "port": {{PORT}}
+}

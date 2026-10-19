@@ -1,0 +1,35 @@
+{
+  "skill_name": "explorable",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "/explorable tell me about oysters: why people love them, why happy hour is associated with them, how they taste different in different places, what the most expensive ones are and how to tell a good one. (attached: a watercolour flat-lay of a Japanese breakfast table)",
+      "expected_output": "An oysters-scrolly essay and oysters-explainer video in the watercolour reference's style. STYLE.md captures the reference's light, gloss and density. A master study re-creates a crop of the reference. Every ask in the prompt has a chapter (culture, happy hour, merroir, price, how to judge). Maps use real coastlines. report.html has sourced tracks. The video runs 75–95 s at ≤ 2.5 words/s. Both pages load without errors, phones work, and stall.mjs shows no frame over ~100 ms after first paint.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "/explorable how do we test the IQ and EQ of dogs and cats, and is there a ranking? (attached: needle-felted animals photographed on cream)",
+      "expected_output": "A felt engine that draws recognisable breeds (fur on the GPU if it needs tens of thousands of strokes), the Coren ranking, the 2022 breed-explains-9% finding, emotion studies and cats, each chapter a different kind of visual. The video's answer clips can draw specific breeds.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "/explorable the Peter principle: build the 2010 Physica A simulation and let me run it. (attached: a loose crayon drawing of office workers)",
+      "expected_output": "A runnable model in js/sim.js that reproduces the paper's headline results in Node (numbers compared in the README), a crayon engine, a simulation chapter with controls, a run and charts on one screen, and a video in the same crayon style.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "/explorable why is a Birkin bag so expensive? (attached: a fashion-plate illustration in ink with one oxblood colour)",
+      "expected_output": "Economics and culture tracks with sourced prices, margins and resale numbers; a fine-line engine with a single spot colour; data drawn as stitched bars and tags, not stock charts; phone layout with nothing clipped.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "/explorable how does a sourdough starter work? (no image attached)",
+      "expected_output": "The skill asks for a style reference image, or offers to proceed in the house style (pen and watercolour on a quiet page) if the user prefers. It does not invent a reference.",
+      "files": []
+    }
+  ]
+}

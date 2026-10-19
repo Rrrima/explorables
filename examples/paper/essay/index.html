@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fibre by Fibre</title>
+<meta name="description" content="An illustrated essay on paper: what it is made of, how it travelled, why its surface looks the way it does, and how to draw it on a screen.">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/article.css">
+<style>.top-header .header-home{font-size:14px;opacity:.55;text-decoration:none;color:inherit;white-space:nowrap;transition:opacity .2s}.top-header .header-home:hover{opacity:1}</style>
+</head>
+<body>
+<header class="top-header transparent" id="header">
+  <a class="header-home ink" href="http://localhost:8900/" title="Back to the shelf">← Shelf</a><span class="header-divider"></span><a class="header-title ink" href="#top">Fibre by Fibre</a>
+  <span class="header-divider"></span>
+  <span class="header-subtitle ink">An essay on paper</span>
+  <a class="header-link inked ink" href="report.html">Research report</a>
+  <button class="menu-button" id="menu-button" aria-label="Open contents" aria-expanded="false" aria-controls="menu-panel"><span></span><span></span></button>
+</header>
+<div class="menu-panel" id="menu-panel" hidden></div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <canvas class="hero-fibres" id="hero-fibres" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <p class="hero-label ink">An illustrated essay · with a <a class="inked" href="report.html">research report</a></p>
+    <h1 class="hero-title ink">Fibre by Fibre</h1>
+    <p class="hero-teaser ink">A sheet of paper is a mat of plant cells, mostly air, held together by water's memory. It took a thousand years to cross Asia, and its surface still records the mould it was lifted from.</p>
+    <p class="hero-text ink">This essay follows paper from the fibre to the screen: what it is, where it travelled, why light and ink behave as they do on its surface, and how to rebuild that surface in code. Every number links to the research behind it.</p>
+    <p class="hero-label ink" style="margin-top:20px"><a class="inked" href="http://localhost:8902/" style="font-weight:600">▶ Watch the explainer</a></p>
+    <p class="hero-scroll mono">Scroll to lift a sheet ↓</p>
+  </div>
+</section>
+
+<div class="layout">
+  <aside class="side-nav-wrap" aria-label="Contents">
+    <nav class="side-nav" id="side-nav"></nav>
+  </aside>
+
+  <main class="article">
+
+    <!-- ============ I. MATERIAL ============ -->
+    <section class="chapter" id="material" data-chapter="Material">
+      <p class="section-label ink">I · Material</p>
+      <h2 class="chapter-title ink">From branch to page</h2>
+      <p class="block-lede ink-light">How a sheet of washi is made by hand, in eight steps. Scroll to play; <span class="on-hover">hover</span><span class="on-touch">tap</span> the sparkles.</p>
+
+      <div class="film" id="film" data-sub="Making a sheet">
+        <div class="film-track">
+          <div class="film-sticky">
+            <div class="film-tip" role="tooltip"></div>
+            <canvas class="film-canvas" aria-label="Line-art animation of hand papermaking: harvesting kozo, cooking the bark, beating fibres, dispersing them in a vat, scooping with a screen, pressing, drying, and writing on the finished sheet"></canvas>
+            <div class="film-cap" aria-live="polite">
+              <span class="film-cap-num mono"></span>
+              <span class="film-cap-title ink"></span>
+              <span class="film-cap-text ink-light"></span>
+              <a class="film-cap-note note" href="report.html#h3"></a>
+            </div>
+            <div class="film-scrub" role="group" aria-label="Steps"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block" id="fibres" data-sub="Fibres at true length">
+        <h3 class="block-title ink">Fibres at true length</h3>
+        <p class="block-lede ink-light">Each line below is a fibre, drawn to the same scale. Their widths are all similar, 10 to 40 microns, so length is what tells them apart <a class="note" href="report.html#m2">M2</a>.</p>
+        <div class="fibre-chart" id="fibre-chart" role="img" aria-label="Average fibre lengths drawn to scale, from flax at 33 millimetres to eucalyptus at 0.9 millimetres"></div>
+        <p class="caption ink-light">Average lengths; ranges in the report. Kozo, the washi fibre, is about eleven times longer than eucalyptus, the fibre in most copy paper. Lokta is left out because no reliable length was found.</p>
+      </div>
+    </section>
+
+    <!-- ============ II. JOURNEY ============ -->
+    <section class="chapter" id="journey" data-chapter="Journey">
+      <p class="section-label ink">II · Journey</p>
+      <h2 class="chapter-title ink">Westward, slowly</h2>
+
+      <div class="timeline" id="spread" data-sub="A thousand-year road">
+        <div class="tl-track">
+          <div class="tl-sticky">
+            <div class="tl-head">
+              <p class="tl-year" aria-hidden="true"><span class="tl-year-num ink">200</span><span class="tl-year-era mono">BCE</span></p>
+              <div class="tl-caps prose" aria-live="polite">
+                <p class="tl-cap ink" data-from="-9999">The traditional story credits a court official, Cai Lun, who presented paper to the Han emperor in 105 CE. The ground says paper is older: fragments from the 1st century BCE, and a contested map from Fangmatan that may be a century older still <a class="note" href="report.html#h1">H1</a>.</p>
+                <p class="tl-cap ink" data-from="300">Paper moved east to Korea and Japan within centuries. Westward it waited at Dunhuang, on the edge of the desert, before crossing to Baghdad by 794 <a class="note" href="report.html#h2">H2</a>.</p>
+                <p class="tl-cap ink" data-from="730">The dashed ring is Talas, 751, where captured Chinese papermakers supposedly taught Samarkand. Historian Jonathan Bloom calls the story "unlikely to be factual": paper was already in use in Central Asia <a class="note" href="report.html#h2">H2</a>.</p>
+                <p class="tl-cap ink" data-from="1000">From Cairo and Fez, paper entered Europe through Xàtiva in Spain by 1056. Fabriano added gelatin sizing and the first watermarks in 1282; Nuremberg had a mill in 1390 <a class="note" href="report.html#h3">H3</a>.</p>
+                <p class="tl-cap ink" data-from="1540">Mills reached the Americas with colonists: Mexico City by 1575, Germantown near Philadelphia in 1690. But the first point in that lane is amate, bark paper from western Mexico around 75 BCE, invented independently by beating bark rather than pulping it, so strictly not paper at all.</p>
+              </div>
+            </div>
+            <div class="tl-view" role="img" aria-label="Timeline of papermaking reaching new places, from about 160 BCE in China to 1690 in North America, in four regional lanes">
+              <div class="tl-strip"><svg class="tl-svg" aria-hidden="true"></svg></div>
+              <div class="tl-lanes" aria-hidden="true"></div>
+              <div class="tl-playhead" aria-hidden="true"></div>
+            </div>
+            <p class="tl-legend mono" aria-hidden="true"><span><i class="tl-dot firm"></i>recorded</span><span><i class="tl-dot disputed"></i>disputed</span><span><i class="tl-dot legend"></i>legend</span><span><i class="tl-dot independent"></i>invented separately</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="block" id="traditions" data-sub="Six traditions">
+        <h3 class="block-title ink">Six sheets, six traditions</h3>
+        <p class="block-lede ink-light">Each swatch is generated live from the properties of that paper: fibre length, formation, laid lines, surface.</p>
+        <div class="plates" id="plates"></div>
+      </div>
+
+      <div class="block" id="makers" data-sub="Vanishing makers">
+        <h3 class="block-title ink">Seventy thousand to two hundred ninety-five</h3>
+        <div class="makers-grid">
+          <div class="makers-stage">
+            <canvas id="makers-canvas" class="makers-canvas" aria-label="Dots representing washi-making households, shrinking from about 70,000 in 1901 to 295 in 2009"></canvas>
+          </div>
+          <div class="makers-text prose">
+            <p class="makers-count ink"><span id="makers-num">70,000</span><span class="mono" id="makers-year">households · 1901</span></p>
+            <p class="ink">In 1901 about seventy thousand Japanese households made washi, often as winter work between harvests. By 1984 fewer than five hundred remained, and in 2009 the national association counted 295 <a class="note" href="report.html#h5">H5</a>. Each dot is one household. Scroll and watch them go out.</p>
+            <p class="ink">The world, meanwhile, makes more paper than ever: about 401 million tonnes a year, more than double 1980, with packaging rising while printing papers fall to their lowest since 1987 <a class="note" href="report.html#h5">H5</a>.</p>
+            <svg id="production-svg" class="production-svg" role="img" aria-label="World paper production: about 169 million tonnes in 1980, 323 in 2000, 401 in 2020 and 2023"></svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ III. SURFACE ============ -->
+    <section class="chapter" id="surface" data-chapter="Surface">
+      <p class="section-label ink">III · Surface</p>
+      <h2 class="chapter-title ink">Reading a surface</h2>
+
+      <div class="scrolly" id="raking" data-sub="Raking light">
+        <div class="scrolly-stage">
+          <canvas id="raking-canvas" class="stage-canvas" aria-label="A sheet of laid paper under light that lowers toward the surface, then lit from behind"></canvas>
+          <p class="stage-readout mono" id="raking-readout">light elevation 80°</p>
+        </div>
+        <div class="scrolly-steps prose">
+          <div class="step" data-step="0">
+            <p class="ink">Under light from above, a sheet of laid paper looks almost blank. Its relief is there, a few microns high, but flat light hides it.</p>
+          </div>
+          <div class="step" data-step="1">
+            <p class="ink">Conservators lower a single lamp until it skims the surface. In this raking light every ridge throws a shadow, and the sheet shows how it was made <a class="note" href="report.html#r3">R3</a>.</p>
+          </div>
+          <div class="step" data-step="2">
+            <p class="ink">Fine laid lines, 7 to 10 per centimetre, come from the dense wires of the mould. The heavier chain lines, 22 to 32 mm apart, mark the wires sewn to its wooden ribs <a class="note" href="report.html#m3">M3</a>.</p>
+          </div>
+          <div class="step" data-step="3">
+            <p class="ink">Hold the sheet to a window and the reading changes. Paper is thinner over the wires, so they glow. So does the watermark, a wire shape sewn to the mould; Fabriano's are the earliest, from 1282 <a class="note" href="report.html#h3">H3</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="block" id="tooth" data-sub="Tooth">
+        <h3 class="block-title ink">Hot, not, rough</h3>
+        <p class="block-lede ink-light">Watercolour paper comes in three surfaces. <span class="on-hover">Move across</span><span class="on-touch">Tap</span> the swatches to move the light.</p>
+        <div class="tooth-row" id="tooth-row"></div>
+        <p class="caption ink-light">Hot-pressed sheets pass between heated plates; cold-pressed (“NOT”, for not hot-pressed) are pressed against textured felts; rough barely at all. Makers publish no roughness figures for these, so the swatches are drawn from descriptions <a class="note" href="report.html#m3">M3</a>.</p>
+      </div>
+
+      <div class="block" id="ink" data-sub="Ink meets fibre">
+        <h3 class="block-title ink">Ink meets fibre</h3>
+        <p class="block-lede ink-light"><span class="on-hover">Click</span><span class="on-touch">Tap</span> either sheet to drop ink.</p>
+        <div class="ink-row">
+          <figure class="ink-fig">
+            <canvas id="ink-raw" class="ink-canvas" aria-label="Ink spreading on unsized paper"></canvas>
+            <figcaption><span class="ink">Raw xuan</span><span class="mono">unsized · ink blooms</span></figcaption>
+          </figure>
+          <figure class="ink-fig">
+            <canvas id="ink-sized" class="ink-canvas" aria-label="Ink staying in place on sized paper"></canvas>
+            <figcaption><span class="ink">Sized paper</span><span class="mono">glue and alum · ink holds</span></figcaption>
+          </figure>
+        </div>
+        <div class="prose">
+          <p class="ink">Liquid creeps into paper by capillarity, roughly as the Lucas–Washburn law says: the distance grows with the square root of time, fast at first, then slower <a class="note" href="report.html#m5">M5</a>. Sizing raises the angle at which water meets the fibre; near 90° the pull vanishes and the ink stays where the brush left it. Raw xuan has no size at all, which is why a painter's stroke blooms into a soft cloud, its edge softened further by the short fibres of rice straw.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ IV. RENDERING ============ -->
+    <section class="chapter" id="render" data-chapter="Rendering">
+      <p class="section-label ink">IV · Rendering</p>
+      <h2 class="chapter-title ink">Drawing paper on a screen</h2>
+
+      <div class="scrolly" id="pipeline" data-sub="Seven layers">
+        <div class="scrolly-stage">
+          <canvas id="pipe-canvas" class="stage-canvas" aria-label="A paper texture being built in seven steps"></canvas>
+          <p class="stage-readout mono" id="pipe-readout">1 / 7 · gradient noise</p>
+        </div>
+        <div class="scrolly-steps prose">
+          <div class="step" data-step="0">
+            <p class="h-step ink">1 · Noise</p>
+            <p class="ink">Start with Ken Perlin's gradient noise: a random slope at every grid point, blended smoothly between them. His 2002 revision blends with 6t⁵ − 15t⁴ + 10t³ so the surface has no creases <a class="note" href="report.html#r1">R1</a>.</p>
+          </div>
+          <div class="step" data-step="1">
+            <p class="h-step ink">2 · Fractal sum</p>
+            <p class="ink">One layer is too smooth. Add copies at double the frequency and half the strength, octave after octave: <code>fbm(p) = Σ ½ᵏ · noise(2ᵏ p)</code>. This is fractal Brownian motion, and it is what SVG's <code>feTurbulence</code> computes <a class="note" href="report.html#r1">R1</a>.</p>
+          </div>
+          <div class="step" data-step="2">
+            <p class="h-step ink">3 · Formation</p>
+            <p class="ink">Low, slow noise becomes the cloudy formation of the sheet, the flocs you see against a window. Real paper is thicker and thinner in patches a few millimetres across.</p>
+          </div>
+          <div class="step" data-step="3">
+            <p class="h-step ink">4 · Fibres</p>
+            <p class="ink">Scatter curved strokes with lengths drawn from a skewed distribution, the way Guo and Kunii modelled rice paper in 1991 as randomly placed fibres <a class="note" href="report.html#r4">R4</a>. Long and few for washi; short and many for copy paper.</p>
+          </div>
+          <div class="step" data-step="4">
+            <p class="h-step ink">5 · Normals</p>
+            <p class="ink">Treat the result as a height field. The slope at each point, from neighbouring heights, gives a surface normal: <code>N = normalize(−∂h/∂x, −∂h/∂y, 1)</code>. Shown here in false colour <a class="note" href="report.html#r3">R3</a>.</p>
+          </div>
+          <div class="step" data-step="5">
+            <p class="h-step ink">6 · Light</p>
+            <p class="ink">Light it with Lambert's law, brightness proportional to N·L. Keep the light low, as conservators do, and the tooth appears.</p>
+          </div>
+          <div class="step" data-step="6">
+            <p class="h-step ink">7 · Paper</p>
+            <p class="ink">Tint it, let thin patches glow a little, and tear the edge. The swatches in this essay are made this way, once, when they scroll into view.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="block" id="studio" data-sub="Your own sheet">
+        <h3 class="block-title ink">Lay this essay on another sheet</h3>
+        <p class="block-lede ink-light">Pick a paper and it becomes the page under everything you read here, built with the seven layers above. Then change how it was made and how it is lit, and watch the page change with it. Your sheet stays when you come back.</p>
+        <div class="studio">
+          <div class="studio-cards" id="studio-cards" role="radiogroup" aria-label="Paper for this page"></div>
+          <div class="studio-panel" id="studio-panel">
+            <div class="studio-look">
+              <canvas class="studio-loupe" id="studio-loupe" aria-label="Close-up of the selected paper, twenty times the page"></canvas>
+              <p class="mono studio-loupe-cap">close-up · 20× the page</p>
+            </div>
+            <div class="studio-controls" id="studio-controls">
+              <fieldset class="studio-group"><legend class="mono">The sheet</legend></fieldset>
+              <fieldset class="studio-group"><legend class="mono">The light</legend></fieldset>
+              <div class="studio-actions">
+                <button type="button" class="studio-btn" id="studio-shuffle">New sheet, same recipe</button>
+                <button type="button" class="studio-btn" id="studio-reset">Reset this paper</button>
+              </div>
+            </div>
+          </div>
+          <p class="studio-hint mono" id="studio-hint">This site's paper has no recipe. Pick a sheet to adjust it.</p>
+        </div>
+      </div>
+
+      <div class="block prose" id="masks" data-sub="Masks, not filters">
+        <h3 class="block-title ink">Why this page uses masks, not filters</h3>
+        <p class="ink">The quickest way to texture text on the web is an SVG filter. But WebKit, the engine behind every iPhone browser, renders filters at screen-pixel resolution and then scales them up, so filtered text turns soft on a retina display; the attribute that once fixed this was removed in 2018 <a class="note" href="report.html#r2">R2</a>.</p>
+        <p class="ink">The ink on these letters is instead a CSS mask: a tile of noise that lets more or less of each letter through. The letters stay sharp at any resolution; only their density varies. On phones the grain is lighter, because at small sizes fine noise reads as blur.</p>
+        <pre class="code"><code>.ink {
+  mask-image: url("noise-tile.svg");
+  mask-size: 320px 320px;
+}</code></pre>
+      </div>
+    </section>
+
+    <section class="coda" id="coda">
+      <p class="section-label ink">Coda</p>
+      <p class="coda-text ink">Paper is the most ordinary surface we touch and one of the most made. Every sheet holds a record of its fibre, its mould and its drying, and a little of the place it came from.</p>
+      <p class="ink-light coda-links"><a class="inked" href="report.html">Read the research report</a> · every claim, number and source behind this essay.</p>
+    </section>
+  </main>
+</div>
+
+<script src="js/engine.js"></script>
+<script src="js/data.js"></script>
+<script src="js/article.js"></script>
+<script src="js/pen.js"></script>
+<script src="js/hands.js"></script>
+<script src="js/film.js"></script>
+<script src="js/cursor.js"></script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+{
+  "title": "Sit, Stay, Think",
+  "series": "Sit, Stay, Think, an illustrated essay on measuring dog and cat minds",
+  "article": {
+    "name": "Read the essay",
+    "url": "http://localhost:8903/"
+  },
+  "style": "felted fur on warm cream: animals made of thousands of short curly wool hairs with tiny ink faces and pink blush, felt-ball data marks, yarn lines, Fraunces display type with Nunito Sans and IBM Plex Mono",
+  "context": "The video explains how dog and cat 'IQ' and 'EQ' are measured and what breed rankings mean, following the essay Sit, Stay, Think. Coren 1994 (The Intelligence of Dogs): survey of 199 AKC/CKC obedience judges (a press report says 208), about 130 breeds in 79 ranks; measures working/obedience intelligence (trainability), one of three kinds (instinctive, adaptive, working). Top 10: Border Collie, Poodle, German Shepherd, Golden Retriever, Doberman, Shetland Sheepdog, Labrador, Papillon, Rottweiler, Australian Cattle Dog. Bottom: Shih Tzu 70, Basset 71, Mastiff and Beagle 72, Pekingese 73, Bloodhound 74, Borzoi 75, Chow Chow 76, Bulldog 77, Basenji 78, Afghan Hound 79. Top tier learns a new command in <5 repetitions and obeys first command 95%+; bottom tier 80-100+ repetitions, 25% or less. 190 of 199 judges put the Border Collie in their top ten. Clever Hans 1904 (Pfungst): 89% correct when he could see the questioner, 6% when not; 98% vs 8% when the questioner knew or did not know the answer. Thorndike 1898 puzzle boxes: cat 12 took 160 s at first, ~6-7 s by trial 24. IQ coined by William Stern 1912. Lab batteries test single skills: pointing, cylinder (inhibitory control), memory, reasoning. Gnanadesikan 2020: 1,508 dogs, 36 breeds; among-breed heritability inhibitory control 0.70 (0.50 after body size), communication 0.39, physical reasoning 0.21, memory 0.17. Horschler 2019: 7,397 dogs, 74 breeds; larger-brained breeds better at short-term memory and self-control. Junttila 2022 Finland: 1,002 dogs; Border Collies best at cylinder, Kelpies and Malinois at gestures; no breed differences in logic or memory. Arden & Adams 2016: g factor in 68 Border Collies explains 17%. MacLean 2019: 14,000+ dogs, 101 breeds, trainability among-breed heritability 0.73, mean 0.51. Morrill 2022 (Science): 18,385 dogs, 2,155 genotyped; breed explains ~9% of individual behaviour (3-25%). Ghirlanda 2013: popularity unrelated to behaviour. Chaser the Border Collie learned 1,022 object names; only 1 of 34 typical dogs learned two toy names in three months vs 6 of 6 gifted dogs. Dog EQ: no validated EQ test; C-BARQ owner questionnaire (152 items 2003, 78 in MacLean 2019). Kaminski 2019: inner-eyebrow muscle LAOM in dogs, scant in wolves. Albuquerque 2016: 17 dogs matched emotional voice to face in 67% of trials. Custance & Mayer 2012: 15 of 18 dogs approached a crying person. Harris & Prouvost 2014: ~25% of 36 dogs snapped at a stuffed dog the owner petted. Cats: Miklosi 2005: 7 of 26 recruited cats dropped out; 14 cats, 14 dogs; equal at pointing; unsolvable task 12/14 dogs vs 6/14 cats looked back at a human. Saito 2019: cats discriminate their own names. Vitale 2019: 64.3% of 70 kittens and 65.8% of 38 adult cats securely attached, infants ~65%. Merola 2015: 79% of cats social-referenced the owner. Quaranta 2020: 10 cats matched human emotions. Salonen 2019: 5,726 cats, 40 breeds, temperament differences (Korat people-oriented, Russian Blue shyest, Turkish Van most aggressive, Bengal active), no cognition measured; no evidence-based cat-breed intelligence ranking. Registries recognise 45-75 cat breeds. Brains: encephalization quotient (Jerison) cat 1.0, dog 1.2 (1.2-2.4 by breed), human 7.4-7.8. Jardim-Messeder 2017: cortical neurons cat ~250 million (one cat), dog ~528 million (two dogs; golden retriever 627 M), brown bear 251 million.",
+  "segNames": [
+    "The ranking",
+    "Clever Hans",
+    "Trainability",
+    "One skill at a time",
+    "No single IQ",
+    "Nine percent",
+    "Reading faces",
+    "Cats walk away",
+    "Cats read us",
+    "Which is smarter?"
+  ],
+  "props": [
+    "dog",
+    "cat",
+    "pom",
+    "yarn",
+    "hand",
+    "horse",
+    "brain",
+    "versusA",
+    "versusB",
+    "dog:collie",
+    "dog:poodle",
+    "dog:shepherd",
+    "dog:golden",
+    "dog:lab",
+    "dog:beagle",
+    "dog:afghan",
+    "dog:bulldog",
+    "dog:basset",
+    "dog:shiba",
+    "dog:chow",
+    "dog:husky",
+    "dog:doberman",
+    "dog:sheltie",
+    "dog:papillon",
+    "dog:rottweiler",
+    "dog:cattle",
+    "dog:shihtzu",
+    "dog:mastiff",
+    "dog:peke",
+    "dog:bloodhound",
+    "dog:borzoi",
+    "dog:basenji",
+    "dog:wolf",
+    "dog:mutt",
+    "dog:corgi",
+    "dog:cardigan",
+    "dog:pembroke",
+    "cat:cream",
+    "cat:white",
+    "cat:ginger",
+    "cat:orange",
+    "cat:dark",
+    "cat:black",
+    "cat:grey"
+  ],
+  "music": {
+    "prompt": "Warm, gentle explainer music: soft felt piano, pizzicato strings, light glockenspiel, brushed snare, 88 BPM, curious and playful but calm, steady and unobtrusive, no vocals, clean ending",
+    "duration": 95,
+    "volume": 0.16,
+    "answerOffset": 20
+  },
+  "sfx": {
+    "pop": [
+      "a single soft felt pop, short",
+      0.5
+    ],
+    "whoosh": [
+      "a soft airy whoosh, quick",
+      0.8
+    ],
+    "paw": [
+      "a soft padded paw tap on wood, short",
+      0.5
+    ],
+    "bark": [
+      "a single small friendly dog woof, short, distant",
+      0.7
+    ],
+    "meow": [
+      "a single soft short cat meow",
+      0.8
+    ],
+    "hoof": [
+      "three slow horse hoof taps on a wooden floor",
+      1.4
+    ],
+    "chime": [
+      "a small bright glockenspiel ding, short",
+      0.8
+    ],
+    "end": [
+      "a gentle two-note felt piano chime, short",
+      1.6
+    ]
+  },
+  "cues": [
+    [
+      "pop",
+      0,
+      "judges",
+      0.35
+    ],
+    [
+      "bark",
+      0,
+      "first",
+      0.35
+    ],
+    [
+      "whoosh",
+      1,
+      -0.3,
+      0.35
+    ],
+    [
+      "hoof",
+      1,
+      "count",
+      0.45
+    ],
+    [
+      "whoosh",
+      2,
+      -0.3,
+      0.35
+    ],
+    [
+      "pop",
+      2,
+      "five",
+      0.4
+    ],
+    [
+      "pop",
+      2,
+      "hundred",
+      0.4
+    ],
+    [
+      "whoosh",
+      3,
+      -0.3,
+      0.35
+    ],
+    [
+      "paw",
+      3,
+      "finger",
+      0.45
+    ],
+    [
+      "paw",
+      3,
+      "tube",
+      0.45
+    ],
+    [
+      "chime",
+      4,
+      "self-control",
+      0.35
+    ],
+    [
+      "chime",
+      4,
+      "IQ",
+      0.4
+    ],
+    [
+      "whoosh",
+      5,
+      -0.3,
+      0.35
+    ],
+    [
+      "pop",
+      5,
+      "nine",
+      0.45
+    ],
+    [
+      "whoosh",
+      6,
+      -0.3,
+      0.35
+    ],
+    [
+      "chime",
+      6,
+      "eyebrow",
+      0.35
+    ],
+    [
+      "whoosh",
+      7,
+      -0.3,
+      0.35
+    ],
+    [
+      "meow",
+      7,
+      "away",
+      0.4
+    ],
+    [
+      "paw",
+      7,
+      "trying",
+      0.45
+    ],
+    [
+      "chime",
+      8,
+      "names",
+      0.35
+    ],
+    [
+      "whoosh",
+      9,
+      -0.3,
+      0.35
+    ],
+    [
+      "end",
+      9,
+      "itself+0.6",
+      0.5
+    ]
+  ],
+  "port": 8904,
+  "voice": {
+    "speed": 0.92
+  },
+  "pauses": [
+    0.9,
+    0.9,
+    0.9,
+    0.8,
+    0.9,
+    1.0,
+    0.9,
+    0.9,
+    1.0,
+    1.4
+  ]
+}

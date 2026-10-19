@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fibre by Fibre · Research Report</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/report.css">
+</head>
+<body>
+<header class="top-header">
+  <a class="header-title ink" href="index.html">Fibre by Fibre</a>
+  <span class="header-divider"></span>
+  <span class="header-subtitle ink">Research report</span>
+  <a class="header-link inked ink" href="index.html">Back to the essay</a>
+</header>
+
+<div class="report-layout">
+  <nav class="report-toc" aria-label="Report contents">
+    <p class="section-label ink">Contents</p>
+    <ol>
+      <li><a href="#about">About this report</a></li>
+      <li><a href="#h">History &amp; culture</a>
+        <ol>
+          <li><a href="#h1">Origins</a></li>
+          <li><a href="#h2">The spread</a></li>
+          <li><a href="#h3">Traditions</a></li>
+          <li><a href="#h4">Cultural details</a></li>
+          <li><a href="#h5">Datasets</a></li>
+        </ol>
+      </li>
+      <li><a href="#m">Material &amp; texture</a>
+        <ol>
+          <li><a href="#m1">What paper is</a></li>
+          <li><a href="#m2">Fibre dimensions</a></li>
+          <li><a href="#m3">Sheet properties</a></li>
+          <li><a href="#m4">How texture forms</a></li>
+          <li><a href="#m5">Ink and paper</a></li>
+          <li><a href="#m6">Microstructure</a></li>
+        </ol>
+      </li>
+      <li><a href="#r">Rendering paper</a>
+        <ol>
+          <li><a href="#r1">Procedural noise</a></li>
+          <li><a href="#r2">SVG filters</a></li>
+          <li><a href="#r3">Light</a></li>
+          <li><a href="#r4">Modelling paper</a></li>
+          <li><a href="#r5">Ink approximations</a></li>
+          <li><a href="#r6">Recipes</a></li>
+        </ol>
+      </li>
+      <li><a href="#gaps">Open questions</a></li>
+      <li><a href="#sources">Sources</a></li>
+    </ol>
+  </nav>
+
+  <main class="report prose">
+    <p class="section-label ink">Research report</p>
+    <h1 class="report-title ink">Paper: history, material and rendering</h1>
+    <p class="report-sub ink-light">The evidence behind <a href="index.html">Fibre by Fibre</a>. Compiled October 2026 from about 220 web searches and page reads.</p>
+
+    <section id="about">
+      <h2 class="h2 ink">About this report</h2>
+      <p class="ink">Each claim carries a source tag such as <span class="src">H4</span>, <span class="src">M2</span> or <span class="src">R8</span>. The letter names the chapter's source list: H for history and culture, M for material and texture, R for rendering. Three markers show confidence:</p>
+      <ul class="flags-key">
+        <li><span class="flag disputed">Disputed</span> scholars disagree, or the claim has been revised.</li>
+        <li><span class="flag unverified">Unverified</span> widely repeated, but no source was found.</li>
+        <li><span class="flag derived">Derived</span> calculated here from sourced numbers, or a suggestion rather than a sourced value.</li>
+      </ul>
+      <p class="ink">Several museum and university pages blocked direct reading, so some fibre figures come from search extracts of those pages. They are marked where it matters. Coordinates for the map of the spread are approximate city centres.</p>
+    </section>
+
+    <!-- ===================== HISTORY ===================== -->
+    <section id="h" class="chapter">
+      <p class="section-label ink">Chapter H</p>
+      <h2 class="report-chapter ink">History &amp; culture</h2>
+
+      <h3 id="h1" class="h3 ink">H1 · Origins: the Cai Lun story and the archaeology</h3>
+      <p class="ink">The <em>Hou Hanshu</em>, compiled in the 5th century, records that the court eunuch Cai Lun presented paper to Emperor He in 105 CE, made from tree bark, hemp remnants, rags and fishing nets <span class="src">H1 H2</span>. The wording comes from an English paraphrase; it has not been checked against the Chinese text here. Cai Lun is now generally credited with standardising and promoting papermaking, not inventing it <span class="src">H4 H5</span>.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Find</th><th>Place</th><th>Claimed date</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Fangmatan map</td><td>Tianshui, Gansu</td><td>c. 179–141 BCE</td><td>Often called the oldest surviving paper, a 5.6 × 2.6 cm map fragment <span class="src">H4 H5</span>. <span class="flag disputed">Disputed</span> some argue it is silk, or lacks fibrillation <span class="src">H7</span>.</td></tr>
+            <tr><td>Baqiao</td><td>near Xi'an</td><td>before 118 BCE</td><td>Coarse hemp under bronze mirrors <span class="src">H5</span>. <span class="flag disputed">Disputed</span> judged in 2002 to be hemp padding, not paper <span class="src">H7</span>.</td></tr>
+            <tr><td>Xuanquan</td><td>near Dunhuang</td><td>reported as 1st c. BCE</td><td><span class="flag disputed">Revised</span> the official 2000 excavation report redated the 27 inscribed pieces to the Jin period, 3rd–4th c. CE <span class="src">H7 H8</span>.</td></tr>
+            <tr><td>Jianshui Jinguan, Majuanwan, Yumen Pass</td><td>Gansu, Shaanxi</td><td>mid–late Western Han</td><td>The most reliable on both dating and lab analysis; paper existed by the 1st century BCE <span class="src">H7</span>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="ink">Dard Hunter's definition of true paper requires fibres macerated until separate, suspended in water and matted on a screen <span class="src">H9</span>. Papyrus is laminated strips, "much like laminated wood" <span class="src">H9 H10</span>. Parchment is skin. Amate is beaten bark. None is paper in this strict sense.</p>
+
+      <h3 id="h2" class="h3 ink">H2 · The spread, place by place</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Place</th><th>Lon.</th><th>Best date</th><th>Evidence</th></tr></thead>
+          <tbody>
+            <tr><td>Fangmatan</td><td>105.9</td><td>c. 179–141 BCE</td><td>Map fragment <span class="src">H4</span> <span class="flag disputed">Disputed</span></td></tr>
+            <tr><td>Luoyang</td><td>112.4</td><td>105 CE</td><td>Cai Lun's presentation <span class="src">H2 H4</span></td></tr>
+            <tr><td>Dunhuang</td><td>94.7</td><td>c. 150 CE</td><td>In use; fragments from 65 BCE <span class="src">H4</span></td></tr>
+            <tr><td>Korea</td><td>c. 127</td><td>4th c.</td><td><span class="src">H4</span>. Oldest securely dated artefact: the Mugujeonggwang Dharani Sutra, before 751 <span class="src">H11 H12</span></td></tr>
+            <tr><td>Japan</td><td>135.8</td><td>610 (traditional)</td><td>Damjing "produced colors, paper and ink well" <span class="src">H13</span>. That he introduced papermaking is an Edo-period claim. <span class="flag disputed">Disputed</span></td></tr>
+            <tr><td>Tibet</td><td>91.1</td><td>c. 650</td><td>Then to Nepal <span class="src">H15</span></td></tr>
+            <tr><td>Talas</td><td>72.2</td><td>751</td><td>Bloom: "unlikely to be factual"; paper was already in Central Asia <span class="src">H4 H16 H17 H18</span> <span class="flag disputed">Legend</span></td></tr>
+            <tr><td>Samarkand</td><td>67.0</td><td>8th c., likely before 751</td><td><span class="src">H17</span></td></tr>
+            <tr><td>Baghdad</td><td>44.4</td><td>793–795</td><td>Paper 793; mills 794–795 <span class="src">H4</span></td></tr>
+            <tr><td>Damascus</td><td>36.3</td><td>9th–10th c.</td><td><span class="flag unverified">Unverified</span> no sourced date found</td></tr>
+            <tr><td>Cairo</td><td>31.2</td><td>c. 900</td><td><span class="src">H4</span></td></tr>
+            <tr><td>Fez</td><td>−5.0</td><td>c. 1100</td><td><span class="src">H4</span></td></tr>
+            <tr><td>Xàtiva</td><td>−0.5</td><td>1056 / 1150</td><td>First recorded mill 1056; established by 1150 <span class="src">H4</span></td></tr>
+            <tr><td>Fabriano</td><td>12.9</td><td>1282</td><td>Notary register of papermakers; earliest watermarks <span class="src">H19 H20</span>. "1264" appears only in company sources <span class="src">H21</span></td></tr>
+            <tr><td>Troyes</td><td>4.1</td><td>1348</td><td><span class="src">H4</span></td></tr>
+            <tr><td>Nuremberg</td><td>11.1</td><td>1390</td><td>Ulman Stromer's Gleismühl <span class="src">H22 H23</span></td></tr>
+            <tr><td>Hertford</td><td>−0.1</td><td>c. 1490</td><td>John Tate; Dartford 1588 first commercial success <span class="src">H4</span></td></tr>
+            <tr><td>Mexico City</td><td>−99.1</td><td>by 1575</td><td><span class="src">H4</span></td></tr>
+            <tr><td>Germantown</td><td>−75.2</td><td>1690</td><td>William Rittenhouse <span class="src">H24 H25</span></td></tr>
+            <tr><td>Huitzilapa (amate)</td><td>−104.0</td><td>c. 75 BCE</td><td>Independent bark paper; not true paper <span class="src">H4</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="ink">The westward route has long pauses: about seven centuries from China to Baghdad, 2.6 from Baghdad to Xàtiva, and 3.3 from Xàtiva to Nuremberg.</p>
+
+      <h3 id="h3" class="h3 ink">H3 · Traditions</h3>
+      <h4 class="h4 ink">Japanese washi</h4>
+      <p class="ink">Three bast fibres: kōzo (long and strong, for shoji and calligraphy), mitsumata (fine and glossy, for banknotes) and gampi (fine and lustrous, for sutras) <span class="src">H26</span>. Papermaking was winter work for farming families <span class="src">H27</span>. <em>Nagashizuki</em> builds a thin, strong sheet by repeated scoops in a bath thickened with <em>neri</em>, a mucilage from tororo-aoi root that slows drainage; <em>tamezuki</em> is a single dip without neri <span class="src">H26 H28</span>. Shinto <em>shide</em>, the zigzag paper streamers, mark sacred space and descend from bark-fibre thread mentioned in the <em>Kojiki</em> <span class="src">H30 H31</span>. Bank of Japan notes blend mitsumata and abacá; over 90% of mitsumata is now imported <span class="src">H32 H33</span>.</p>
+      <p class="ink">UNESCO inscribed "Washi, craftsmanship of traditional Japanese hand-made paper" in 2014, covering Sekishu-banshi, Hon-minoshi and Hosokawa-shi, all made only from kōzo <span class="src">H29 H34 H35</span>. In December 2025 the listing was extended to Echizen Torinoko-shi <span class="src">H36 H37</span>.</p>
+
+      <h4 class="h4 ink">Chinese Xuan paper</h4>
+      <p class="ink">Made in Jing County, Anhui, from the bark of <em>Pteroceltis tatarinowii</em> and sandy-field rice straw, by hand in more than 100 steps over more than two years <span class="src">H39 H40 H41</span>. Raw <em>shengxuan</em> is unsized and absorbent, so ink blooms; <em>shuxuan</em> is sized with alum and glue and holds a fine line <span class="src">H42 H43</span>. UNESCO Representative List, 2009 <span class="src">H39</span>. In 2018 the main producer made about 600 t a year, roughly 80% of Jingxian output, and only five makers were certified for genuine Xuan <span class="src">H41</span>. <span class="flag disputed">Figures vary</span> with how the sector is defined <span class="src">H44</span>.</p>
+
+      <h4 class="h4 ink">Korean hanji</h4>
+      <p class="ink">Inner bark of <em>dak</em> (paper mulberry). <em>Webal-tteugi</em> is a single-mould, side-to-side scoop native to Korea that crosses the fibres in many directions; <em>dochim</em> beats the damp sheets to compact them and reduce bleeding <span class="src">H45 H46</span>. Nominated to UNESCO in March 2024; the decision is expected in December 2026 <span class="src">H47 H48 H49</span>.</p>
+
+      <h4 class="h4 ink">Lokta, deh-sho, saa, khadi, amate</h4>
+      <p class="ink">Nepali lokta comes from <em>Daphne</em> bark, cooked in lye and beaten; it nearly died out by the 1950s and revived after 1969 <span class="src">H15</span>. Bhutanese deh-sho is used for prayer texts <span class="src">H50</span>. Thai saa is made from paper mulberry at Ban Ton Pao <span class="src">H51</span>. India's Kumarappa National Handmade Paper Institute researches about 40 waste fibres <span class="src">H52</span>. Otomí amate from San Pablito is boiled bark laid in a grid and pounded with a stone; curers cut it into spirit figures <span class="src">H53 H54</span>.</p>
+
+      <h4 class="h4 ink">European rag paper</h4>
+      <p class="ink">Fabriano adapted water-powered fulling mills to pound rags, replaced starch with gelatin sizing and made the first watermarks, dated 1282 <span class="src">H19 H20 H55 H56</span>. Laid paper shows chain lines and laid lines from the wire mould. Baskerville's 1757 Virgil contains the first Western wove paper, almost certainly James Whatman's <span class="src">H57 H58</span>; <span class="flag disputed">Disputed</span> Cathleen Baker argues it was formed with cloth over a laid mould. The Hollander beater, c. 1680, did in a day what stampers did in eight, at the cost of shorter fibres <span class="src">H59</span>. Of 160–185 Gutenberg Bibles, about three-quarters were printed on paper; 49 survive <span class="src">H60 H61</span>.</p>
+
+      <h4 class="h4 ink">Machines, wood and acid</h4>
+      <p class="ink">Nicolas-Louis Robert patented a paper machine in 1799; the Fourdrinier brothers' patent followed in 1806–07 <span class="src">H62 H63</span>. Keller and Fenerty made groundwood pulp in the early 1840s; sulfite (1866–74) and kraft (1879–84) followed <span class="src">H4 H64 H65</span>. Alum-rosin sizing and lignin left much post-1850 paper acidic and brittle within a lifetime <span class="src">H66</span>. ISO 9706 defines permanent paper by tear strength, alkali reserve, low lignin and pH <span class="src">H67</span>; <span class="flag unverified">its current status</span> differs between catalogue pages.</p>
+
+      <h3 id="h4" class="h3 ink">H4 · Cultural details</h3>
+      <p class="ink">Song-dynasty China issued the first state paper money, the jiaozi, in 1024 <span class="src">H68 H69 H70</span>. Paper replaced coins and silk as grave goods in the Wei–Jin period and joss paper was common under the Tang <span class="src">H71 H72</span>; <span class="flag unverified">"2,500 years old"</span> is unsupported. The Diamond Sutra of 868 is the earliest dated printed book <span class="src">H4</span>. The <em>Tiangong Kaiwu</em> of 1637 illustrates each step of papermaking <span class="src">H4</span>.</p>
+
+      <h3 id="h5" class="h3 ink">H5 · Datasets</h3>
+      <div class="table-wrap">
+        <table>
+          <caption>Washi-making households, Japan</caption>
+          <thead><tr><th>Year</th><th>Households</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr><td>1901</td><td class="num">≈ 70,000</td><td><span class="src">H73</span>; another source gives 68,000 makers <span class="src">H26</span> <span class="flag disputed">Conflict</span></td></tr>
+            <tr><td>1984</td><td class="num">&lt; 500</td><td><span class="src">H74</span></td></tr>
+            <tr><td>2009</td><td class="num">295</td><td>All Japan Handmade Washi Association, via <span class="src">H73</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <caption>World paper and paperboard production (million tonnes)</caption>
+          <thead><tr><th>Year</th><th>Mt</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr><td>1980</td><td class="num">≈ 169</td><td><span class="flag derived">Derived</span> from FAO's +137% <span class="src">H75</span></td></tr>
+            <tr><td>2000</td><td class="num">≈ 323</td><td><span class="flag derived">Derived</span> from +24% <span class="src">H75</span></td></tr>
+            <tr><td>2020</td><td class="num">401</td><td><span class="src">H75</span></td></tr>
+            <tr><td>2023</td><td class="num">401</td><td>Graphic papers 84 Mt, lowest since 1987 <span class="src">H77</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="ink">Recovered paper: 229 Mt in 2020; 52.2% of paper and board contained recovered fibre <span class="src">H75 H80</span>.</p>
+    </section>
+
+    <!-- ===================== MATERIAL ===================== -->
+    <section id="m" class="chapter">
+      <p class="section-label ink">Chapter M</p>
+      <h2 class="report-chapter ink">Material &amp; texture</h2>
+
+      <h3 id="m1" class="h3 ink">M1 · What paper is</h3>
+      <p class="ink">Paper is a felted network of plant cells, mostly cellulose: chains of glucose packed into microfibrils about 3–3.7 nm wide <span class="src">M31 M32 M33</span>. Wood also carries hemicellulose and 17–35% lignin; scoured cotton is about 99% cellulose <span class="src">M30 M31</span>. Sheet strength falls in strongly hydrogen-bonding solvents, the classic evidence that hydrogen bonds at fibre crossings carry load, though not necessarily alone <span class="src">M35</span>. Beating swells the fibre wall so fibres collapse into ribbons and conform; drying "hornifies" them, which is why recycled fibre bonds less well <span class="src">M34 M36</span>.</p>
+      <p class="ink">A sheet is mostly air. With solid cellulose at about 1.5 g/cm³, handsheets of 0.44–0.71 g/cm³ are 55–72% void <span class="src">M52</span>. <span class="flag derived">Derived</span> 80 gsm copy paper at 0.73 g/cm³ is about half air; tengujō at about 0.08 g/cm³ would be over 90% air.</p>
+      <p class="ink">Paper yellows and embrittles through acid hydrolysis and oxidation, mainly in the amorphous regions of cellulose <span class="src">M37 M39</span>. Lignin chromophores absorb near-UV and photo-oxidise to yellow compounds <span class="src">M37</span>; cellulose itself generates acids as it ages, with oxalic acid a main contributor <span class="src">M38 M40</span>, and alum sizing may matter more than lignin <span class="src">M39</span>.</p>
+
+      <h3 id="m2" class="h3 ink">M2 · Fibre dimensions</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Fibre</th><th>Length (mm)</th><th>Range</th><th>Width (µm)</th><th>L/W</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr><td>Kozo</td><td class="num">10</td><td class="num">6–20</td><td class="num">30</td><td class="num">≈330</td><td><span class="src">M2 M3</span></td></tr>
+            <tr><td>Mitsumata</td><td class="num">3</td><td class="num">2–4</td><td class="num">12</td><td class="num">≈250</td><td><span class="src">M4</span> <span class="flag disputed">Conflict</span> 3–12 mm in <span class="src">M5</span></td></tr>
+            <tr><td>Gampi</td><td class="num">3</td><td class="num">2–4</td><td class="num">12</td><td class="num">≈250</td><td><span class="src">M6–M9</span></td></tr>
+            <tr><td>Qingtan bark</td><td class="num">2.5</td><td class="num">2.2–2.7</td><td class="num">11</td><td class="num">≈220</td><td><span class="src">M10–M12</span></td></tr>
+            <tr><td>Rice straw</td><td class="num">1.5</td><td class="num">0.5–3</td><td class="num">10</td><td class="num">≈150</td><td><span class="src">M13</span></td></tr>
+            <tr><td>Lokta</td><td class="num">—</td><td class="num">—</td><td class="num">15</td><td class="num">—</td><td><span class="src">M14 M15</span> <span class="flag unverified">No reliable length</span></td></tr>
+            <tr><td>Cotton staple</td><td class="num">18</td><td class="num">10–40</td><td class="num">20</td><td class="num">≈900</td><td><span class="src">M17</span></td></tr>
+            <tr><td>Cotton linters</td><td class="num">≈3</td><td class="num">1.5–6</td><td class="num">20</td><td class="num">≈150</td><td><span class="src">M18</span> <span class="flag unverified">Approx.</span></td></tr>
+            <tr><td>Flax</td><td class="num">33</td><td class="num">9–70</td><td class="num">20</td><td class="num">≈1,650</td><td><span class="src">M19</span></td></tr>
+            <tr><td>Hemp</td><td class="num">25</td><td class="num">5–55</td><td class="num">25</td><td class="num">≈1,000</td><td><span class="src">M20 M21</span></td></tr>
+            <tr><td>Abaca</td><td class="num">6</td><td class="num">2–12</td><td class="num">25</td><td class="num">≈250</td><td><span class="src">M22 M23</span></td></tr>
+            <tr><td>Bamboo</td><td class="num">2.7</td><td class="num">1.5–4</td><td class="num">15</td><td class="num">≈180</td><td><span class="src">M24 M25</span></td></tr>
+            <tr><td>Softwood</td><td class="num">3.0</td><td class="num">2.3–4.3</td><td class="num">35–40</td><td class="num">≈85</td><td><span class="src">M1 M26</span></td></tr>
+            <tr><td>Eucalyptus</td><td class="num">0.9</td><td class="num">0.5–2.9</td><td class="num">21</td><td class="num">≈45</td><td><span class="src">M1 M27</span></td></tr>
+            <tr><td>Birch</td><td class="num">≈1.0</td><td class="num">—</td><td class="num">≈20</td><td class="num">≈50</td><td><span class="src">M28 M29</span> <span class="flag derived">Width estimated</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="ink">Widths cluster at 10–40 µm, so length carries the contrast: flax is about 37 times longer than eucalyptus. Kozo is often described as up to three times longer than fibres in traditional European paper <span class="src">R37</span>.</p>
+
+      <h3 id="m3" class="h3 ink">M3 · Sheet properties</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Paper</th><th>gsm</th><th>Calliper</th><th>Density</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr><td>Tengujō (Hidaka Washi)</td><td class="num">1.6–7.3</td><td class="num">≈ 20 µm</td><td class="num">≈ 0.08</td><td><span class="src">M45 M46</span> <span class="flag unverified">press figure</span></td></tr>
+            <tr><td>Facial tissue, per ply</td><td class="num">13.5–15</td><td>—</td><td>—</td><td><span class="src">M51</span></td></tr>
+            <tr><td>Awagami kozo</td><td class="num">96 / 110</td><td class="num">180 / 230 µm</td><td class="num">0.53 / 0.48</td><td><span class="src">M49 M50</span></td></tr>
+            <tr><td>Copy paper</td><td class="num">80</td><td class="num">110 µm</td><td class="num">0.73</td><td><span class="src">M47</span>, opacity 95%</td></tr>
+            <tr><td>Watercolour 140 lb</td><td class="num">300</td><td>—</td><td>—</td><td><span class="src">M48</span></td></tr>
+            <tr><td>Watercolour 300 lb</td><td class="num">640</td><td>—</td><td>—</td><td><span class="src">M48</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="ink">No published roughness values were found for hot-pressed, cold-pressed (NOT) or rough watercolour paper; descriptions are qualitative. Hot-pressed is pressed between heated plates, NOT against textured felts, and rough lightly or not at all <span class="src">M66</span>.</p>
+      <p class="ink">Laid paper carries chain lines 22–32 mm apart and 7–10 laid lines per centimetre <span class="src">M63 M64</span>. Laid-line density fluctuates in a pattern unique to each mould, which lets scholars match "moldmates" <span class="src">M65</span>. A deckle edge is genuine on handmade and mould-made sheets and imitated on machine paper <span class="src">M66</span>. Gelatin sizing arrived at Fabriano in the 13th century; rosin-alum from about 1807 needed pH below 5; alkaline AKD and ASA sizing, with calcium carbonate, became standard in the US in the 1980s <span class="src">M41 M42 M43</span>. Machines align fibres in the machine direction, so tensile strength peaks along it and tear across it <span class="src">M67</span>.</p>
+
+      <h3 id="m4" class="h3 ink">M4 · How texture forms</h3>
+      <p class="ink">Long fibres tangle into flocs. The crowding number N = ⅔·C<sub>v</sub>·(L/d)² counts fibres within one fibre length; formation worsens sharply above about 16 and flocs persist above about 60 <span class="src">M68</span>. Because N grows with (L/d)², kozo is about fifty times more prone to flocking than eucalyptus at the same concentration <span class="flag derived">Derived</span>. Neri keeps those fibres dispersed and slows drainage, which is what makes nagashizuki possible <span class="src">M73</span>. Calendering compresses the sheet for smoothness and gloss <span class="src">M70</span>.</p>
+      <p class="ink">Opacity comes from light scattering at unbonded fibre–air surfaces <span class="src">M71 M84</span>. A washi sheet only a few long fibres thick, with no filler, has few such surfaces, so light passes through; glassine reaches translucency the opposite way, by beating and calendering the air out <span class="src">M72</span>. <span class="flag derived">Synthesis</span> no single paper quantifies the washi case.</p>
+
+      <h3 id="m5" class="h3 ink">M5 · Ink and paper</h3>
+      <p class="ink">Liquid wicks into paper roughly as the Lucas–Washburn law, L = √(γ·r·cos θ·t / 2η): depth grows with the square root of time <span class="src">M76</span>. Sizing raises the contact angle θ; as θ nears 90°, cos θ nears zero and wicking stops. Unsized shengxuan blooms; rice straw's short fibres soften the edges of the bleed <span class="src">M77 M78</span>. Sumi is soot of 15–400 nm bound with animal glue, and inert <span class="src">M80</span>. Iron gall ink is acidic (pH 1–3) and catalyses Fenton oxidation, eating lace-like holes along old strokes <span class="src">M81</span>. Brightness is reflectance in blue light at 457 nm, where yellowing absorbs <span class="src">M82</span>; Kubelka–Munk theory models a sheet by its scattering s and absorption k <span class="src">M83</span>.</p>
+
+      <h3 id="m6" class="h3 ink">M6 · Microstructure</h3>
+      <p class="ink">Pores range from tens of nanometres to tens of microns <span class="src">M53 M54</span>; one SEM study measured surface pores of about 8 µm between fibres about 14 µm wide <span class="src">M55</span>. Eucalyptus kraft holds about 20 million fibres per gram, loblolly pine about 3.8 million <span class="src">M56 M57 M58</span>. <span class="flag derived">Derived</span> an 80 gsm A4 sheet weighs about 5 g, so an all-eucalyptus sheet holds about 100 million fibres.</p>
+    </section>
+
+    <!-- ===================== RENDERING ===================== -->
+    <section id="r" class="chapter">
+      <p class="section-label ink">Chapter R</p>
+      <h2 class="report-chapter ink">Rendering paper</h2>
+
+      <h3 id="r1" class="h3 ink">R1 · Procedural noise</h3>
+      <p class="ink">Perlin's 1985 "An Image Synthesizer" introduced lattice gradient noise with a narrow frequency band and the turbulence sum Σ|noise(2<sup>k</sup>p)|/2<sup>k</sup> <span class="src">R1</span>. "Improving Noise" (2002) replaced the cubic fade 3t²−2t³ with 6t⁵−15t⁴+10t³ and used twelve edge gradients <span class="src">R2 R3</span>. Simplex noise uses N+1 corners and radial kernels <span class="src">R4</span>. Fractal Brownian motion sums octaves: fbm(p) = Σ G<sup>k</sup>·noise(λ<sup>k</sup>p), usually λ = 2, G = ½ <span class="src">R5</span>. Worley noise measures distance to the nearest feature points; F₂−F₁ draws cell borders <span class="src">R7</span>. Domain warping evaluates f(p + h(p)) and turns clouds into swirls <span class="src">R6</span>.</p>
+
+      <h3 id="r2" class="h3 ink">R2 · SVG filter primitives</h3>
+      <p class="ink"><code>feTurbulence</code> implements Perlin turbulence with the Park–Miller generator and still uses the old cubic curve; <code>fractalNoise</code> sums signed noise, <code>turbulence</code> sums absolute noise, and <code>stitchTiles</code> makes seamless tiles <span class="src">R8 R9</span>. Filters default to linearRGB, so set <code>color-interpolation-filters="sRGB"</code> for predictable values. <code>feDiffuseLighting</code> reads height from the alpha channel; feeding opaque noise gives flat lighting <span class="src">R8</span>.</p>
+      <p class="ink">WebKit rendered filters in viewport pixels on retina screens, and removed the <code>filterRes</code> workaround in 2018 <span class="src">R10–R13</span>. <span class="flag unverified">Current status untested.</span> CSS <code>mask-image</code> with a noise tile avoids the problem and is what this essay uses <span class="src">R14</span>.</p>
+
+      <h3 id="r3" class="h3 ink">R3 · From height to light</h3>
+      <p class="ink">Normals come from height differences, N = normalize(−s·∂h/∂x, −s·∂h/∂y, 1); Sobel kernels smooth the estimate and are what <code>feDiffuseLighting</code> uses <span class="src">R8 R17</span>. Lambert shading is k·max(0, N·L) <span class="src">R18</span>. Conservators use raking light, a single source nearly parallel to the sheet, to reveal laid structure, chain lines, watermarks and creases, lighting from several directions because features parallel to the beam vanish <span class="src">R19 R20</span>. Reflectance Transformation Imaging generalises this to many angles <span class="src">R21</span>.</p>
+
+      <h3 id="r4" class="h3 ink">R4 · Modelling paper</h3>
+      <p class="ink">Curtis et al. (1997) model paper as a height field and a fluid-capacity field generated from Perlin or Worley noise, simulate shallow water, pigment deposition and capillary flow, darken edges, and composite glazes with Kubelka–Munk <span class="src">R22</span>. Guo and Kunii (1991) model rice paper as randomly distributed fibres through which ink diffuses <span class="src">R23 R24</span>. Lee (2001) divides paper into "papels" with fibre structure in two directions <span class="src">R25</span>. Chu and Tai's MoXi (2005) uses a lattice Boltzmann model for ink percolating through paper at interactive rates <span class="src">R26 R27</span>. Paper tearing has been simulated with hybrid geometric–physical methods <span class="src">R28 R29 R30 R31</span>. <span class="flag unverified">No dedicated paper on fibre-level paper appearance was found.</span></p>
+      <p class="ink">Formation is the distribution of fibres in the sheet; poor formation looks cloudy against the light <span class="src">R33</span>. Chain lines (about 25–35 mm) and laid lines (about 1 mm) are thinner zones that show in transmitted light, as do watermarks <span class="src">R34 R19</span>.</p>
+
+      <h3 id="r5" class="h3 ink">R5 · Ink in the browser</h3>
+      <p class="ink">A cellular automaton with water and pigment per cell, conductivity raised along fibres and lowered by sizing, reproduces feathered bleeding at 256² in plain JavaScript <span class="src">R22 R24</span>. Edge darkening can follow Curtis, p ← p − η(1 − blur(M))·M with η 0.01–0.05 <span class="src">R22</span>. Lattice Boltzmann needs WebGL2 float textures <span class="src">R27</span>.</p>
+
+      <h3 id="r6" class="h3 ink">R6 · Recipes</h3>
+      <p class="ink"><span class="flag derived">Suggested starting points</span></p>
+      <ul class="ink">
+        <li><strong>Washi:</strong> formation noise at 3 octaves; 1,500–3,000 long curved fibres per 1000² with log-normal lengths; translucency drives look-through.</li>
+        <li><strong>Cold press:</strong> inverted, blurred Worley bumps plus fine fractal noise; light at 40°.</li>
+        <li><strong>Laid:</strong> laid period about 1 mm, chain lines about 25 mm with jitter, watermark as thinner paper, shown with exp(−k·thickness) in transmitted light.</li>
+        <li><strong>Newsprint:</strong> 40–50 gsm groundwood, yellowing with light; speckle and show-through <span class="src">R38</span>.</li>
+        <li><strong>Performance:</strong> bake textures once into a canvas at device pixel ratio and reuse them; never animate <code>feTurbulence</code> or filter scroll-linked elements <span class="src">R15 R16</span>.</li>
+      </ul>
+    </section>
+
+    <section id="gaps" class="chapter">
+      <h2 class="report-chapter ink">Open questions</h2>
+      <ul class="ink">
+        <li>A sourced date for paper in Damascus.</li>
+        <li>An official current count of washi households, and the FAOSTAT 1961–2024 annual series.</li>
+        <li>A verified translation of the <em>Hou Hanshu</em> passage on Cai Lun.</li>
+        <li>The UNESCO decision on hanji, December 2026.</li>
+        <li>Lokta fibre length; distinct mitsumata and gampi measurements; birch fibre width.</li>
+        <li>Measured roughness and calliper for hot-pressed, cold-pressed and rough watercolour paper.</li>
+        <li>Whether WebKit still renders SVG filters at low resolution on retina screens.</li>
+      </ul>
+    </section>
+
+    <section id="sources" class="chapter sources">
+      <h2 class="report-chapter ink">Sources</h2>
+      <div id="source-lists"></div>
+    </section>
+  </main>
+</div>
+<script src="js/sources.js"></script>
+<script src="js/cursor.js"></script>
+</body>
+</html>

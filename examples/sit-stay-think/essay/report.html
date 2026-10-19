@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sit, Stay, Think · Research report</title>
+<link rel="stylesheet" href="css/base.css">
+<style>
+  .wrap { display: grid; grid-template-columns: 220px minmax(0, 680px); gap: 64px; max-width: 1040px; margin: 0 auto; padding: 96px 28px 120px; }
+  .toc { position: sticky; top: 80px; align-self: start; font-size: 13.5px; }
+  .toc ol { list-style: none; padding: 0; margin: 10px 0 0; }
+  .toc li { margin: 6px 0; } .toc ol ol { padding-left: 12px; } .toc a { color: var(--ink-2); }
+  main h1 { font-size: 42px; line-height: 1.1; margin: 8px 0 10px; }
+  main h2 { font-size: 27px; margin: 64px 0 14px; padding-top: 28px; border-top: 1px solid var(--rule); }
+  main h3 { font-size: 19px; margin: 34px 0 8px; }
+  main p, main li { font-size: 16.5px; }
+  .sub { color: var(--ink-2); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; margin: 8px 0 22px; }
+  th, td { text-align: left; padding: 6px 10px 6px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { font: 400 11px/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .srcs { font-size: 13.5px; line-height: 1.5; padding-left: 0; list-style: none; }
+  .srcs li { margin: 0 0 7px; padding-left: 44px; text-indent: -44px; word-break: break-word; }
+  .srcs b { font: 500 11.5px var(--mono); display: inline-block; width: 44px; text-indent: 0; color: var(--muted); }
+  :target { scroll-margin-top: 70px; }
+  li:target, p:target { background: rgba(235,167,150,.18); }
+  @media (max-width: 860px) { .wrap { grid-template-columns: 1fr; gap: 0; padding: 76px 20px 80px; } .toc { position: static; margin-bottom: 20px; } main h1 { font-size: 32px; } }
+</style>
+</head>
+<body>
+<header class="bar">
+  <a class="shelf" href="http://localhost:8900/" title="Back to the shelf">← Shelf</a>
+  <a class="name" href="index.html">Sit, Stay, Think</a>
+  <span class="label" style="margin-left:4px">Research report</span>
+  <nav style="display:flex"><a href="index.html">Back to the essay</a></nav>
+</header>
+<div class="wrap">
+  <aside class="toc">
+    <span class="label">Contents</span>
+    <ol>
+      <li><a href="#about">About this report</a></li>
+      <li><a href="#h">History</a><ol><li><a href="#h1">Testing animal minds</a></li><li><a href="#h2">Breeds and shows</a></li></ol></li>
+      <li><a href="#d">Dog intelligence</a><ol><li><a href="#d1">Coren's ranking</a></li><li><a href="#d2">Lab batteries</a></li><li><a href="#d3">Breed vs individual</a></li><li><a href="#d4">Word-learning dogs</a></li></ol></li>
+      <li><a href="#e">Emotion and brains</a><ol><li><a href="#e1">Dog "EQ"</a></li><li><a href="#e2">Brains and the other EQ</a></li></ol></li>
+      <li><a href="#c">Cats</a><ol><li><a href="#c1">Testing cats</a></li><li><a href="#c2">Cat "EQ"</a></li><li><a href="#c3">Cat breeds</a></li></ol></li>
+      <li><a href="#gaps">Open questions</a></li>
+      <li><a href="#sources">Sources</a></li>
+    </ol>
+  </aside>
+  <main>
+    <span class="label">Research report</span>
+    <h1>Measuring dog and cat minds</h1>
+    <p class="sub">The evidence behind <a class="u" href="index.html">Sit, Stay, Think</a>. Compiled 19 October 2026.</p>
+
+    <h2 id="about">About this report</h2>
+    <p>The question was how to determine the IQ and EQ of dogs and cats, and how breeds rank. The research ran in four parallel tracks: history and culture (H), dog intelligence and breed rankings (D), emotion and brains (E), and cats (C). Each track searched widely, then fetched and read the most relevant pages, preferring peer-reviewed papers, the authors' own accounts and institutional pages. Where a paper was paywalled, the report says what was actually read: an abstract, a press release or a summary. Every number in the essay links to a section here and a numbered source below.</p>
+    <p>One finding framed everything else. There is <b>no standardised IQ or EQ test</b> for dogs or cats. There are tests of separate abilities (following a point, holding back from a treat, remembering where food went, matching a voice to a face), owner questionnaires, and one famous ranking built from a survey of obedience judges.</p>
+
+    <h2 id="h">History</h2>
+    <h3 id="h1">Testing animal minds</h3>
+    <p>Darwin's <i>Expression of the Emotions</i> (1872) drew the same dog twice: stiff, tail up, approaching "with hostile intentions", then low and wagging, "humble and affectionate". His cats appear the same way, savage and affectionate <a class="note" href="#src-H9">H9</a>. Emotions were read from posture long before anyone measured them.</p>
+    <p>Edward Thorndike's 1898 dissertation put about a dozen cats in fifteen puzzle boxes. Cat 12 took 160 s to escape box A the first time and about 6–7 s by its 24th trial. The curves fell gradually, which Thorndike read as trial-and-error learning rather than insight, the root of his law of effect <a class="note" href="#src-H1">H1</a> <a class="note" href="#src-H2">H2</a>. His dogs did not learn by watching each other: one jumped on a box 110 times while another demonstrated <a class="note" href="#src-H1">H1</a>. Pavlov's Nobel Prize (1904) was for the physiology of digestion. His conditioning experiments on dogs came out of that work <a class="note" href="#src-H4">H4</a> <a class="note" href="#src-H5">H5</a>.</p>
+    <p>Clever Hans, the Berlin horse who "counted", was cleared of fraud by a 13-member commission in 1904. Oskar Pfungst then showed Hans was reading tiny movements of the questioner's head. Hans was right 98% of the time when the questioner knew the answer and 8% when he didn't. With blinders, he was right 89% of the time when he could see the questioner and 6% when he couldn't <a class="note" href="#src-H6">H6</a> <a class="note" href="#src-H7">H7</a>. The lesson still applies: in 2011, handlers who were told that hidden scent was marked steered their detection dogs' false alerts to those spots, though there was no scent anywhere <a class="note" href="#src-H8">H8</a>.</p>
+    <p>The IQ itself, mental age ÷ age × 100, was coined by William Stern in 1912 for children sitting the same test <a class="note" href="#src-H22">H22</a>. "Emotional intelligence" was popularised by Salovey and Mayer (1990) and Goleman (1995) <a class="note" href="#src-H23">H23</a>. Neither idea was designed for another species.</p>
+
+    <h3 id="h2">Breeds and shows</h3>
+    <p>The first dog show was held in Newcastle in June 1859, for pointers and setters only, with about 60 entries <a class="note" href="#src-H11">H11</a>. A genomic study of 161 breeds dates most modern breeds to the last ~200 years, the "Victorian breed explosion" <a class="note" href="#src-H10">H10</a>. The AKC recognises 205 breeds <a class="note" href="#src-H15">H15</a>, and the FCI about 360 (a figure not confirmed on the FCI's own pages) <a class="note" href="#src-H16">H16</a>. The first cat show was at the Crystal Palace in July 1871, organised by Harrison Weir <a class="note" href="#src-H12">H12</a> <a class="note" href="#src-H14">H14</a>. Cats were domesticated in the Near East about 10,000 years ago, and a cat was buried with a person on Cyprus about 9,500 years ago <a class="note" href="#src-H24">H24</a> <a class="note" href="#src-H25">H25</a>. Dog domestication is older and its date is disputed <a class="note" href="#src-H26">H26</a>.</p>
+    <p>Popularity doesn't track behaviour. Comparing 80 years of AKC registrations with behaviour scores for 92 breeds, only 2 of 56 tests showed a link before correction for multiple tests and none after. The one clear link was that more popular breeds carried more inherited disorders <a class="note" href="#src-H21">H21</a>. The French Bulldog has been the most registered AKC breed four years running <a class="note" href="#src-H15">H15</a>.</p>
+
+    <h2 id="d">Dog intelligence</h2>
+    <h3 id="d1">Coren's ranking (1994)</h3>
+    <p>Stanley Coren's <i>The Intelligence of Dogs</i> ranked breeds from questionnaires answered by 199 American and Canadian obedience judges, about half of those listed. A 2009 press report says 208 <a class="note" href="#src-D1">D1</a> <a class="note" href="#src-D4">D4</a>. Only breeds rated by at least 100 judges were ranked: about 130 breeds in 79 numbered ranks, with ties <a class="note" href="#src-D1">D1</a> <a class="note" href="#src-D2">D2</a> <a class="note" href="#src-D3">D3</a>. 190 of 199 judges put the Border Collie in their top ten, and 121 put the Afghan Hound in their bottom ten <a class="note" href="#src-D1">D1</a>.</p>
+    <p>Coren separated three kinds of dog intelligence: instinctive (what the breed was bred for), adaptive (solving problems on its own), and working and obedience. Only the last is ranked <a class="note" href="#src-D1">D1</a>. Its tiers are defined by training:</p>
+    <table><tr><th>Tier</th><th>Ranks</th><th>Repetitions to learn a new command</th><th>Obeys the first command</th></tr>
+      <tr><td>Brightest</td><td>1–10</td><td>under 5</td><td>95% or better</td></tr>
+      <tr><td>Excellent</td><td>11–26</td><td>5–15</td><td>85% or better</td></tr>
+      <tr><td>Above average</td><td>27–39</td><td>15–25</td><td>70% or better</td></tr>
+      <tr><td>Average</td><td>40–54</td><td>25–40</td><td>50% or better</td></tr>
+      <tr><td>Fair</td><td>55–69</td><td>40–80</td><td>about 30%</td></tr>
+      <tr><td>Most difficult</td><td>70–79</td><td>80–100+ (sources differ)</td><td>25% or less</td></tr></table>
+    <p><b>Top ten:</b> Border Collie, Poodle, German Shepherd, Golden Retriever, Doberman Pinscher, Shetland Sheepdog, Labrador Retriever, Papillon, Rottweiler, Australian Cattle Dog. <b>Bottom ranks:</b> Shih Tzu (70), Basset Hound (71), Mastiff and Beagle (72), Pekingese (73), Bloodhound (74), Borzoi (75), Chow Chow (76), Bulldog (77), Basenji (78), Afghan Hound (79) <a class="note" href="#src-D1">D1</a> <a class="note" href="#src-D2">D2</a>. Coren himself says the ranking measures trainability, not intelligence in general, and that a low rank doesn't make a bad dog <a class="note" href="#src-D1">D1</a>. His popular claims (about 165 words, the mind of a 2–2½-year-old child) come from a conference talk, not a test <a class="note" href="#src-D4">D4</a>.</p>
+
+    <h3 id="d2">Lab batteries</h3>
+    <p>Cognition labs test abilities one at a time: following a pointing finger to one of two cups, walking around a clear cylinder instead of lunging at the treat inside it (inhibitory control), remembering where food went, inferring where it must be <a class="note" href="#src-D23">D23</a> <a class="note" href="#src-D27">D27</a>. In 1,508 dogs of 36 breeds, the share of breed-to-breed differences explained by relatedness (among-breed heritability) was 0.70 for inhibitory control (0.50 after controlling for body size), 0.39 for reading human communication, 0.21 for physical reasoning and 0.17 for memory <a class="note" href="#src-D11">D11</a>. Among 7,397 dogs of 74 breeds, larger-brained (and therefore larger) breeds did better at short-term memory and self-control <a class="note" href="#src-D10">D10</a>. A Finnish battery of 1,002 dogs in 13 groups found Border Collies and Australian Shepherds best on the cylinder, Kelpies and Malinois best at following gestures, and no breed differences at all for logical reasoning or short-term memory <a class="note" href="#src-D23">D23</a>. One study of 68 working Border Collies found a general factor ("g") that explained 17% of the variation in test scores <a class="note" href="#src-D14">D14</a>. The citizen-science Dognition data fit several independent abilities better than one <a class="note" href="#src-D13">D13</a>.</p>
+
+    <h3 id="d3">Breed vs individual</h3>
+    <p>Across more than 14,000 dogs of 101 breeds, owner-rated behaviour differs a lot between breeds. Trainability has the highest among-breed heritability of 14 traits (0.73), and the mean is 0.51 <a class="note" href="#src-D6">D6</a>. This describes breed <i>averages</i>. A 2022 study of 18,385 dogs, 2,155 of them genotyped, asked how well breed predicts an individual. The answer was about 9% of behavioural variation (range 3–25% across traits) <a class="note" href="#src-D7">D7</a> <a class="note" href="#src-D8">D8</a>. The two results don't conflict: breeds differ on average, but the dogs within a breed overlap widely.</p>
+
+    <h3 id="d4">Word-learning dogs</h3>
+    <p>Chaser, a Border Collie, learned 1,022 object names over three years <a class="note" href="#src-D15">D15</a>. Rico knew more than 200 <a class="note" href="#src-D17">D17</a>. Under controlled training, 1 of 34 typical family dogs learned two new toy names in three months, while all 6 "gifted" dogs did <a class="note" href="#src-D18">D18</a>. A worldwide call found 41 such dogs <a class="note" href="#src-D20">D20</a>. Nobody knows how common they are.</p>
+
+    <h2 id="e">Emotion and brains</h2>
+    <h3 id="e1">Dog "EQ"</h3>
+    <p>No validated emotional-intelligence scale exists for dogs or cats <a class="note" href="#src-E22">E22</a>. The closest standard instrument, the C-BARQ owner questionnaire (152 items in its 2003 draft, 78 in the version MacLean used), measures temperament <a class="note" href="#src-E22">E22</a> <a class="note" href="#src-E23">E23</a>. Researchers test pieces of social-emotional skill instead:</p>
+    <ul>
+      <li><b>Emotion matching:</b> 17 dogs heard a happy or angry voice and looked longer at the matching face in 67% of 188 trials <a class="note" href="#src-E8">E8</a>. Dogs trained on touchscreens tell happy from angry human faces <a class="note" href="#src-E7">E7</a>.</li>
+      <li><b>Distress:</b> 15 of 18 dogs approached a person who was crying <a class="note" href="#src-E9">E9</a>. Dogs opened a door faster, not more often, for a crying owner <a class="note" href="#src-E10">E10</a>.</li>
+      <li><b>Jealousy:</b> when owners petted a realistic stuffed dog, about 25% of 36 dogs snapped at it. Only one dog snapped in the control conditions <a class="note" href="#src-E17">E17</a>.</li>
+      <li><b>Fairness:</b> dogs stop giving a paw sooner when a partner is rewarded and they aren't <a class="note" href="#src-E16">E16</a>.</li>
+      <li><b>Faces:</b> dogs have a muscle that lifts the inner eyebrow (LAOM). The 4 wolves dissected had only scant fibres <a class="note" href="#src-E15">E15</a>.</li>
+      <li><b>Bonding:</b> mutual gaze raises oxytocin in dogs and owners. Effect sizes are disputed, and samples were small (28 dogs, 11 wolves in a reanalysis) <a class="note" href="#src-E11">E11</a> <a class="note" href="#src-E13">E13</a>.</li>
+    </ul>
+
+    <h3 id="e2">Brains and the other EQ</h3>
+    <p>In anatomy "EQ" means the encephalization quotient: brain mass divided by the brain mass expected for the body size, using Jerison's formula 0.12 × (body mass in g)<sup>2/3</sup>. The cat is the reference (EQ 1.0). The textbook dog is 1.2 and humans are 7.4–7.8 <a class="note" href="#src-E2">E2</a> <a class="note" href="#src-E3">E3</a>. By breed, the same formula gives 1.2 for a Papillon to 2.4 for a Rottweiler <a class="note" href="#src-E5">E5</a>. Counting neurons in the cerebral cortex directly: one cat had about 250 million, two dogs averaged about 528 million (a golden retriever had 627 million) and a brown bear, with a brain nine times the cat's, had about 251 million <a class="note" href="#src-E1">E1</a>. These counts come from one cat and two dogs. Dog brains also differ by breed in shape and in six covarying networks <a class="note" href="#src-E25">E25</a>.</p>
+
+    <h2 id="c">Cats</h2>
+    <h3 id="c1">Testing cats</h3>
+    <p>Cats are tested at home, after a screen for willingness. In the classic 2005 comparison, 7 of 26 recruited cats dropped out, and 14 cats and 14 dogs were analysed <a class="note" href="#src-C1">C1</a>. The two species followed pointing equally well. Given a task they couldn't solve, 12 of 14 dogs looked back at a person against 6 of 14 cats, and the cats kept trying for longer <a class="note" href="#src-C1">C1</a>. Cats tell their own name from similar words <a class="note" href="#src-C2">C2</a>, learn housemate cats' names <a class="note" href="#src-C4">C4</a>, and keep a mental map of where their owner's voice should come from <a class="note" href="#src-C5">C5</a>. In object permanence tests they pass visible displacements but mostly not invisible ones <a class="note" href="#src-C16">C16</a>. Cat cognition is a far smaller field than dog cognition <a class="note" href="#src-C18">C18</a> <a class="note" href="#src-C17">C17</a>.</p>
+    <h3 id="c2">Cat "EQ"</h3>
+    <p>64.3% of 70 kittens and 65.8% of 38 adult cats were securely attached to their owner, about the same share as human infants (~65%) <a class="note" href="#src-C7">C7</a> <a class="note" href="#src-C8">C8</a>. 79% of cats looked between their owner and a strange object (social referencing) <a class="note" href="#src-C10">C10</a>. Ten cats matched angry and happy human voices to faces <a class="note" href="#src-C12">C12</a>. Cats slow-blink back at people who slow-blink at them <a class="note" href="#src-C13">C13</a>. Cafe cats produced 276 combinations of 26 facial movements, which is a count of combinations, not a vocabulary <a class="note" href="#src-C14">C14</a>.</p>
+    <h3 id="c3">Cat breeds</h3>
+    <p>Registries recognise 45–75 cat breeds, and most are recent <a class="note" href="#src-C23">C23</a>. Pedigree cats are a minority of pets, with estimates from about 5% to 36% depending on country and survey <a class="note" href="#src-C21">C21</a> <a class="note" href="#src-C22">C22</a>. Breeds are genetically less distinct than dog breeds <a class="note" href="#src-C19">C19</a>. The largest breed study (5,726 Finnish cats, 40 breeds) found temperament differences: the Korat most people-oriented, the Russian Blue shyest, the Turkish Van most aggressive, the Bengal and Cornish Rex most active. It measured no cognitive trait at all <a class="note" href="#src-C15">C15</a>. No evidence-based "smartest cat breed" ranking was found. The popular lists are owner opinion <a class="note" href="#src-C26">C26</a>.</p>
+
+    <h2 id="gaps">Open questions</h2>
+    <ul>
+      <li>Coren's counts differ between sources: 199 or 208 judges, 130 or 133 breeds. The bottom tier's repetition count differs between editions <a class="note" href="#src-D2">D2</a> <a class="note" href="#src-D3">D3</a>.</li>
+      <li>No peer-reviewed critique of the Coren survey method was found. The trainability caveat is Coren's own.</li>
+      <li>"Among-breed heritability" (MacLean, Gnanadesikan) and "variance explained by breed" (Morrill) are different quantities. Don't compare them directly.</li>
+      <li>The neuron counts rest on one cat and two dogs. The golden retriever is given as 627 or 623 million within the same paper.</li>
+      <li>Vitale 2019 totals (108 or 117 cats) and the dog comparison figure weren't verifiable from the paper. Merola 2015 and Galvan &amp; Vonk 2016 were read as abstracts only.</li>
+      <li>The share of gifted word-learner dogs is unknown. The share of pedigree pet cats is uncertain. The popular "90–95% random-bred" isn't supported.</li>
+      <li>Nagasawa's oxytocin percentages weren't verified and aren't used.</li>
+    </ul>
+
+    <h2 id="sources">Sources</h2>
+    <div id="srcs"></div>
+  </main>
+</div>
+<script src="js/sources.js"></script>
+<script>
+  const names = { H: "History & culture", D: "Dog intelligence", E: "Emotion & brains", C: "Cats" };
+  const el = document.getElementById("srcs");
+  for (const P of ["H", "D", "E", "C"]) {
+    const h = document.createElement("h3"); h.textContent = names[P]; el.appendChild(h);
+    const ol = document.createElement("ol"); ol.className = "srcs";
+    for (const [n, [t, u]] of Object.entries(SOURCES[P]).sort((a, b) => a[0] - b[0])) {
+      const li = document.createElement("li"); li.id = "src-" + P + n;
+      li.innerHTML = `<b>${P}${n}</b>${t.replace(/</g, "&lt;")}. <a class="u" href="${u}" target="_blank" rel="noopener">${u.replace(/^https?:\/\//, "").slice(0, 60)}${u.length > 68 ? "…" : ""}</a>`;
+      ol.appendChild(li);
+    }
+    el.appendChild(ol);
+  }
+  if (location.hash) { const t = document.querySelector(location.hash); t && t.scrollIntoView(); }
+</script>
+</body>
+</html>

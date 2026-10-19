@@ -1,0 +1,71 @@
+/* Article: hero, sticky stages beside steps, coda. */
+
+/* hero: a full-screen vignette, text in the open middle */
+.hero { position: relative; height: 100vh; min-height: 640px; overflow: hidden; }
+.hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-text { position: absolute; left: 50%; top: 52%; transform: translate(-50%, -50%); width: min(560px, 44vw); }
+.hero h1 { font-size: clamp(48px, 6.2vw, 92px); line-height: 0.98; margin: 14px 0 22px; letter-spacing: -0.02em; }
+.hero .lede { font-size: 19.5px; line-height: 1.55; }
+.hero .sub { color: var(--ink-2); font-size: 16.5px; }
+.hero .links { display: flex; gap: 22px; align-items: baseline; margin-top: 18px; font-size: 15px; }
+.hero .cue { color: var(--muted); font-size: 11.5px; letter-spacing: .06em; }
+
+/* scrolly chapters */
+.chapter { position: relative; display: grid; grid-template-columns: minmax(320px, 460px) 1fr; column-gap: 48px; max-width: 1400px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px); }
+.chapter + .chapter { border-top: 1px solid var(--rule); }
+.stage { grid-column: 2; grid-row: 1; position: sticky; top: 48px; height: calc(100vh - 48px); height: calc(100svh - 48px); min-height: 560px; }
+.stage canvas { width: 100%; height: 100%; display: block; }
+/* each paragraph holds at the vertical centre of the screen while its drawing plays */
+.steps { grid-column: 1; grid-row: 1; position: relative; z-index: 2; padding: 0 0 20vh; }
+.step { min-height: 115vh; padding-top: 42vh; }
+.card { max-width: 440px; position: sticky; top: 50%; transform: translateY(-50%); }
+.card h2 { font-size: 46px; line-height: 1.04; margin: 10px 0 20px; }
+.card p { font-size: 21px; line-height: 1.6; }
+.card .aside { font-size: 16px; color: var(--ink-2); line-height: 1.55; }
+.step:not(.on) .card { opacity: 0.32; transition: opacity .5s ease; }
+.step.on .card { opacity: 1; transition: opacity .5s ease; }
+
+/* tooltips in the page's ink */
+.tip { position: absolute; z-index: 5; pointer-events: none; max-width: 240px; padding: 8px 10px 9px; background: rgba(245, 239, 224, 0.96); font: 400 13px/1.45 var(--body); color: var(--ink); opacity: 0; transform: translateY(4px); transition: opacity .2s, transform .2s; }
+.tip.on { opacity: 1; transform: none; }
+.tip b { font-family: var(--display); font-variation-settings: "SOFT" 100; font-weight: 600; font-size: 15px; display: block; margin-bottom: 2px; }
+.tip .s { font: 500 10.5px var(--mono); color: var(--muted); }
+
+.meet { position: absolute; right: 8%; bottom: 7%; background: none; border: 0; padding: 6px 0; font-size: 12.5px; color: var(--ink); cursor: pointer; opacity: 0; pointer-events: none; transition: opacity .4s; background-image: linear-gradient(currentColor, currentColor); background-size: 100% 1px; background-repeat: no-repeat; background-position: 0 100%; }
+.meet.on { opacity: 1; pointer-events: auto; }
+
+/* coda */
+.coda { position: relative; display: grid; grid-template-columns: 1fr minmax(300px, 520px); gap: 40px; align-items: center; min-height: 100vh; padding: 80px 28px; max-width: 1400px; margin: 0 auto; border-top: 1px solid var(--rule); }
+.coda-canvas { width: 100%; height: 70vh; min-height: 420px; }
+.coda h2 { font-size: 44px; margin: 10px 0 18px; }
+.coda .links { font-size: 15px; color: var(--ink-2); }
+
+@media (max-width: 860px) {
+  .hero { height: 100svh; }
+  .hero-text { left: 20px; right: 20px; width: auto; transform: translateY(-50%); top: 50%; }
+  .hero .lede { font-size: 17.5px; }
+  .hero .sub { display: none; }
+  /* phones: the drawing pinned in the top half, the text scrolling up through the bottom half */
+  .chapter { display: block; padding: 0; max-width: none; }
+  .stage { position: sticky; top: 48px; height: 50vh; height: 50svh; min-height: 0; z-index: 3; background: var(--ground); box-shadow: 0 10px 14px -10px var(--ground); }
+  .steps { padding: 3svh 20px 30svh; }
+  .step { min-height: 0; padding: 4svh 0 22svh; }
+  .card { position: static; max-width: none; padding: 0; }
+  .step:not(.on) .card { opacity: 0.55; }
+  .card h2 { font-size: 30px; }
+  .card p { font-size: 16.5px; }
+  .coda { grid-template-columns: 1fr; padding: 60px 20px; }
+  .coda-canvas { height: 46vh; }
+}
+/* landscape phones: drawing and text side by side, the drawing as tall as the screen */
+@media (max-width: 860px) and (orientation: landscape) and (max-height: 520px) {
+  .chapter { display: grid; grid-template-columns: minmax(220px, 38%) 1fr; column-gap: 20px; padding: 0 16px; }
+  .stage { position: sticky; top: 44px; height: calc(100svh - 44px); z-index: 3; box-shadow: none; }
+  .steps { padding: 20svh 0 30svh; }
+  .step { min-height: 90svh; padding: 0; }
+  .hero-text { top: 54%; }
+  .hero h1 { font-size: 40px; margin: 6px 0 10px; }
+  .hero .lede { font-size: 15.5px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+@media (max-width: 860px) { .meet { bottom: auto; top: 6px; right: 14px; } }
