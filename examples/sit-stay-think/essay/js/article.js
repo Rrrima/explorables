@@ -86,7 +86,8 @@
     const key = Math.round(w / 40) + "x" + Math.round(h / 40);
     if (key !== hero.key) { hero.key = key; hero.cast = heroCast(w, h); hero.sprites = []; hero.t0 = 0; }
     // build one sprite per frame so the page never freezes
-    if (hero.sprites.length < hero.cast.length) { const c = hero.cast[hero.sprites.length]; hero.sprites.push(c.k === "dog" ? F.dog(c.o) : F.cat(c.o)); if (!hero.t0) hero.t0 = t; }
+    if (hero.sprites.length < hero.cast.length) { const c = hero.cast[hero.sprites.length]; hero.sprites.push(c.k === "dog" ? F.dog(c.o) : F.cat(c.o)); }
+    if (!hero.t0) hero.t0 = t;
     g.clearRect(0, 0, w, h);
     hero.hots = [];
     const lift = Math.min(1, scrollY / innerHeight);
@@ -160,5 +161,38 @@
     requestAnimationFrame(frame);
   }
   addEventListener("resize", () => chapters.forEach((st) => (st.dirty = true)));
-  requestAnimationFrame(frame);
+
+  /* ---------- loading: build every sprite first, then show the page ---------- */
+  // Each chapter draws its felt on first sight, which froze scrolling for a second or more.
+  // Here every chapter is drawn once at each step behind the loader (yielding between draws
+  // so the bar moves), then the page shows with everything cached.
+  const tick = () => new Promise((r) => setTimeout(r, 0));
+  async function warm() {
+    const fill = document.getElementById("ld-fill"), t0 = performance.now(), LIMIT = 12000;
+    // a job returns true to run again (one more batch) after the bar has had a chance to move
+    const jobs = [() => drawHero(performance.now()) && hero.sprites.length < hero.cast.length];
+    for (const st of chapters) {
+      if (!st.def) continue;
+      jobs.push(() => { st.def.init && st.def.init(st); st.ready = true; });
+      for (let k = -0.5; k < st.steps.length; k += 0.5) jobs.push(() => {
+        const { g, w, h } = F.fit(st.canvas);
+        g.clearRect(0, 0, w, h); st.def.draw(g, w, h, k, st, performance.now());
+        return !!st.data.pending;
+      });
+    }
+    try { await document.fonts.ready; } catch (e) {}
+    for (let i = 0; i < jobs.length; i++) {
+      let again = false, n = 0;
+      do { try { again = jobs[i](); } catch (e) { console.warn("warm-up", e); again = false; } if (again) await tick(); } while (again && ++n < 60);
+      fill.style.width = `${((i + 1) / jobs.length) * 100}%`;
+      await tick();
+      if (performance.now() - t0 > LIMIT) break;   // a slow machine: show the page, the rest builds as you scroll
+    }
+    for (const st of chapters) { st.s = -1; st.dirty = true; }
+    hero.t0 = 0;
+    document.body.classList.remove("loading");
+    console.info(`warm-up ${Math.round(performance.now() - t0)} ms`);
+    requestAnimationFrame(frame);
+  }
+  warm();
 })();

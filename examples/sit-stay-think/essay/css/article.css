@@ -70,3 +70,13 @@
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 @media (max-width: 860px) { .meet { bottom: auto; top: 6px; right: 14px; } }
+
+/* loading: every felt sprite is built before the page shows, so scrolling never stalls */
+body.loading { overflow: hidden; }
+.loader { position: fixed; inset: 0; z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; background: var(--ground); background-image: var(--grain); transition: opacity .5s ease, visibility 0s .5s; }
+.loader p { margin: 0; font: 400 13px var(--mono); letter-spacing: .04em; color: var(--muted); }
+.ld-bar { position: relative; width: 160px; height: 3px; background: var(--rule); overflow: hidden; }
+.ld-bar::after { content: ""; position: absolute; inset: 0; width: 40%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.7), transparent); animation: ld-sheen 1.1s linear infinite; }
+@keyframes ld-sheen { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
+.ld-bar i { display: block; height: 100%; width: 0; background: var(--ginger); transition: width .2s ease; }
+body:not(.loading) .loader { opacity: 0; visibility: hidden; }
