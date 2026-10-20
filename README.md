@@ -20,7 +20,7 @@ It checks its own work in headless Chrome as it goes.
 ## Quick start
 
 ```bash
-git clone https://github.com/<you>/explorable.git ~/.claude/skills/explorable
+git clone https://github.com/Rrrima/explorables.git ~/.claude/skills/explorable
 node ~/.claude/skills/explorable/scripts/gallery.mjs      # open the examples at http://localhost:8900/
 ```
 
@@ -56,8 +56,9 @@ Each example is an `essay/` (static) and a `video/` (the explainer kit). `node s
 
 The skill is a folder; any Agent Skills host that can read files, search the web and run shell commands can use it.
 
-- **git:** `git clone https://github.com/<you>/explorable.git ~/.claude/skills/explorable`
-- **skills CLI:** `npx skills add <you>/explorable -g`
+The repo is private: ask Rrrima for access, then sign in to GitHub on your machine (`gh auth login`) so git can reach it.
+
+- **git:** `git clone https://github.com/Rrrima/explorables.git ~/.claude/skills/explorable` (the folder must be named `explorable`). Update later with `git -C ~/.claude/skills/explorable pull`.
 - **ZIP:** download, unzip, rename the folder to `explorable`, and move it into `~/.claude/skills/`.
 
 Requirements:
