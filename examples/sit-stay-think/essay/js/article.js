@@ -45,6 +45,34 @@
     bindTip(sec.querySelector(".stage"), st.canvas, st.tip, () => st.hots, (h) => { st.hover = h; st.dirty = true; });
     return st;
   });
+  // desktop: move each chapter's cards into one pinned, centred spot so they crossfade in place;
+  // phones and landscape phones keep them in the scrolling steps
+  function stageText() {
+    const desk = getComputedStyle(document.querySelector(".chapter")).display === "grid" && innerHeight > 520;
+    chapters.forEach((st) => {
+      const steps = st.sec.querySelector(".steps"); let ts = steps.querySelector(".textstage");
+      if (desk && !ts) {
+        ts = document.createElement("div"); ts.className = "textstage"; steps.prepend(ts); steps.classList.add("staged");
+        st.steps.forEach((el, i) => { const c = el.querySelector(".card"); if (c) { c.dataset.i = i; ts.appendChild(c); } });
+        st.cards = [...ts.children];
+      } else if (!desk && ts) {
+        st.cards.forEach((c) => { st.steps[+c.dataset.i].appendChild(c); c.classList.remove("on"); });
+        ts.remove(); steps.classList.remove("staged"); st.cards = null;
+      }
+    });
+  }
+  // hold each paragraph exactly at the vertical centre of the area below the top bar
+  function centreCards() {
+    const bar = document.getElementById("bar"), top = bar ? bar.getBoundingClientRect().bottom : 48;
+    document.querySelectorAll(".chapter .card").forEach((c) => {
+      if (getComputedStyle(c).position !== "sticky") { c.style.removeProperty("--ct"); return; }
+      c.style.setProperty("--ct", `${Math.max(top + 12, top + (innerHeight - top - c.offsetHeight) / 2)}px`);
+    });
+  }
+  stageText(); centreCards();
+  addEventListener("resize", () => { stageText(); centreCards(); chapters.forEach((st) => (st.dirty = true)); });
+  document.fonts && document.fonts.ready.then(centreCards);
+
   function progress(st) {
     // the reading line: mid-screen beside the stage; on phones, in the band below the pinned stage
     const sb = st.canvas.parentElement.getBoundingClientRect().bottom, stacked = getComputedStyle(st.sec).display === "block";   // phone portrait: stage above the text
@@ -152,7 +180,9 @@
       st.hots = st.def.draw(g, w, h, s, st, t) || [];
       for (const hs of st.hots) if (hs.spark !== false) sparkle(g, hs.sx == null ? hs.x : hs.sx, hs.sy == null ? hs.y - hs.r * 0.9 : hs.sy, 5, t, 0.65);
       const on = Math.floor(s);
-      st.steps.forEach((el, i) => el.classList.toggle("on", i === Math.max(0, Math.min(st.steps.length - 1, on))));
+      const cur = Math.max(0, Math.min(st.steps.length - 1, on));
+      st.steps.forEach((el, i) => el.classList.toggle("on", i === cur));
+      if (st.cards) st.cards.forEach((c) => c.classList.toggle("on", +c.dataset.i === cur));
     }
     navLinks.forEach((a) => a.classList.toggle("on", a.getAttribute("href") === "#" + active));
     drawCoda(t);

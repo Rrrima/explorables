@@ -18,7 +18,12 @@
 /* each paragraph holds at the vertical centre of the screen while its drawing plays */
 .steps { grid-column: 1; grid-row: 1; position: relative; z-index: 2; padding: 0 0 20vh; }
 .step { min-height: 115vh; padding-top: 42vh; }
-.card { max-width: 440px; position: sticky; top: 50%; transform: translateY(-50%); }
+.card { max-width: 440px; position: sticky; top: var(--ct, 40vh); }   /* fallback; on desktop the cards move into .textstage */
+/* desktop: one pinned, vertically centred text spot per chapter; paragraphs crossfade as you scroll (article.js moves the cards in) */
+.textstage { position: sticky; top: 48px; height: calc(100vh - 48px); height: calc(100svh - 48px); margin-bottom: calc(-100vh + 48px); margin-bottom: calc(-100svh + 48px); display: grid; align-items: center; pointer-events: none; z-index: 2; }
+.textstage .card { grid-area: 1 / 1; position: static; opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .6s cubic-bezier(.22, 1, .36, 1); }
+.textstage .card.on { opacity: 1; transform: none; pointer-events: auto; }
+.steps.staged .step { padding: 0; }
 .card h2 { font-size: 46px; line-height: 1.04; margin: 10px 0 20px; }
 .card p { font-size: 21px; line-height: 1.6; }
 .card .aside { font-size: 16px; color: var(--ink-2); line-height: 1.55; }

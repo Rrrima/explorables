@@ -225,14 +225,24 @@
       const C = D.coren, hots = [];
       // step 0: the judges, 199 felt dots; 190 take the collie's colour
       const aJ = E(cl(1 - (s - 0.85) / 0.4)) * (s < 0 ? E(cl(s + 1)) : 1);
+      // the big collie: fully on the canvas (ears included), with the judges' grid kept clear of it
+      const RB = Math.min(w, h) * 0.12, cols = w < 560 ? 15 : 20, r = Math.max(3.5, Math.min(w, h) * 0.011), gap = r * 2.5, gw = cols * gap;
+      const bcX = Math.max(RB * 1.6, w * 0.5 - gw / 2 + w * 0.08 - Math.min(w, h) * 0.2), gx = Math.max(w * 0.5 - gw / 2 + w * 0.08, bcX + RB * 1.35), gy = h * 0.3, bcY = gy + gap * 4;
       if (aJ > 0.01) {
-        const cols = w < 560 ? 15 : 20, r = Math.max(3.5, Math.min(w, h) * 0.011), gap = r * 2.5, gw = cols * gap, gx = w * 0.5 - gw / 2 + w * 0.08, gy = h * 0.3;
         const k = Math.round(190 * E(seg(s, -0.2, 0.6)));
         const sOn = F.pom(r, "dark", 3), sOff = F.pom(r, "cream", 4);
         for (let i = 0; i < 199; i++) F.put(g, i < k ? sOn : sOff, gx + (i % cols) * gap + r, gy + Math.floor(i / cols) * gap + r, { a: aJ });
         lab(g, `${k} of 199 judges: Border Collie in the top ten`, gx, gy + 10 * gap + 20, { color: INK, a: aJ });
-        const sp = lazy(st, "bc", () => F.dog({ breed: "collie", R: Math.min(w, h) * 0.12, seed: 5, face: { expr: "pant" } }));
-        if (sp) F.put(g, sp, gx - Math.min(w, h) * 0.2, gy + gap * 4, { a: aJ, rot: -0.1 });
+      }
+      // ...and as the shelves arrive it glides into the number 1 spot on the top shelf, and stays there
+      const bc = lazy(st, "bc", () => F.dog({ breed: "collie", R: RB, seed: 5, face: { expr: "pant" } }));
+      if (bc) {
+        const n = C.top.length, sx0 = w * 0.04, sstep = (w * 0.97 - sx0) / n, RS = Math.min(sstep * 0.4, h * 0.08);
+        const m = E(seg(s, 0.8, 1.3)), arc = Math.sin(m * Math.PI) * RB * 0.6;
+        const x = bcX + (sx0 + sstep * 0.5 - bcX) * m, y = bcY + (h * 0.2 - bcY) * m - arc;
+        const a = s < 0 ? E(cl(s + 1)) : 1;
+        F.put(g, bc, x, y, { a, rot: -0.1 * (1 - m), scale: 1 + (RS / RB - 1) * m });
+        if (m > 0.98) hots.push({ x, y, r: RS * 1.1, sx: x + RS * 0.9, sy: y - RS, html: tip("Border Collie", "Rank 1 of 79 in Coren's 1994 ranking of working and obedience intelligence.", "D1, D2") });
       }
       // shelves
       const shelf = (list, y, s0, label) => {
@@ -245,11 +255,12 @@
           const ai = E(seg(s, s0 - 0.3 + i * 0.05, s0 + 0.05 + i * 0.05));
           if (ai <= 0.01) return;
           const x = x0 + step * (i + 0.5), yy = y - (1 - ai) * R * 1.2;
-          const sp = lazy(st, b.breed, () => F.dog({ breed: b.breed, R, seed: 100 + i * 7 + b.rank }));
+          const morphing = b.rank === 1 && b.breed === "collie";   // drawn by the collie that glides in
+          const sp = morphing ? null : lazy(st, b.breed, () => F.dog({ breed: b.breed, R, seed: 100 + i * 7 + b.rank }));
           if (sp) F.put(g, sp, x, yy, { a: ai });
           lab(g, String(b.rank), x, y + R * 1.55 + 14, { align: "center", a: ai, color: INK });
           if (step > 70) lab(g, SHORT[b.name] || b.name, x, y + R * 1.55 + 29, { align: "center", a: ai, size: 9.5 });
-          if (ai > 0.9) hots.push({ x, y, r: R * 1.1, sx: x + R * 0.9, sy: y - R * 1.0, html: tip(b.name, `Rank ${b.rank} of 79 in Coren's 1994 ranking of working and obedience intelligence.`, "D1, D2") });
+          if (ai > 0.9 && !morphing) hots.push({ x, y, r: R * 1.1, sx: x + R * 0.9, sy: y - R * 1.0, html: tip(b.name, `Rank ${b.rank} of 79 in Coren's 1994 ranking of working and obedience intelligence.`, "D1, D2") });
         });
         return { R, step, x0 };
       };
