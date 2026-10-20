@@ -165,8 +165,12 @@
   function frame(t) {
     if (heroBusy || scrollY < innerHeight) heroBusy = drawHero(t) && !reduce;
     let active = null;
+    const barB = bar.getBoundingClientRect().bottom;
     for (const st of chapters) {
       const r = st.sec.getBoundingClientRect();
+      // a chapter's text fades out as soon as the chapter starts to leave, so it never sits on top of
+      // the next chapter's text; an arriving chapter's first paragraph rides in with its drawing
+      if (st.cards) { const ts = st.cards[0].parentElement; ts.classList.toggle("live", ts.getBoundingClientRect().top >= barB - 1); }
       if (r.top < innerHeight * 0.5 && r.bottom > innerHeight * 0.5) active = st.id;
       if (!st.def) continue;
       if (!st.ready && r.top < innerHeight * 2.2) { st.def.init && st.def.init(st); st.ready = true; st.dirty = true; }
