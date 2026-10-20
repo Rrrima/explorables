@@ -56,7 +56,7 @@ Each example is an `essay/` (static) and a `video/` (the explainer kit). `node s
 
 The skill is a folder; any Agent Skills host that can read files, search the web and run shell commands can use it.
 
-The repo is private: ask Rrrima for access, then sign in to GitHub on your machine (`gh auth login`) so git can reach it.
+The repo is private: ask Rrrima for access, then make sure git can sign in to GitHub on your machine (GitHub Desktop, `gh auth login`, or a personal access token).
 
 - **git:** `git clone https://github.com/Rrrima/explorables.git ~/.claude/skills/explorable` (the folder must be named `explorable`). Update later with `git -C ~/.claude/skills/explorable pull`.
 - **ZIP:** download, unzip, rename the folder to `explorable`, and move it into `~/.claude/skills/`.
