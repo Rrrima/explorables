@@ -10,6 +10,7 @@
   ];
   window.EXPLAINER = {
     title: "{{TITLE}}",
+    report: { name: "Sources: the {{TITLE}} research report", url: "" },   // set url to the essay's report.html; the player links it over the end card
     segNames: ["Hook", "Idea", "Twist", "Landing"],
     poster: 2,
     async load() {

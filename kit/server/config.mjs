@@ -3,6 +3,7 @@
 // the article) lives in that one file, so the server and pipeline stay generic.
 import fs from "node:fs";
 import path from "node:path";
+import { AsyncLocalStorage } from "node:async_hooks";
 
 export function loadProject(dir) {
   const root = path.resolve(dir);
@@ -37,15 +38,25 @@ export function loadProject(dir) {
   return cfg;
 }
 
-// ElevenLabs keys: the environment first, then a .env file: ELEVEN_ENV if set, else ./.env
-// in the working directory, else ~/.config/explorable/.env
-export function elevenKeys() {
+// Keys a visitor sent with their question (x-anthropic-key / x-elevenlabs-key headers). With
+// REQUIRE_USER_KEYS=1 (a public deployment) the server's own keys are never used for questions.
+export const reqKeys = new AsyncLocalStorage();
+export const REQUIRE_USER_KEYS = process.env.REQUIRE_USER_KEYS === "1";
+// a premade ElevenLabs voice every account can use, for visitors' own keys
+const PUBLIC_VOICE = process.env.ELEVENLABS_PUBLIC_VOICE || "21m00Tcm4TlvDq8ikWAM";
+
+// ElevenLabs keys: a visitor's key (when they sent one), then the environment, then a .env file:
+// ELEVEN_ENV, ./.env, or ~/.config/explorable/.env
+export function elevenKeys({ optional = false } = {}) {
+  const v = reqKeys.getStore();
+  if (v?.eleven) return { key: v.eleven, voice: v.voice || PUBLIC_VOICE, visitor: true };
+  if (v && REQUIRE_USER_KEYS) { if (optional) return null; throw new Error("No ElevenLabs key: add one to hear answers narrated."); }
   const files = [process.env.ELEVEN_ENV, path.join(process.cwd(), ".env"), path.join(process.env.HOME || "", ".config/explorable/.env")].filter(Boolean);
   let env = {};
   for (const file of files) {
-    try { env = Object.fromEntries(fs.readFileSync(file, "utf8").split("\n").filter((l) => l.includes("=")).map((l) => { const i = l.indexOf("="); return [l.slice(0, i).trim(), l.slice(i + 1).trim().replace(/^["']|["']$/g, "")]; })); break; } catch {}
+    try { env = Object.fromEntries(fs.readFileSync(file, "utf8").split("\n").filter((l) => l.includes("=")).map((l) => { const i = l.indexOf("="); return [l.slice(0, i).trim(), l.slice(i + 1).trim().replace(/^["']|["']$/g, "")]; })); if (env.ELEVENLABS_API_KEY) break; } catch {}
   }
   const key = process.env.ELEVENLABS_API_KEY || env.ELEVENLABS_API_KEY, voice = process.env.ELEVENLABS_VOICE_ID || env.ELEVENLABS_VOICE_ID;
-  if (!key || !voice) throw new Error("No ElevenLabs key or voice id found (set ELEVENLABS_API_KEY / ELEVENLABS_VOICE_ID).");
+  if (!key || !voice) { if (optional) return null; throw new Error("No ElevenLabs key or voice id found (set ELEVENLABS_API_KEY / ELEVENLABS_VOICE_ID)."); }
   return { key, voice };
 }

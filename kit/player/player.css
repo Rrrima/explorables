@@ -37,6 +37,10 @@ html:has(#explainer) { overflow-x: clip; }
 .xp-tag .m { font: 500 11.5px var(--xp-mono); opacity: .85; margin-right: 6px; }
 .xp-hottip { max-width: 300px; z-index: 3; }
 .xp-hottip small { display: block; margin-top: 4px; font: 500 11.5px var(--xp-mono); opacity: .8; }
+.xp-src { position: absolute; left: 50%; bottom: 7%; transform: translateX(-50%); display: none; align-items: center; gap: 6px; font: 500 clamp(12px, 1.3vw, 16px) var(--xp-mono); color: var(--xp-ink-2); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; white-space: nowrap; }
+.xp-src:hover { color: var(--xp-accent); }
+.xp-stage.src .xp-src { display: inline-flex; }
+.xp-stage.src .xp-caption { bottom: 14%; }
 .xp-end { position: absolute; inset: auto 0 9% 0; display: none; justify-content: center; gap: 12px; }
 .xp-stage.ended .xp-end { display: flex; }
 .xp-end button { all: unset; cursor: pointer; padding: 9px 16px 10px; font: 800 17px var(--xp-body); color: var(--xp-paper); background: var(--xp-accent); box-shadow: 3px 3px 0 var(--xp-accent-2); }
@@ -138,6 +142,18 @@ html:has(#explainer) { overflow-x: clip; }
 .xp-ask input::placeholder { color: var(--xp-muted); }
 .xp-ask button { all: unset; cursor: pointer; padding: 7px 16px; font: 800 15px var(--xp-body); color: var(--xp-paper); background: var(--xp-accent); box-shadow: 2.5px -2px 0 var(--xp-accent-2); }
 .xp-ask button:disabled { opacity: .45; cursor: progress; }
+.xp-ask .xp-keybtn { padding: 7px 8px; color: var(--xp-muted); background: none; box-shadow: none; display: grid; place-items: center; }
+.xp-ask .xp-keybtn:hover { color: var(--xp-ink); }
+/* your API keys: a quiet panel above the ask bar */
+.xp-keys { display: grid; gap: 10px; margin: 0 0 10px; padding: 14px 16px; background: color-mix(in srgb, var(--xp-ink) 5%, var(--xp-paper)); font: 400 14px/1.5 var(--xp-body); color: var(--xp-ink); }
+.xp-keys[hidden] { display: none; }
+.xp-keys p { margin: 0; }
+.xp-keys label { display: grid; gap: 4px; font: 600 13px var(--xp-body); }
+.xp-keys label span { font: 400 12px var(--xp-mono); color: var(--xp-muted); }
+.xp-keys input { all: unset; padding: 8px 10px; font: 500 14px var(--xp-mono); background: color-mix(in srgb, var(--xp-ink) 5%, transparent); }
+.xp-keyrow { display: flex; gap: 14px; align-items: center; }
+.xp-keyrow button { all: unset; cursor: pointer; padding: 6px 14px; font: 700 14px var(--xp-body); color: var(--xp-paper); background: var(--xp-accent); }
+.xp-keyrow button.quiet { padding: 6px 2px; color: var(--xp-muted); background: none; font-weight: 500; }
 
 
 /* phones: no idle hint line; landscape phones: the ask bar sits under the video instead of covering it */

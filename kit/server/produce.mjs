@@ -19,24 +19,38 @@ export function toWords(a) {
 }
 
 export async function tts(text, cfg, { previous, next } = {}) {
-  const { key, voice } = elevenKeys(), v = cfg.voice;
+  const k = elevenKeys(), v = cfg.voice, key = k.key, voice = k.visitor ? k.voice : v.id || k.voice;   // a visitor's key uses a voice their account has
   let res;
   for (let attempt = 0; attempt < 3; attempt++) {
-    res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${v.id || voice}/with-timestamps?output_format=mp3_44100_128`, {
+    res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voice}/with-timestamps?output_format=mp3_44100_128`, {
       method: "POST", headers: { "xi-api-key": key, "Content-Type": "application/json" },
       body: JSON.stringify({ text, model_id: v.model, previous_text: previous || undefined, next_text: next || undefined, voice_settings: { stability: v.stability, similarity_boost: v.similarity, style: v.style, speed: v.speed } }),
     });
     if (res.status !== 429) break;
     await new Promise((r) => setTimeout(r, 1500 * (attempt + 1)));
   }
-  if (!res.ok) throw new Error(`Voice failed (${res.status}).`);
+  if (!res.ok) throw new Error(res.status === 401 ? "Your ElevenLabs key was rejected." : `Voice failed (${res.status}).`);
   const body = await res.json();
   return { audio: Buffer.from(body.audio_base64, "base64"), words: toWords(body.alignment) };
+}
+
+// no voice key: a silent take per shot with estimated word timings (~2.6 words/s), so the clip
+// still plays in time with its captions, over the music and effects
+async function silentTake(text, file) {
+  const ws = text.split(/\s+/).filter(Boolean), words = []; let t = 0.1;
+  for (const w of ws) { const d = Math.max(0.18, 0.06 * w.replace(/[^\w]/g, "").length + 0.12); words.push({ w, a: +t.toFixed(3), b: +(t + d).toFixed(3) }); t += d + 0.07; }
+  const dur = +(t + 0.25).toFixed(2);
+  await exec("ffmpeg", ["-v", "error", "-y", "-f", "lavfi", "-i", "anullsrc=r=44100:cl=mono", "-t", String(dur), "-c:a", "libmp3lame", "-q:a", "9", file]);
+  return { file, words, dur };
 }
 
 // one take per shot, in sequence; neighbouring text keeps the read flowing
 export async function voiceShots(shots, dir, cfg, onProgress) {
   const takes = [];
+  if (!elevenKeys({ optional: true })) {
+    for (let i = 0; i < shots.length; i++) { onProgress?.(i, shots.length); takes.push(await silentTake(shots[i].vo, path.join(dir, `vo-${i}.mp3`))); }
+    return takes;
+  }
   for (let i = 0; i < shots.length; i++) {
     onProgress?.(i, shots.length);
     const { audio, words } = await tts(shots[i].vo, cfg, { previous: shots.slice(0, i).map((s) => s.vo).join(" ").slice(-600), next: shots[i + 1]?.vo });

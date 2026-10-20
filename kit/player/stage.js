@@ -57,7 +57,7 @@
       St.end(t);
       root.__hots = hots;
     }
-    return { renderAt, total: S.total, canvas: St.canvas, wordIn };
+    return { renderAt, total: S.total, canvas: St.canvas, wordIn, endAt: endCard ? S.scenes[n - 1].e + 0.4 : null };
   }
 
   /* ---------- a base for styles: several layer canvases moved together ---------- */

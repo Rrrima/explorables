@@ -5,6 +5,7 @@
    A project sets window.EXPLAINER before loading this file:
      {
        title, article: { name, url }, segNames: [...], poster: seconds,
+       report: { name, url },            // optional: the sources, linked over the end card
        audio: "audio/mix.m4a", captions: "captions.srt", answers: "answers/", api: "api/",
        playhead: "<svg …>",              // optional marker that rides the timeline
        ring(ctx, cx, cy, rx, ry, t),     // optional: how a hovered thing is circled
@@ -27,6 +28,7 @@
         <div class="xp-caption" id="xp-caption" aria-live="polite"></div>
         <div class="xp-tag xp-hottip" id="xp-hottip" role="tooltip"></div>
         <button class="xp-big" id="xp-big" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M6 4l15 8-15 8z"/></svg></button>
+        ${X.report?.url ? `<a class="xp-src" id="xp-src" href="${esc(X.report.url)}" target="_blank" rel="noopener">${esc(X.report.name || "Sources")}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>` : ""}
         <div class="xp-end" id="xp-end"><button id="xp-replay" class="alt">↺ Replay</button><button id="xp-up">Back</button></div>
       </div>
       <div class="xp-deck">
@@ -58,7 +60,13 @@
     <section class="xp-list" id="xp-list" hidden></section>
     <div class="xp-askbar"><div class="xp-askin">
       <details class="xp-agent idle" id="xp-agent"><summary id="xp-asum"><span>Pause anywhere and ask a question. An answer clip takes about two minutes.</span></summary><ol id="xp-alog"></ol></details>
-      <form class="xp-ask" id="xp-form" autocomplete="off"><span class="xp-ctx" id="xp-at">at 0:00</span><input id="xp-q" type="text" placeholder="Pause anywhere and ask a question…" aria-label="Your question" required><button type="submit" id="xp-askbtn">Ask</button></form>
+      <form class="xp-keys" id="xp-keys" hidden autocomplete="off">
+        <p>Questions run on <b>your own API keys</b>. They stay in this browser and are sent only with your questions.</p>
+        <label>Anthropic API key <input id="xp-k-ant" type="password" placeholder="sk-ant-…" spellcheck="false"></label>
+        <label>ElevenLabs API key <span>optional: without it, answers play as silent clips with captions</span><input id="xp-k-el" type="password" placeholder="xi-…" spellcheck="false"></label>
+        <div class="xp-keyrow"><button type="submit">Save</button><button type="button" id="xp-k-clear" class="quiet">Forget keys</button><button type="button" id="xp-k-close" class="quiet">Close</button></div>
+      </form>
+      <form class="xp-ask" id="xp-form" autocomplete="off"><span class="xp-ctx" id="xp-at">at 0:00</span><input id="xp-q" type="text" placeholder="Pause anywhere and ask a question…" aria-label="Your question" required><button type="button" id="xp-keybtn" class="xp-keybtn" title="Your API keys" aria-label="Your API keys"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/></svg></button><button type="submit" id="xp-askbtn">Ask</button></form>
     </div></div>`;
   const $ = (id) => document.getElementById(id);
   const stageEl = $("xp-stage"), screen = $("xp-screen"), sctx = screen.getContext("2d");
@@ -141,6 +149,8 @@
     const cue = ccOn ? L.cues.find((c) => t >= c.a && t <= c.b) : null;
     caption.textContent = cue ? cue.t : "";
     if (L.clip) document.querySelectorAll("#xp-script tr[data-i]").forEach((r) => r.classList.toggle("on", +r.dataset.i === segAt(t)));
+    // the sources link shows with the main video's end card (or its last scene)
+    stageEl.classList.toggle("src", L === MAIN && t >= (stage.endAt ?? segs[segs.length - 1]?.a ?? L.total) - 0.05);
     askLabel(); hoverUi();
   }
   function lift(src, h) {
@@ -251,9 +261,38 @@
   $("xp-scriptbtn").addEventListener("click", (e) => { const open = $("xp-script").hidden; $("xp-script").hidden = !open; e.currentTarget.setAttribute("aria-expanded", String(open)); e.currentTarget.textContent = open ? "Hide the script" : "Show the script"; });
   $("xp-regen").addEventListener("click", () => { if (cur().clip) ask({ regenerate: cur().clip.id }); });
 
+  /* ================= your keys and your answers (a public deployment runs questions on visitors' keys) ================= */
+  const store = { get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch (e) { return d; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } };
+  const keys = () => store.get("xp-keys", {}), MINE = `xp-mine:${location.pathname}`;
+  let visitor = store.get("xp-visitor", null);
+  if (!visitor) { visitor = (crypto.randomUUID?.() || String(Math.random()).slice(2) + Date.now()).replace(/[^\w-]/g, ""); store.set("xp-visitor", visitor); }
+  let needsKey = false;
+  fetch(`${API}config`).then((r) => r.json()).then((c) => { needsKey = !!c.needsKey; }).catch(() => {});
+  const keyPanel = $("xp-keys");
+  function openKeys(msg) {
+    const k = keys(); $("xp-k-ant").value = k.anthropic || ""; $("xp-k-el").value = k.eleven || "";
+    keyPanel.hidden = false; keyPanel.querySelector("p").innerHTML = msg ? `<b>${esc(msg)}</b> ` + "Questions run on your own API keys. They stay in this browser and are sent only with your questions." : "Questions run on <b>your own API keys</b>. They stay in this browser and are sent only with your questions.";
+    $("xp-k-ant").focus({ preventScroll: true }); requestAnimationFrame(sizeStage);
+  }
+  const closeKeys = () => { keyPanel.hidden = true; requestAnimationFrame(sizeStage); };
+  $("xp-keybtn").addEventListener("click", () => (keyPanel.hidden ? openKeys() : closeKeys()));
+  $("xp-k-close").addEventListener("click", closeKeys);
+  $("xp-k-clear").addEventListener("click", () => { store.set("xp-keys", {}); $("xp-k-ant").value = $("xp-k-el").value = ""; });
+  keyPanel.addEventListener("submit", (e) => { e.preventDefault(); store.set("xp-keys", { anthropic: $("xp-k-ant").value.trim(), eleven: $("xp-k-el").value.trim() }); closeKeys(); if (askq.value.trim()) ask(); });
+  function keyHeaders() { const k = keys(), h = {}; if (k.anthropic) h["x-anthropic-key"] = k.anthropic; if (k.eleven) h["x-elevenlabs-key"] = k.eleven; return h; }
+  const remember = (entry) => { if (!entry) return; let m = store.get(MINE, []); if (entry.replaces) m = m.map((e) => (e.id === entry.replaces ? entry : e.parent === entry.replaces ? { ...e, parent: entry.id } : e)); if (!m.some((e) => e.id === entry.id)) m.push(entry); store.set(MINE, m.slice(-100)); };
+
   /* ================= questions asked here: dots on the timeline, and a list ================= */
   let asked = [];
-  async function loadAsked() { try { asked = await (await fetch(`${ANS}index.json`, { cache: "no-cache" })).json(); } catch (e) { asked = []; } buildMarks(); showList(); }
+  async function loadAsked() {
+    let shared = [], recent = [];
+    try { shared = await (await fetch(`${ANS}index.json`, { cache: "no-cache" })).json(); } catch (e) {}
+    try { recent = await (await fetch(`${API}mine?visitor=${visitor}`, { cache: "no-cache" })).json(); } catch (e) {}
+    if (Array.isArray(recent)) recent.forEach(remember);
+    const seen = new Set(), replaced = new Set(store.get(MINE, []).map((e) => e.replaces).filter(Boolean));
+    asked = [...(Array.isArray(shared) ? shared : []), ...store.get(MINE, [])].filter((e) => e && !replaced.has(e.id) && !seen.has(e.id) && seen.add(e.id));
+    buildMarks(); showList();
+  }
   const kids = (id) => asked.filter((q) => (q.parent || "main") === id);
   function highlight(id, on) {
     document.querySelectorAll(`.xp-q[data-id="${CSS.escape(id)}"], #xp-list button[data-id="${CSS.escape(id)}"]`).forEach((el) => el.classList.toggle("hl", on));
@@ -279,7 +318,10 @@
     el.innerHTML = k.length ? `<span class="xp-lab">${stack.length > 1 ? "Questions asked inside this answer" : "Questions asked about this video"}</span>` + k.slice().sort((a, b) => a.at - b.at).map((q) => `<button data-id="${esc(q.id)}"><span class="t">${fmt(q.at)}</span>${esc(q.question)}</button>`).join("") : "";
     el.querySelectorAll("button").forEach((b) => { b.addEventListener("click", () => { highlight(b.dataset.id, false); openClip(b.dataset.id); }); b.addEventListener("pointerenter", () => highlight(b.dataset.id, true)); b.addEventListener("pointerleave", () => highlight(b.dataset.id, false)); });
   }
-  async function openClip(id) { try { await enter(await (await fetch(`${ANS}${id}/clip.json`)).json()); } catch (e) { console.error(e); } }
+  async function openClip(id) {
+    try { const r = await fetch(`${ANS}${id}/clip.json`); if (!r.ok) throw new Error(r.status); await enter(await r.json()); }
+    catch (e) { console.error(e); store.set(MINE, store.get(MINE, []).filter((x) => x.id !== id)); loadAsked(); status("That answer is no longer on the server (it restarted). Ask it again any time.", "failed"); }
+  }
 
   /* ================= the ask bar ================= */
   const askq = $("xp-q"), askbtn = $("xp-askbtn"), agent = $("xp-agent"), asum = $("xp-asum"), alog = $("xp-alog");
@@ -302,6 +344,7 @@
     const q = opts.regenerate ? (cur().clip?.question || "") : askq.value.trim();
     if (!q) return;
     if (busy) { status("One question at a time: the agent is still on the last one. Keep watching meanwhile.", "busy"); return; }
+    if (needsKey && !keys().anthropic) { openKeys(); return; }
     if (!cur().audio.paused) pause();
     busy = true; askbtn.disabled = true; $("xp-regen").disabled = true; alog.innerHTML = ""; agent.open = false;
     const ctx = context(), t0 = Date.now();
@@ -309,7 +352,7 @@
     logLine(opts.regenerate ? "Regenerating from the same research" : `Asked at ${ctx.time} · ${ctx.sceneName}${ctx.parent ? ` (inside “${cur().title}”)` : ""}`);
     let line1 = null, n = 0;
     try {
-      const res = await fetch(`${API}ask`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(opts.regenerate ? { regenerate: opts.regenerate } : { question: q, context: ctx }) });
+      const res = await fetch(`${API}ask`, { method: "POST", headers: { "Content-Type": "application/json", ...keyHeaders() }, body: JSON.stringify(opts.regenerate ? { regenerate: opts.regenerate, visitor } : { question: q, context: ctx, visitor }) });
       if (!res.ok || !res.body) throw new Error(res.status === 404 || res.status === 405 ? "The ask agent isn't running. Start it with the kit's server (see README)." : `Server said ${res.status}`);
       if (!opts.regenerate) askq.value = "";
       const reader = res.body.getReader(), dec = new TextDecoder();
@@ -328,8 +371,8 @@
             if (d.kind === "voice" && /^Voice \d/.test(d.text) && line1 && /^Voice \d/.test(line1.textContent)) { line1.textContent = d.text; status(d.text, "busy"); continue; }
             line1 = logLine(d.text); n++; status(d.text, "busy");
           } else if (ev === "script") logLine(`Script: ${d.shots.length} shots`);
-          else if (ev === "done") { await loadAsked(); ready(d.clip, Math.round((Date.now() - t0) / 1000), n, d.replaces); return; }
-          else if (ev === "fail") throw new Error(d.message);
+          else if (ev === "done") { remember(d.entry || { id: d.id, title: d.clip.title, question: d.clip.question, at: d.clip.at, parent: d.clip.parent, replaces: d.replaces || undefined }); await loadAsked(); ready(d.clip, Math.round((Date.now() - t0) / 1000), n, d.replaces); return; }
+          else if (ev === "fail") { if (d.code === "needkey") openKeys(d.message); throw new Error(d.message); }
         }
       }
       throw new Error("The agent stopped without an answer.");
@@ -340,12 +383,12 @@
   askq.addEventListener("focus", () => { if (!cur().audio.paused) pause(); });
   async function followJobs() {
     let jobs = [];
-    try { const r = await fetch(`${API}jobs`, { cache: "no-cache" }); if (r.ok) jobs = await r.json(); } catch (e) { return; }
+    try { const r = await fetch(`${API}jobs?visitor=${visitor}`, { cache: "no-cache" }); if (r.ok) jobs = await r.json(); } catch (e) { return; }
     if (!Array.isArray(jobs) || !jobs.length || busy) return;
     status(`Still working on “${jobs[0].question}” · ${jobs[0].step}`, "busy");
     const known = new Set(asked.map((q) => q.id));
     const poll = setInterval(async () => {
-      let left = []; try { left = await (await fetch(`${API}jobs`, { cache: "no-cache" })).json(); } catch (e) {}
+      let left = []; try { left = await (await fetch(`${API}jobs?visitor=${visitor}`, { cache: "no-cache" })).json(); } catch (e) {}
       if (left.length) { status(`Still working on “${left[0].question}” · ${left[0].step}`, "busy"); return; }
       clearInterval(poll); await loadAsked();
       const fresh = asked.filter((q) => !known.has(q.id)).pop();

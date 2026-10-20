@@ -10,6 +10,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { clipSchema, KINDS } from "./schema.mjs";
+import { reqKeys, REQUIRE_USER_KEYS, elevenKeys } from "./config.mjs";
 import { voiceShots, mixClip } from "./produce.mjs";
 import { loadProject } from "./config.mjs";
 
@@ -22,16 +23,23 @@ const PORT = +(args[args.indexOf("--port") + 1] || 0) || +process.env.PORT || cf
 const STORE = path.join(cfg.root, "answers");
 const MODEL = "claude-opus-5-5";
 
-// the SDK loads on the first question, so videos play without `npm install`
-let client = null;
+// the SDK loads on the first question, so videos play without `npm install`; one client per key
+// (a visitor's own key on a public deployment, else ANTHROPIC_API_KEY)
+let Anthropic = null; const clients = new Map();
 async function sdk() {
-  if (client) return client;
-  let Anthropic;
-  try { ({ default: Anthropic } = await import("@anthropic-ai/sdk")); }
-  catch { throw new Error("Asking questions needs the Anthropic SDK: run `npm install` in kit/server."); }
-  client = new Anthropic();                            // reads ANTHROPIC_API_KEY
-  return client;
+  if (!Anthropic) {
+    try { ({ default: Anthropic } = await import("@anthropic-ai/sdk")); }
+    catch { throw new Error("Asking questions needs the Anthropic SDK: run `npm install` in kit/server."); }
+  }
+  const key = reqKeys.getStore()?.anthropic || (REQUIRE_USER_KEYS ? null : process.env.ANTHROPIC_API_KEY);
+  if (!key) throw Object.assign(new Error("Add your Anthropic API key to ask questions."), { code: "needkey" });
+  if (!clients.has(key)) { if (clients.size > 200) clients.clear(); clients.set(key, new Anthropic({ apiKey: key })); }
+  return clients.get(key);
 }
+// PRIVATE_ANSWERS=1: a visitor's answers aren't added to the shared list; the player keeps them in
+// that browser, and the server remembers each visitor's recent answers until it restarts
+const PRIVATE = process.env.PRIVATE_ANSWERS === "1", mine = new Map();
+const visitorOf = (v) => (/^[\w-]{6,64}$/.test(v || "") ? v : null);
 // Fallbacks: a declined request is re-run on Anthropic's recommended fallback model.
 const BETA = { betas: ["server-side-fallback-2026-07-01"], fallbacks: "default" };
 
@@ -129,14 +137,19 @@ Rules:
 /* ------------------------------------------------------------ the endpoint */
 const jobs = new Map();
 async function index() { try { return JSON.parse(await fs.readFile(path.join(STORE, "index.json"), "utf8")); } catch { return []; } }
-async function ask(req, res) {
+function ask(req, res) {
+  const h = (k) => { const v = req.headers[k]; return typeof v === "string" && v.length < 400 ? v.trim() : ""; };
+  const keys = { anthropic: h("x-anthropic-key"), eleven: h("x-elevenlabs-key"), voice: h("x-elevenlabs-voice") };
+  return reqKeys.run(keys, () => askWith(req, res));
+}
+async function askWith(req, res) {
   let body = "";
   for await (const chunk of req) { body += chunk; if (body.length > 8000) break; }
-  let q = "", ctx = {}, regen = null;
-  try { const j = JSON.parse(body); q = String(j.question || "").trim().slice(0, 400); ctx = j.context || {}; regen = /^[\w-]+$/.test(j.regenerate || "") ? j.regenerate : null; } catch {}
+  let q = "", ctx = {}, regen = null, visitor = null;
+  try { const j = JSON.parse(body); q = String(j.question || "").trim().slice(0, 400); ctx = j.context || {}; regen = /^[\w-]+$/.test(j.regenerate || "") ? j.regenerate : null; visitor = visitorOf(j.visitor); } catch {}
   res.writeHead(200, { "Content-Type": "text/event-stream", "Cache-Control": "no-cache", Connection: "keep-alive" });
   const send = (ev, data) => res.write(`event: ${ev}\ndata: ${JSON.stringify(data)}\n\n`);
-  const job = { question: q, at: +ctx.t || 0, parent: ctx.parent || null, step: "starting" };
+  const job = { question: q, at: +ctx.t || 0, parent: ctx.parent || null, step: "starting", visitor };
   let last = "";
   const say = (kind, text) => { if (kind !== "found") job.step = text; if (kind !== "found" && text === last) return; if (kind !== "found") last = text; send("step", { kind, text }); };
   const ping = setInterval(() => res.write(": ping\n\n"), 15000), jobId = crypto.randomBytes(4).toString("hex");
@@ -144,6 +157,7 @@ async function ask(req, res) {
     let old = null, dossier = "";
     if (regen) { old = await readClip(regen); q = old.question; ctx = { t: old.at, time: old.time, parent: old.parent, scene: old.scene, sceneName: old.sceneName, line: old.line }; dossier = await fs.readFile(path.join(STORE, regen, "dossier.md"), "utf8").catch(() => ""); }
     if (!q) { send("fail", { message: "Type a question first." }); return; }
+    await sdk();                                         // fail early (and say so) when there's no key
     job.question = q; jobs.set(jobId, job);
     const parent = /^[\w-]+$/.test(ctx.parent || "") ? ctx.parent : null;
     const c = { script: await scriptText(), time: String(ctx.time || "0:00"), scene: +ctx.scene || 0, sceneName: String(ctx.sceneName || "").slice(0, 60), line: String(ctx.line || "").slice(0, 400), chain: await chainOf(parent) };
@@ -154,7 +168,7 @@ async function ask(req, res) {
     send("script", { title: clip.title, shots: clip.shots.map((s) => ({ vo: s.vo, visual: s.visual, kind: s.kind })) });
     const id = `${slug(clip.title || q) || "answer"}-${crypto.randomBytes(3).toString("hex")}`, dir = path.join(STORE, id);
     await fs.mkdir(dir, { recursive: true });
-    say("voice", "Recording the voiceover");
+    say("voice", elevenKeys({ optional: true }) ? "Recording the voiceover" : "No voice key: making a silent clip with captions");
     const takes = await voiceShots(clip.shots, dir, cfg, (i, n) => say("voice", `Voice ${i + 1} of ${n}`));
     say("mix", "Mixing voice, music and sound");
     const timed = await mixClip(clip, takes, dir, cfg);
@@ -162,8 +176,13 @@ async function ask(req, res) {
     await fs.writeFile(path.join(dir, "clip.json"), JSON.stringify(clip, null, 1));
     await fs.writeFile(path.join(dir, "dossier.md"), dossier);
     // a new take takes the old one's place in the list (the old folder stays on disk)
+    const entry = { id, title: clip.title, question: q, at: clip.at, parent, replaces: regen || undefined };
+    if (PRIVATE) {
+      if (visitor) { const m = mine.get(visitor) || []; m.push(entry); mine.set(visitor, m.slice(-50)); if (mine.size > 5000) mine.delete(mine.keys().next().value); }
+      send("done", { id, clip, replaces: regen, entry });
+      return;
+    }
     let list = await index();
-    const entry = { id, title: clip.title, question: q, at: clip.at, parent };
     const k = regen ? list.findIndex((e) => e.id === regen) : -1;
     if (k >= 0) list[k] = entry; else list.push(entry);
     if (regen) list = list.map((e) => (e.parent === regen ? { ...e, parent: id } : e));
@@ -171,7 +190,7 @@ async function ask(req, res) {
     send("done", { id, clip, replaces: regen });
   } catch (e) {
     console.error(e);
-    send("fail", { message: e?.status === 401 ? "The server's API key was rejected." : String(e?.message || e).slice(0, 300) });
+    send("fail", { message: e?.status === 401 ? (REQUIRE_USER_KEYS ? "Your Anthropic API key was rejected." : "The server's API key was rejected.") : String(e?.message || e).slice(0, 300), code: e?.code || (e?.status === 401 ? "needkey" : undefined) });
   } finally { clearInterval(ping); jobs.delete(jobId); res.end(); }
 }
 
@@ -180,8 +199,12 @@ const TYPES = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", "
 http.createServer(async (req, res) => {
   const url = new URL(req.url, "http://x");
   if (req.method === "POST" && url.pathname === "/api/ask") return ask(req, res);
-  if (url.pathname === "/api/jobs") { res.writeHead(200, { "Content-Type": "application/json", "Cache-Control": "no-cache" }); return res.end(JSON.stringify([...jobs.values()])); }
-  if (url.pathname === "/api/config") { const { root, ...pub } = cfg; res.writeHead(200, { "Content-Type": "application/json" }); return res.end(JSON.stringify(pub)); }
+  if (url.pathname === "/api/jobs") {
+    const v = visitorOf(url.searchParams.get("visitor")), list = [...jobs.values()].filter((j) => !PRIVATE || (v && j.visitor === v)).map(({ visitor, ...j }) => j);
+    res.writeHead(200, { "Content-Type": "application/json", "Cache-Control": "no-cache" }); return res.end(JSON.stringify(list));
+  }
+  if (url.pathname === "/api/mine") { const v = visitorOf(url.searchParams.get("visitor")); res.writeHead(200, { "Content-Type": "application/json", "Cache-Control": "no-cache" }); return res.end(JSON.stringify((v && mine.get(v)) || [])); }
+  if (url.pathname === "/api/config") { const { root, ...pub } = cfg; res.writeHead(200, { "Content-Type": "application/json" }); return res.end(JSON.stringify({ ...pub, private: PRIVATE, needsKey: REQUIRE_USER_KEYS })); }
   // the kit is mounted at /kit/, everything else is the project
   const rel = decodeURIComponent(url.pathname);
   const base = rel.startsWith("/kit/") ? path.join(KIT, "player") : cfg.root;

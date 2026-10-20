@@ -69,8 +69,8 @@ Canvas space is 1920×1080. Line widths of about 2–3 px read as a fine pen at 
 - One function per segment: `(x) => { const { S } = x; … }`. Time things to words: `x.word("fibres")`, `x.word("two", 1)` for the second occurrence. Use `x.seg`, `x.eOut`, `x.pop` and `x.lerp` for motion.
 - Use `x.kword(role, text, x, y, t, { size, font, align })` for kinetic labels, and `x.hot(x, y, w, h, fact, question)` for a hover hotspot with a suggested question (every scene should have one).
 - Composition: one focal drawing per scene, labels close to what they name, plenty of empty space (1920×1080 with ~160 px margins). Things draw themselves on (`{ k }` reveal), hands do the actions, small faces react.
-- `endCard(x)`: the title, one line and "Sources in the … research report".
-- `window.EXPLAINER` = { title, segNames, poster, playhead, ring, load }. Copy `load()` from an exemplar.
+- `endCard(x)`: the title and one line. Leave the bottom ~120 px empty: the player puts the sources link there. Never draw "Sources in the … report" as text on the canvas, since a viewer can't click it.
+- `window.EXPLAINER` = { title, report, segNames, poster, playhead, ring, load }. `report` is `{ name: "Sources: the <Title> research report", url: "<the essay's URL>report.html" }`; the player shows it as a link over the end card. Copy `load()` from an exemplar.
 
 ## 6. Check it
 

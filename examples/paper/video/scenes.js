@@ -201,11 +201,11 @@
     S.text("ink", "Fibre by Fibre", 960, 520, { size: 150 });
     S.text("muted", "an illustrated essay on paper", 960, 590, { size: 38, font: "body" });
     S.sparkle(1300, 400, 22);
-    S.text("muted", "Sources in the Fibre by Fibre research report", 960, 980, { size: 22, font: "mono" });
   }
 
   window.EXPLAINER = {
     title: "Fibre by Fibre",
+    report: { name: "Sources: the Fibre by Fibre research report", url: "http://localhost:8901/report.html" },
     segNames: ["Mostly air", "By hand", "Fibre length", "Origins", "Westward", "Washi households", "400 million tonnes", "Raking light", "Ink", "On a screen", "A record"],
     poster: 9,
     playhead: '<svg width="20" height="20" viewBox="0 0 20 20"><rect x="3" y="3" width="14" height="14" rx="1"/></svg>',

@@ -205,11 +205,11 @@
     S.text("ink", "Sit, Stay, Think", 960, 500, { size: 150 });
     S.text("muted", "how we measure dog and cat minds", 960, 580, { size: 40, font: "body" });
     S.sparkle(1420, 380, 20);
-    S.text("muted", "Sources in the Sit, Stay, Think research report", 960, 980, { size: 24, font: "mono" });
   }
 
   window.EXPLAINER = {
     title: "Sit, Stay, Think",
+    report: { name: "Sources: the Sit, Stay, Think research report", url: "http://localhost:8903/report.html" },
     segNames: ["The ranking", "Clever Hans", "Trainability", "One skill at a time", "No single IQ", "Nine percent", "Reading faces", "Cats walk away", "Cats read us", "Which is smarter?"],
     poster: 6,
     playhead: '<svg width="20" height="20" viewBox="0 0 26 26"><g fill="currentColor"><ellipse cx="13" cy="16.5" rx="5.6" ry="4.6"/><ellipse cx="6.2" cy="10.2" rx="2.1" ry="2.7"/><ellipse cx="10.6" cy="6.6" rx="2.1" ry="2.8"/><ellipse cx="15.6" cy="6.6" rx="2.1" ry="2.8"/><ellipse cx="19.9" cy="10.2" rx="2.1" ry="2.7"/></g></svg>',
