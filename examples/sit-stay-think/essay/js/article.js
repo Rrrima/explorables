@@ -166,7 +166,10 @@
   // Each chapter draws its felt on first sight, which froze scrolling for a second or more.
   // Here every chapter is drawn once at each step behind the loader (yielding between draws
   // so the bar moves), then the page shows with everything cached.
-  const tick = () => new Promise((r) => setTimeout(r, 0));
+  // yield to the browser between batches. Not setTimeout: Chrome slows timers to one a second in a
+  // background tab, so a page opened behind another tab took over a minute to load.
+  const chan = new MessageChannel();
+  const tick = () => new Promise((r) => { chan.port1.onmessage = () => r(); chan.port2.postMessage(0); });
   async function warm() {
     const fill = document.getElementById("ld-fill"), t0 = performance.now(), LIMIT = 12000;
     // a job returns true to run again (one more batch) after the bar has had a chance to move
@@ -183,7 +186,7 @@
     try { await document.fonts.ready; } catch (e) {}
     for (let i = 0; i < jobs.length; i++) {
       let again = false, n = 0;
-      do { try { again = jobs[i](); } catch (e) { console.warn("warm-up", e); again = false; } if (again) await tick(); } while (again && ++n < 60);
+      do { try { again = jobs[i](); } catch (e) { console.warn("warm-up", e); again = false; } if (again) await tick(); } while (again && ++n < 60 && performance.now() - t0 < LIMIT);
       fill.style.width = `${((i + 1) / jobs.length) * 100}%`;
       await tick();
       if (performance.now() - t0 > LIMIT) break;   // a slow machine: show the page, the rest builds as you scroll
