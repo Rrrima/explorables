@@ -2,7 +2,9 @@
 
 **A Claude skill that turns a question and a picture into an explorable.** You get a researched, illustrated scrollytelling essay drawn in the picture's style, and a short explainer video you can pause and question.
 
-![Sit, Stay, Think; Promoted; The Half Shell: three explorables made with this skill](docs/hero.jpg)
+![Sit, Stay, Think; Promoted; The Half Shell: three explorables made with this skill](docs/hero.png)
+
+**See them live at [explorables.fly.dev](https://explorables.fly.dev)**: the three examples and more, with videos you can pause and ask (bring your own Anthropic key).
 
 ```
 /explorable why do oysters taste different in different places?   [attach a style image]
