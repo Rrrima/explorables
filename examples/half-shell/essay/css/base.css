@@ -1,0 +1,50 @@
+/* The Half Shell: page, type and links. A sunlit wood table; ink is indigo-black. */
+:root {
+  --wood: #f3e0bf;
+  --wood-2: #f7e9d0;
+  --ink: #2b3440;
+  --muted: #6e7480;
+  --indigo: #3d6090;
+  --vermilion: #c95a40;
+  --yolk: #f7d23a;
+  --rule: rgba(43, 52, 64, .1);
+  --line: rgba(43, 52, 64, .35);
+  --head: "Zen Maru Gothic", system-ui, sans-serif;
+  --body: "Barlow", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --ink-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -0.7 1.45'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 56px; }
+body {
+  margin: 0;
+  color: var(--ink);
+  font: 400 18px/1.6 var(--body);
+  background: var(--wood);
+  overflow-x: hidden;
+}
+/* the table: one fixed canvas painted by bg.js under everything */
+#table { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: -1; display: block; }
+
+h1, h2, h3 { font-family: var(--head); font-weight: 700; line-height: 1.12; margin: 0; letter-spacing: -.01em; }
+h1, h2, .lede { -webkit-mask-image: var(--ink-mask); mask-image: var(--ink-mask); -webkit-mask-size: 240px; mask-size: 240px; }
+p { margin: 0 0 .9em; }
+
+a { color: var(--ink); text-decoration: none; background-image: linear-gradient(var(--line), var(--line)); background-size: 100% 1px; background-repeat: no-repeat; background-position: 0 100%; }
+a:hover { background-image: linear-gradient(var(--ink), var(--ink)); }
+
+a.note {
+  font: 500 10.5px/1 var(--mono); color: var(--muted); letter-spacing: .02em;
+  vertical-align: .45em; margin-left: .18em; background: none; white-space: nowrap;
+}
+a.note:hover { color: var(--ink); text-decoration: underline; text-decoration-color: var(--line); }
+
+.mono { font-family: var(--mono); }
+.kicker { font: 500 11.5px/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+
+/* cursor: a small inked pearl */
+html { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Ccircle cx='9' cy='9' r='6.2' fill='%23fbf3e2' stroke='%232b3440' stroke-width='1.6'/%3E%3Ccircle cx='7.2' cy='7' r='1.6' fill='%23ffffff'/%3E%3C/svg%3E") 9 9, auto; }
+a, button, canvas[style*="pointer"] { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Ccircle cx='9' cy='9' r='6.2' fill='%23f7d23a' stroke='%232b3440' stroke-width='1.6'/%3E%3Ccircle cx='7.2' cy='7' r='1.6' fill='%23ffffff'/%3E%3C/svg%3E") 9 9, pointer; }

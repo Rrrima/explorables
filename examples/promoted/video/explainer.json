@@ -1,0 +1,250 @@
+{
+  "title": "Promoted",
+  "series": "Promoted, a scrolly essay on the Peter Principle",
+  "article": {
+    "name": "Run the company",
+    "url": "http://localhost:8901/"
+  },
+  "style": "black crayon on white paper: slouchy block-headed office workers whose trousers get darker the more competent they are, one red crayon for Peter's rule, loose brush lettering",
+  "context": "The video explains the agent-based model in A. Pluchino, A. Rapisarda, C. Garofalo, 'The Peter principle revisited: a computational study', Physica A 389 (2010) 467\u2013472, arXiv:0907.0455 (2010 Ig Nobel Prize in Management). Laurence J. Peter and Raymond Hull's 'The Peter Principle' (1969): every employee tends to rise to his level of incompetence. Model: a pyramid of 160 positions on six levels (1, 5, 11, 21, 41, 81) with responsibility weights 1.0, 0.9, 0.8, 0.6, 0.4, 0.2. Competence 1\u201310 starts ~ Normal(7, 2); age ~ Normal(25, 5). Each year: competence below 4 \u2192 fired; age over 60 \u2192 retired; vacancies filled top-down by promoting one member of the level below (the best, the worst, or random); new hires at the bottom. Common-sense hypothesis: competence carries over \u00b1 1. Peter hypothesis: competence redrawn at random on promotion. Efficiency = \u03a3 competence \u00d7 weight \u00f7 maximum, in %; it starts at 69.68%. Results after 1,000 steps (50 runs): common sense best +9, worst \u22125, random +2; Peter best \u221210, worst +12, random +1; alternating best/worst with p = 0.47 gives +1.5 in both. Careers: under Peter + best, competence collapses on the last level reached.",
+  "segNames": [
+    "1969",
+    "The company",
+    "Every year",
+    "Common sense",
+    "A different job",
+    "Peter's rule",
+    "Worse",
+    "Stuck",
+    "Promote the worst",
+    "A coin flip",
+    "Fair or safe"
+  ],
+  "props": [
+    "person",
+    "staircase",
+    "box",
+    "coin",
+    "pyramid",
+    "chartup",
+    "chartdown"
+  ],
+  "music": {
+    "prompt": "Wry, playful office jazz for an explainer: walking upright bass, muted trumpet, light brushed snare, woodblock ticks, a little piano, 100 BPM, quirky and curious, steady and unobtrusive, no vocals, clean ending",
+    "duration": 90,
+    "volume": 0.16,
+    "offset": 0,
+    "answerOffset": 20
+  },
+  "sfx": {
+    "pop": [
+      "a single soft cartoon pop, clean, short",
+      0.6
+    ],
+    "whoosh": [
+      "a soft paper whoosh transition, quick",
+      0.8
+    ],
+    "step": [
+      "two quick footsteps on a wooden stair",
+      0.7
+    ],
+    "thud": [
+      "a cardboard box of papers dropped on an office floor",
+      1.0
+    ],
+    "stamp": [
+      "a rubber stamp pressed on paper, crisp, short",
+      0.6
+    ],
+    "coin": [
+      "a coin flipped into the air, spinning ring, then caught",
+      1.4
+    ],
+    "ding": [
+      "a small office desk bell ding, short",
+      1.0
+    ],
+    "end": [
+      "a gentle two-note vibraphone chime, short",
+      1.4
+    ]
+  },
+  "port": 8902,
+  "cues": [
+    [
+      "stamp",
+      0,
+      "nineteen",
+      0.45
+    ],
+    [
+      "thud",
+      0,
+      "incompetence+0.3",
+      0.45
+    ],
+    [
+      "whoosh",
+      1,
+      -0.3,
+      0.4
+    ],
+    [
+      "pop",
+      1,
+      "hundred",
+      0.4
+    ],
+    [
+      "pop",
+      1,
+      "floors",
+      0.4
+    ],
+    [
+      "whoosh",
+      2,
+      -0.3,
+      0.4
+    ],
+    [
+      "thud",
+      2,
+      "fired+0.2",
+      0.5
+    ],
+    [
+      "step",
+      2,
+      "retires",
+      0.4
+    ],
+    [
+      "step",
+      2,
+      "desk",
+      0.4
+    ],
+    [
+      "whoosh",
+      3,
+      -0.3,
+      0.4
+    ],
+    [
+      "step",
+      3,
+      "best",
+      0.45
+    ],
+    [
+      "ding",
+      3,
+      "next",
+      0.35
+    ],
+    [
+      "whoosh",
+      4,
+      -0.3,
+      0.4
+    ],
+    [
+      "step",
+      4,
+      "salesperson+0.3",
+      0.4
+    ],
+    [
+      "pop",
+      4,
+      "manager+0.4",
+      0.45
+    ],
+    [
+      "whoosh",
+      5,
+      -0.3,
+      0.4
+    ],
+    [
+      "stamp",
+      5,
+      "peter's",
+      0.45
+    ],
+    [
+      "pop",
+      5,
+      "random",
+      0.4
+    ],
+    [
+      "whoosh",
+      6,
+      -0.3,
+      0.4
+    ],
+    [
+      "ding",
+      6,
+      "ten",
+      0.4
+    ],
+    [
+      "step",
+      7,
+      0.4,
+      0.4
+    ],
+    [
+      "step",
+      7,
+      1.3,
+      0.4
+    ],
+    [
+      "step",
+      7,
+      2.2,
+      0.4
+    ],
+    [
+      "thud",
+      7,
+      "bad",
+      0.35
+    ],
+    [
+      "whoosh",
+      8,
+      -0.3,
+      0.4
+    ],
+    [
+      "ding",
+      8,
+      "twelve",
+      0.45
+    ],
+    [
+      "coin",
+      9,
+      "coin",
+      0.55
+    ],
+    [
+      "stamp",
+      10,
+      "riskiest",
+      0.45
+    ],
+    [
+      "end",
+      10,
+      "one+0.6",
+      0.5
+    ]
+  ]
+}

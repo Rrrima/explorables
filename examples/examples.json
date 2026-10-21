@@ -1,5 +1,5 @@
 [
-  { "id": "paper", "title": "Fibre by Fibre", "subject": "Paper", "style": "pen and watercolour", "line": "What paper is made of, how it travelled, and why its surface looks the way it does.", "essayPort": 8901, "videoPort": 8902 },
   { "id": "sit-stay-think", "title": "Sit, Stay, Think", "subject": "Dog and cat minds", "style": "needle-felted fur, drawn with WebGL", "line": "How we test the IQ and EQ of dogs and cats, and why breed explains only nine percent.", "essayPort": 8903, "videoPort": 8904 },
-  { "id": "lucky", "title": "Lucky", "subject": "Talent and luck", "style": "lab notebook, a simulation you run", "line": "A thousand people, red and green balls, forty years: why the richest are rarely the most talented.", "essayPort": 8905, "videoPort": 8906 }
+  { "id": "promoted", "title": "Promoted", "subject": "The Peter principle", "style": "crayon on paper, a simulation you run", "line": "Why can promoting your best people, every time, make the whole company worse?", "essayPort": 8901, "videoPort": 8902 },
+  { "id": "half-shell", "title": "The Half Shell", "subject": "Oysters", "style": "sunlit watercolour flat-lay", "line": "Why oysters taste of their water, cost a dollar at five o'clock, and sometimes a hundred.", "essayPort": 8905, "videoPort": 8906 }
 ]

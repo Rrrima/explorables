@@ -15,9 +15,9 @@ Make two things from a **prompt** (a topic or a question) and a **style referenc
 2. `./<slug>-explainer/`: a ~85-second TED-Ed style video drawn live on canvas in the same style, with voice, music and effects. Viewers can pause it anywhere and ask a question; an agent researches the answer and makes a short clip.
 
 The bar is the three examples in `examples/` (open them with `node scripts/gallery.mjs`):
-- **paper:** pen and watercolour
 - **sit-stay-think:** needle-felted fur drawn with WebGL
-- **lucky:** a runnable simulation
+- **promoted:** crayon, with a runnable simulation of a published model
+- **half-shell:** sunlit watercolour, real coastlines, a full research report
 
 Read their code; don't imitate a description of them.
 

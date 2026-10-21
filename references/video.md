@@ -2,8 +2,9 @@
 
 The kit is at `kit/`. Read its `README.md` first: it has the style contract and the file list. Exemplars:
 
-- `examples/paper/video`: reuses the essay's pen/hands engine; the model for how a video inherits a style
-- `./bag-explainer`, `examples/lucky/video`, `./peter-explainer`
+- `examples/half-shell/video`: copies the essay's watercolour engine into `lib/`; the model for how a video inherits a style
+- `examples/promoted/video`: crayon, a story told with little office figures
+- `examples/sit-stay-think/video`: WebGL felt, with per-item props for answer clips
 - `./wine-explainer`: the original; it predates the kit
 
 ## 1. Script (before any drawing)
@@ -40,7 +41,7 @@ This is the rule the paper video broke.
 
 - Copy the essay's engine files into `<slug>-explainer/lib/` (for example `engine.js`, `pen.js`, `hands.js`) and load them before `style.js` in `index.html`.
 - `style.js` implements the kit's style contract **with those functions**:
-  - `ExplainerStage.Layers(canvas, [...])` with the same layers the essay uses (paper uses `["col", "ink"]`: washes multiplied under the pen)
+  - `ExplainerStage.Layers(canvas, [...])` with the same layers the essay uses (a pen-and-wash look might use `["col", "ink"]`: washes multiplied under the pen)
   - `fill` = the essay's wash, `line` = the essay's nib, `mark` = its dot or drop
   - `text` in the essay's fonts
   - `end()` composites onto the essay's page background

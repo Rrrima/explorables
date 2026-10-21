@@ -1,6 +1,6 @@
 # Style: felted fur on cream
 
-Reference: `shelf-home/studio/jobs/1792437561906-determien-dogs/reference.png`, six cats peeking into a cream frame, each one made of soft, fuzzy fibre.
+Reference: six cats peeking into a cream frame, each one made of soft, fuzzy fibre.
 
 ## What I see, and how the canvas will do it
 

@@ -2,9 +2,9 @@
 
 The examples are the quality bar. Open them (`node scripts/gallery.mjs`) and read their code before writing your own; screenshots of more essays made this way are in `references/exemplars/`.
 
-- `examples/paper/essay`: pen-and-watercolour film, sticky stages, timeline, report
-- `examples/sit-stay-think/essay`: needle-felted animals drawn with WebGL (`kit/engines/glfur.js`), hover notes, data drawn as felt
-- `examples/lucky/essay`: a runnable simulation with particle-story chapters
+- `examples/sit-stay-think/essay`: needle-felted animals drawn with WebGL (`kit/engines/glfur.js`), hover notes, data drawn as felt, a loader that builds every sprite first
+- `examples/promoted/essay`: a runnable re-implementation of a published model (`js/sim.js`) in crayon, with chapters you play
+- `examples/half-shell/essay`: a watercolour engine (`js/wc.js`) with a drawing vocabulary (`js/things.js`), maps from real coastlines (`js/geo.js`), sticky stages and a full report
 
 ## 1. Story first
 

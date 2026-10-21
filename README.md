@@ -2,7 +2,7 @@
 
 **A Claude skill that turns a question and a picture into an explorable.** You get a researched, illustrated scrollytelling essay drawn in the picture's style, and a short explainer video you can pause and question.
 
-![Three explorables made with this skill](docs/hero.jpg)
+![Sit, Stay, Think; Promoted; The Half Shell: three explorables made with this skill](docs/hero.jpg)
 
 ```
 /explorable why do oysters taste different in different places?   [attach a style image]
@@ -34,9 +34,9 @@ Then, in Claude Code, from the folder where you want the output:
 
 | | Style | What's in it |
 |---|---|---|
-| **Fibre by Fibre** (`examples/paper`) | pen and watercolour | a scroll-scrubbed film of hand papermaking, a timeline of paper moving west, true-scale fibres, raking light |
 | **Sit, Stay, Think** (`examples/sit-stay-think`) | needle-felted animals, drawn with WebGL | the 1994 breed ranking as felt, the 9% figure as two overlapping clouds of dogs, faces, cats, brains |
-| **Lucky** (`examples/lucky`) | lab notebook | a runnable re-implementation of the "Talent vs Luck" model, with particle-story chapters and a hundred-world experiment |
+| **Promoted** (`examples/promoted`) | crayon | a runnable re-implementation of the Peter principle model (Pluchino et al. 2010): your own company of 160 people on six floors, and which promotion rule wins |
+| **The Half Shell** (`examples/half-shell`) | sunlit watercolour | why oysters taste of their water and cost a dollar or a hundred: maps from real coastlines, the months-with-an-R rule, how to tell a good one |
 
 Each example is an `essay/` (static) and a `video/` (the explainer kit). `node scripts/gallery.mjs` serves them all. Set `ANTHROPIC_API_KEY` to ask the videos questions.
 

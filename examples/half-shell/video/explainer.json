@@ -1,0 +1,38 @@
+{
+  "title": "The Half Shell",
+  "series": "The Half Shell, an illustrated essay on oysters",
+  "article": { "name": "Read the essay", "url": "http://localhost:8905/" },
+  "style": "Sunlit anime-style watercolour flat-lay seen from above: indigo cloth on a pale wood table, slate and porcelain plates, crushed ice, crisp white gloss dashes, soft diagonal light; Zen Maru Gothic headings, Barlow body, IBM Plex Mono labels.",
+  "context": "The Half Shell is an illustrated essay on oysters. Thesis: an oyster is a jar of the water it grew in. Oysters are osmoconformers: they match the salinity of the water by filling their cells with free amino acids; taurine is about 80% of the amino acids in Pacific oysters (Zhao et al. 2017, Scientific Reports). Saltier water gives more amino acids and more umami; low-salinity water gives bland oysters (Rice 2019, URI). Sweetness is glycogen, highest before spawning. History: shell ring on St. Catherines Island, Georgia, about 4,300 years old, harvests only in cool months (Florida Museum 2019); Sergius Orata farmed oysters at Lucrine Lake around 95 BCE; Dickens, Pickwick Papers 1836–37: 'poverty and oysters' go together; New York harbor had about 350 sq mi of beds (Kurlansky, estimate); Canal Street Plan: all you can eat for 6 cents; by 1880 NY waters produced about 700 million oysters a year; the last NY bed (Raritan Bay) closed in 1927. Happy hour: Crave Fishbar NYC (2019) charges $3–4 normally, $1–1.50 at happy hour, pays about $0.77–0.80 wholesale, shucks ~20,000 a week, 6,000 at happy hour (Marketplace 2019); Boston 2024 wholesale $0.65–1.15, farm-gate $0.57 (Boston Globe); the deal is a loss leader, drinks and food pay. 19th-century saloon free lunch (La Bourse de Maspero, New Orleans 1838; one free oyster per drink in Chicago); oyster happy hour revived at Shaw's Crab House, Chicago, late 1980s; 'happy hour' from US Navy socials of 1913. Place: briny northern bays (Wellfleet, Island Creek, Moonstone, Malpeque), mild Chesapeake and Gulf (5–15 ppt), Pacific coast cucumber and melon notes (Hama Hama, Kumamoto), European flats metallic, Marennes-Oléron green oysters; a CSIRO trained panel found all 12 sensory attributes differed by region. Season: spawning above ~20°C; Vibrio peaks May–October; CDC estimates 80,000 US vibriosis cases a year, 52,000 foodborne; triploids barely spawn (50% of West Coast farmed Pacifics in 2016). Price: US restaurant average $3.34 (East Coast) to $3.71 (West Coast) per oyster in 2021 menus; Kumamoto $95 per 30 from Taylor Shellfish; Gillardeau N°2 €36 per 6 and wild flat Belons €39 per 6 at Le Dôme, Paris (2026); flat oyster yields fell about 90% after Marteilia (1968) and Bonamia (~1979); Coffin Bay King oysters 6–7 years, ~1 kg, 18 cm, A$100 each (2008–2012). How to tell a good one: closed or closes when tapped (FDA), heavy, full of liquor, smells like the sea, harvest tags kept 90 days after the container is emptied (FDA Food Code), keep at 35–45°F cup down, eat within about a week.",
+  "segNames": ["A jar of the sea", "Food of the poor", "Closed, then costly", "A dollar at five", "The drinks pay", "Salt and taurine", "Merroir", "Months with an R", "The priciest", "A good one"],
+  "props": ["oyster", "platter", "lemon", "glass", "coin", "map", "versusA", "versusB"],
+  "voice": { "speed": 0.92 },
+  "pauses": [0.9, 0.8, 0.9, 0.8, 0.9, 0.9, 0.9, 0.9, 0.9, 1.2],
+  "music": { "prompt": "gentle acoustic morning cafe music, soft plucked guitar and light marimba, warm and curious, slow tempo, no vocals, no drums", "duration": 100, "volume": 0.15 },
+  "sfx": {
+    "ice": ["a few ice cubes clinking softly in a metal tray, short", 1.0],
+    "shell": ["a light clack of two oyster shells set on a plate, short", 0.6],
+    "tick": ["a single soft clock tick then a small bell ding, short", 1.0],
+    "coins": ["a few small coins clinking onto a wooden table, short", 1.0],
+    "glass": ["a gentle clink of two glasses, short", 0.8],
+    "pop": ["a single soft pop, short", 0.5],
+    "end": ["a gentle two-note chime, short", 1.4]
+  },
+  "cues": [
+    ["ice", 0, 0.2, 0.35],
+    ["shell", 0, "platter", 0.35],
+    ["pop", 1, "six", 0.3],
+    ["shell", 2, "nineteen", 0.25],
+    ["tick", 3, "five", 0.35],
+    ["coins", 3, "seventy-seven", 0.35],
+    ["glass", 4, "drinks", 0.35],
+    ["pop", 5, "taurine", 0.3],
+    ["pop", 6, "briny", 0.25],
+    ["pop", 6, "mild", 0.25],
+    ["pop", 6, "cucumber", 0.25],
+    ["shell", 8, "King", 0.35],
+    ["shell", 9, "tight", 0.3],
+    ["end", 9, "tag+0.6", 0.45]
+  ],
+  "port": 8906
+}

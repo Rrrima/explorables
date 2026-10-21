@@ -32,9 +32,9 @@ These apply when the reference doesn't dictate type.
 
 ## The workshop look
 
-The paper example and the gallery page use this look; reuse it when a reference doesn't override it.
+The gallery page uses this look; reuse it when a reference doesn't override it.
 
-- Page: `linear-gradient(125deg, #f2f2f2, #f5feff)` plus a faint fractal-noise grain (see `examples/index.html` and `examples/paper/essay/css/base.css`).
+- Page: `linear-gradient(125deg, #f2f2f2, #f5feff)` plus a faint fractal-noise grain (see `examples/index.html`).
 - Text ink-mask: `--ink-mask` (SVG turbulence mask) on headings and body.
 - Header: a translucent washi strip with a torn bottom edge, the same colour as the page, a soft shadow.
 - Thin rules (`rgba(0,0,0,0.08)`) between sections.

@@ -42,9 +42,9 @@ Put these in the essay directory.
   - One chapter per track. Short sections with an id each (`#h1`, `#m2`…) holding the findings in prose, with source tags.
   - "Open questions": unverified values, disputes, what you couldn't find.
   - "Sources": numbered per track, `[prefix+n] Title, publisher (year), URL`.
-  - Use `examples/paper/essay/report.html` as the reference structure.
+  - Use `examples/half-shell/essay/report.html` as the reference structure.
 - `js/sources.js`: the source lists as data, so tags can be rendered and linked.
-- `js/data.js`: every dataset the visuals use, with a comment naming the report section and a `src` on each entry (`src: "M2, M3"`); `flag: true` marks uncertain values. Use `examples/paper/essay/js/data.js` as the pattern.
+- `js/data.js`: every dataset the visuals use, with a comment naming the report section and a `src` on each entry (`src: "M2, M3"`); `flag: true` marks uncertain values. Use `examples/half-shell/essay/js/data.js` as the pattern.
 - In the essay, each figure carries `<a class="note" href="report.html#m2">M2</a>`.
 
 ## 4. For a simulation

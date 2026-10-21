@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Examples: Promoted (crayon, the Peter principle model) and The Half Shell (watercolour, maps, a full report) replace Fibre by Fibre and Lucky.
+- Videos link to the essay's research report over the end card (`window.EXPLAINER.report`) instead of drawing a sources line.
+- The kit runs questions on visitors' own API keys when deployed (`REQUIRE_USER_KEYS`, `PRIVATE_ANSWERS`), with silent answer clips when there is no voice key.
+- Sit, Stay, Think builds its felt behind an animated loader, so the page never freezes while scrolling.
+
 ## 0.1.0 (2026-10-19)
 
 First release.

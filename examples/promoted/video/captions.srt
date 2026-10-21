@@ -1,0 +1,108 @@
+1
+00:00:00,900 --> 00:00:04,084
+In nineteen sixty-nine, Laurence Peter made a joke that
+
+2
+00:00:03,942 --> 00:00:07,137
+stuck: in any hierarchy, people rise to their level
+
+3
+00:00:07,018 --> 00:00:08,124
+of incompetence.
+
+4
+00:00:08,490 --> 00:00:11,767
+Forty years later, three researchers in Italy built that
+
+5
+00:00:11,625 --> 00:00:14,704
+company inside a computer: a hundred and sixty people,
+
+6
+00:00:14,551 --> 00:00:15,679
+on six floors.
+
+7
+00:00:16,080 --> 00:00:18,463
+Every year, anyone who is bad at their job
+
+8
+00:00:18,321 --> 00:00:21,621
+is fired, anyone over sixty retires, and each empty
+
+9
+00:00:21,467 --> 00:00:23,630
+desk goes to someone from the floor below.
+
+10
+00:00:23,926 --> 00:00:26,483
+Common sense says: promote the best. If you're good
+
+11
+00:00:26,318 --> 00:00:28,038
+at your job, you'll be good at the next
+
+12
+00:00:27,908 --> 00:00:28,410
+one.
+
+13
+00:00:28,776 --> 00:00:31,008
+But the next job is often a different job.
+
+14
+00:00:30,866 --> 00:00:33,968
+A great salesperson can make a terrible sales manager.
+
+15
+00:00:34,276 --> 00:00:37,193
+So the researchers tried a second rule, Peter's rule:
+
+16
+00:00:37,086 --> 00:00:40,386
+after a promotion, your competence starts over, at random.
+
+17
+00:00:40,845 --> 00:00:43,576
+Under Peter's rule, promoting the best made the whole
+
+18
+00:00:43,411 --> 00:00:46,815
+company worse. Its efficiency fell by about ten points.
+
+19
+00:00:47,239 --> 00:00:49,668
+Good workers kept climbing until they landed in a
+
+20
+00:00:49,526 --> 00:00:51,642
+job they were bad at. And there they stayed.
+
+21
+00:00:52,066 --> 00:00:54,832
+Stranger still, promoting the worst made it better, by
+
+22
+00:00:54,679 --> 00:00:55,866
+about twelve points.
+
+23
+00:00:56,197 --> 00:00:58,846
+Since nobody knows which rule is true, the safest
+
+24
+00:00:58,693 --> 00:01:01,052
+choice was a coin flip: promote the best or
+
+25
+00:01:00,910 --> 00:01:02,213
+the worst, at random.
+
+26
+00:01:02,498 --> 00:01:04,904
+Sometimes the rule that feels fairest is also the
+
+27
+00:01:04,762 --> 00:01:05,833
+riskiest one.
+

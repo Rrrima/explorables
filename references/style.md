@@ -29,11 +29,11 @@ Start from the nearest existing engine. Read the code; don't imitate a descripti
 
 | Medium | Exemplar |
 |---|---|
-| pen + watercolour | `kit/engines/pen.js` (textured nib: pressure, wobble, ragged edges, dry skips, bleed, grain), `kit/engines/hands.js`, `examples/paper/essay/js/film.js` (washes on a colour layer multiplied under ink) |
+| pen + watercolour | `kit/engines/pen.js` (textured nib: pressure, wobble, ragged edges, dry skips, bleed, grain), `kit/engines/hands.js` |
+| sunlit watercolour, gouache highlights | `examples/half-shell/essay/js/wc.js` (washes with mottling, pooled wet edges, shade glazes, lifted-out gloss) and `things.js` |
 | risograph / spot colour | `kit/engines/riso.js` |
 | fashion line art | `kit/engines/pen.js` (a fine fashion-plate line works the same way) |
-| notebook ink blots | `examples/lucky/essay` (cached inked sprites) |
-| crayon | `kit/engines/crayon.js` |
+| crayon | `kit/engines/crayon.js`, `examples/promoted/essay/js/crayon.js` (cached figure sprites) |
 
 `js/<medium>.js` exposes:
 

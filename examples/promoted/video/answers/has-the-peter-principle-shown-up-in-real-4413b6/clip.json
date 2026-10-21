@@ -1,0 +1,697 @@
+{
+ "title": "Has the Peter principle shown up in real offices?",
+ "summary": "Yes, though the evidence is limited. A study of about 53,000 US sales workers found that firms promoted their top sellers, and those people went on to be weaker managers on average, though the authors say firms may do this on purpose to keep everyone selling.",
+ "shots": [
+  {
+   "vo": "Has anyone seen this happen in real life?",
+   "visual": "Brush lettering writes the question across the page beside a slouchy office worker.",
+   "kind": "title",
+   "prop": "person",
+   "headline": "Seen in real life?",
+   "value": "",
+   "caption": "",
+   "items": [],
+   "s": 0.7,
+   "e": 3.115,
+   "words": [
+    {
+     "w": "Has",
+     "a": 0.7,
+     "b": 0.909
+    },
+    {
+     "w": "anyone",
+     "a": 0.979,
+     "b": 1.35
+    },
+    {
+     "w": "seen",
+     "a": 1.385,
+     "b": 1.571
+    },
+    {
+     "w": "this",
+     "a": 1.606,
+     "b": 1.733
+    },
+    {
+     "w": "happen",
+     "a": 1.791,
+     "b": 2.128
+    },
+    {
+     "w": "in",
+     "a": 2.198,
+     "b": 2.267
+    },
+    {
+     "w": "real",
+     "a": 2.325,
+     "b": 2.511
+    },
+    {
+     "w": "life?",
+     "a": 2.558,
+     "b": 3.115
+    }
+   ]
+  },
+  {
+   "vo": "First, this video isn't proof. Peter's nineteen sixty-nine book was satire. The model is a simulation.",
+   "visual": "Two panels pop in side by side, each stamped with its tag as it is named.",
+   "kind": "versus",
+   "prop": "none",
+   "headline": "Neither one is proof",
+   "value": "",
+   "caption": "",
+   "items": [
+    {
+     "label": "Peter's 1969 book",
+     "value": 0,
+     "note": "satire",
+     "cue": "satire"
+    },
+    {
+     "label": "This video's model",
+     "value": 0,
+     "note": "computer simulation",
+     "cue": "simulation"
+    }
+   ],
+   "s": 3.706,
+   "e": 9.418,
+   "words": [
+    {
+     "w": "First,",
+     "a": 3.706,
+     "b": 4.205
+    },
+    {
+     "w": "this",
+     "a": 4.252,
+     "b": 4.414
+    },
+    {
+     "w": "video",
+     "a": 4.472,
+     "b": 4.763
+    },
+    {
+     "w": "isn't",
+     "a": 4.844,
+     "b": 5.076
+    },
+    {
+     "w": "proof.",
+     "a": 5.122,
+     "b": 5.506
+    },
+    {
+     "w": "Peter's",
+     "a": 5.575,
+     "b": 5.912
+    },
+    {
+     "w": "nineteen",
+     "a": 5.97,
+     "b": 6.307
+    },
+    {
+     "w": "sixty-nine",
+     "a": 6.353,
+     "b": 6.887
+    },
+    {
+     "w": "book",
+     "a": 6.91,
+     "b": 7.119
+    },
+    {
+     "w": "was",
+     "a": 7.201,
+     "b": 7.34
+    },
+    {
+     "w": "satire.",
+     "a": 7.386,
+     "b": 7.897
+    },
+    {
+     "w": "The",
+     "a": 7.932,
+     "b": 8.037
+    },
+    {
+     "w": "model",
+     "a": 8.083,
+     "b": 8.327
+    },
+    {
+     "w": "is",
+     "a": 8.396,
+     "b": 8.489
+    },
+    {
+     "w": "a",
+     "a": 8.524,
+     "b": 8.547
+    },
+    {
+     "w": "simulation.",
+     "a": 8.594,
+     "b": 9.418
+    }
+   ]
+  },
+  {
+   "vo": "Real data came from sales. One study followed fifty-three thousand sellers at two hundred fourteen US firms. About three in a hundred became managers.",
+   "visual": "A grid of 100 crayon marks draws in; 3 of them fill in red.",
+   "kind": "proportion",
+   "prop": "none",
+   "headline": "53,035 sellers, 214 firms",
+   "value": "3",
+   "caption": "sellers promoted to manager, 2005 to 2011",
+   "items": [],
+   "s": 10.002,
+   "e": 18.361,
+   "words": [
+    {
+     "w": "Real",
+     "a": 10.002,
+     "b": 10.234
+    },
+    {
+     "w": "data",
+     "a": 10.292,
+     "b": 10.617
+    },
+    {
+     "w": "came",
+     "a": 10.687,
+     "b": 10.908
+    },
+    {
+     "w": "from",
+     "a": 10.931,
+     "b": 11.059
+    },
+    {
+     "w": "sales.",
+     "a": 11.117,
+     "b": 11.593
+    },
+    {
+     "w": "One",
+     "a": 11.743,
+     "b": 11.952
+    },
+    {
+     "w": "study",
+     "a": 11.987,
+     "b": 12.266
+    },
+    {
+     "w": "followed",
+     "a": 12.336,
+     "b": 12.672
+    },
+    {
+     "w": "fifty-three",
+     "a": 12.742,
+     "b": 13.311
+    },
+    {
+     "w": "thousand",
+     "a": 13.357,
+     "b": 13.671
+    },
+    {
+     "w": "sellers",
+     "a": 13.706,
+     "b": 14.077
+    },
+    {
+     "w": "at",
+     "a": 14.124,
+     "b": 14.263
+    },
+    {
+     "w": "two",
+     "a": 14.298,
+     "b": 14.46
+    },
+    {
+     "w": "hundred",
+     "a": 14.53,
+     "b": 14.809
+    },
+    {
+     "w": "fourteen",
+     "a": 14.867,
+     "b": 15.25
+    },
+    {
+     "w": "US",
+     "a": 15.319,
+     "b": 15.586
+    },
+    {
+     "w": "firms.",
+     "a": 15.668,
+     "b": 16.086
+    },
+    {
+     "w": "About",
+     "a": 16.144,
+     "b": 16.457
+    },
+    {
+     "w": "three",
+     "a": 16.492,
+     "b": 16.736
+    },
+    {
+     "w": "in",
+     "a": 16.782,
+     "b": 16.852
+    },
+    {
+     "w": "a",
+     "a": 16.898,
+     "b": 16.922
+    },
+    {
+     "w": "hundred",
+     "a": 16.98,
+     "b": 17.293
+    },
+    {
+     "w": "became",
+     "a": 17.351,
+     "b": 17.653
+    },
+    {
+     "w": "managers.",
+     "a": 17.688,
+     "b": 18.361
+    }
+   ]
+  },
+  {
+   "vo": "Doubling your sales raised your promotion odds about fourteen percent. But it cut your future team's sales about seven and a half percent.",
+   "visual": "Two bars grow to scale, one for promotion odds rising, one for team sales lost.",
+   "kind": "bars",
+   "prop": "none",
+   "headline": "Same top seller, two results",
+   "value": "",
+   "caption": "",
+   "items": [
+    {
+     "label": "Promotion odds",
+     "value": 14.3,
+     "note": "+14.3%",
+     "cue": "fourteen"
+    },
+    {
+     "label": "Team sales",
+     "value": 7.5,
+     "note": "−7.5%",
+     "cue": "seven"
+    }
+   ],
+   "s": 18.938,
+   "e": 25.858,
+   "words": [
+    {
+     "w": "Doubling",
+     "a": 18.938,
+     "b": 19.356
+    },
+    {
+     "w": "your",
+     "a": 19.402,
+     "b": 19.518
+    },
+    {
+     "w": "sales",
+     "a": 19.565,
+     "b": 19.913
+    },
+    {
+     "w": "raised",
+     "a": 20.041,
+     "b": 20.32
+    },
+    {
+     "w": "your",
+     "a": 20.354,
+     "b": 20.471
+    },
+    {
+     "w": "promotion",
+     "a": 20.505,
+     "b": 20.958
+    },
+    {
+     "w": "odds",
+     "a": 21.028,
+     "b": 21.33
+    },
+    {
+     "w": "about",
+     "a": 21.388,
+     "b": 21.655
+    },
+    {
+     "w": "fourteen",
+     "a": 21.713,
+     "b": 22.084
+    },
+    {
+     "w": "percent.",
+     "a": 22.131,
+     "b": 22.584
+    },
+    {
+     "w": "But",
+     "a": 22.63,
+     "b": 22.781
+    },
+    {
+     "w": "it",
+     "a": 22.816,
+     "b": 22.874
+    },
+    {
+     "w": "cut",
+     "a": 22.92,
+     "b": 23.083
+    },
+    {
+     "w": "your",
+     "a": 23.129,
+     "b": 23.234
+    },
+    {
+     "w": "future",
+     "a": 23.28,
+     "b": 23.57
+    },
+    {
+     "w": "team's",
+     "a": 23.594,
+     "b": 23.861
+    },
+    {
+     "w": "sales",
+     "a": 23.884,
+     "b": 24.221
+    },
+    {
+     "w": "about",
+     "a": 24.279,
+     "b": 24.534
+    },
+    {
+     "w": "seven",
+     "a": 24.592,
+     "b": 24.836
+    },
+    {
+     "w": "and",
+     "a": 24.871,
+     "b": 24.952
+    },
+    {
+     "w": "a",
+     "a": 24.987,
+     "b": 25.022
+    },
+    {
+     "w": "half",
+     "a": 25.068,
+     "b": 25.219
+    },
+    {
+     "w": "percent.",
+     "a": 25.277,
+     "b": 25.858
+    }
+   ]
+  },
+  {
+   "vo": "The authors say firms reward current performance at the expense of the best potential managers. Maybe on purpose: the promise keeps everyone selling.",
+   "visual": "The quotation writes itself in loose brush lettering next to a falling crayon chart.",
+   "kind": "quote",
+   "prop": "chartdown",
+   "headline": "\"at the expense of promoting the best potential managers\"",
+   "value": "",
+   "caption": "Benson, Li and Shue, 2018",
+   "items": [],
+   "s": 26.436,
+   "e": 34.284,
+   "words": [
+    {
+     "w": "The",
+     "a": 26.436,
+     "b": 26.599
+    },
+    {
+     "w": "authors",
+     "a": 26.645,
+     "b": 26.993
+    },
+    {
+     "w": "say",
+     "a": 27.016,
+     "b": 27.249
+    },
+    {
+     "w": "firms",
+     "a": 27.365,
+     "b": 27.655
+    },
+    {
+     "w": "reward",
+     "a": 27.713,
+     "b": 28.05
+    },
+    {
+     "w": "current",
+     "a": 28.108,
+     "b": 28.41
+    },
+    {
+     "w": "performance",
+     "a": 28.445,
+     "b": 28.967
+    },
+    {
+     "w": "at",
+     "a": 29.002,
+     "b": 29.118
+    },
+    {
+     "w": "the",
+     "a": 29.153,
+     "b": 29.234
+    },
+    {
+     "w": "expense",
+     "a": 29.292,
+     "b": 29.687
+    },
+    {
+     "w": "of",
+     "a": 29.722,
+     "b": 29.791
+    },
+    {
+     "w": "the",
+     "a": 29.838,
+     "b": 29.907
+    },
+    {
+     "w": "best",
+     "a": 29.954,
+     "b": 30.151
+    },
+    {
+     "w": "potential",
+     "a": 30.198,
+     "b": 30.616
+    },
+    {
+     "w": "managers.",
+     "a": 30.662,
+     "b": 31.301
+    },
+    {
+     "w": "Maybe",
+     "a": 31.417,
+     "b": 31.695
+    },
+    {
+     "w": "on",
+     "a": 31.742,
+     "b": 31.823
+    },
+    {
+     "w": "purpose:",
+     "a": 31.881,
+     "b": 32.369
+    },
+    {
+     "w": "the",
+     "a": 32.462,
+     "b": 32.554
+    },
+    {
+     "w": "promise",
+     "a": 32.613,
+     "b": 32.926
+    },
+    {
+     "w": "keeps",
+     "a": 32.961,
+     "b": 33.193
+    },
+    {
+     "w": "everyone",
+     "a": 33.239,
+     "b": 33.634
+    },
+    {
+     "w": "selling.",
+     "a": 33.657,
+     "b": 34.284
+    }
+   ]
+  },
+  {
+   "vo": "So yes, scene five holds up. Just one word changes: weaker manager, not terrible.",
+   "visual": "Two lines stack up beside the staircase, the second one underlined in red.",
+   "kind": "list",
+   "prop": "staircase",
+   "headline": "Scene five, corrected",
+   "value": "",
+   "caption": "",
+   "items": [
+    {
+     "label": "Real evidence: yes, from one big study",
+     "value": 0,
+     "note": "",
+     "cue": "yes"
+    },
+    {
+     "label": "A weaker manager, not a terrible one",
+     "value": 0,
+     "note": "",
+     "cue": "weaker"
+    }
+   ],
+   "s": 34.875,
+   "e": 39.844,
+   "words": [
+    {
+     "w": "So",
+     "a": 34.875,
+     "b": 35.026
+    },
+    {
+     "w": "yes,",
+     "a": 35.096,
+     "b": 35.502
+    },
+    {
+     "w": "scene",
+     "a": 35.618,
+     "b": 35.839
+    },
+    {
+     "w": "five",
+     "a": 35.862,
+     "b": 36.129
+    },
+    {
+     "w": "holds",
+     "a": 36.164,
+     "b": 36.408
+    },
+    {
+     "w": "up.",
+     "a": 36.477,
+     "b": 36.675
+    },
+    {
+     "w": "Just",
+     "a": 36.744,
+     "b": 36.965
+    },
+    {
+     "w": "one",
+     "a": 37.034,
+     "b": 37.197
+    },
+    {
+     "w": "word",
+     "a": 37.232,
+     "b": 37.464
+    },
+    {
+     "w": "changes:",
+     "a": 37.522,
+     "b": 38.068
+    },
+    {
+     "w": "weaker",
+     "a": 38.149,
+     "b": 38.451
+    },
+    {
+     "w": "manager,",
+     "a": 38.497,
+     "b": 38.985
+    },
+    {
+     "w": "not",
+     "a": 39.078,
+     "b": 39.252
+    },
+    {
+     "w": "terrible.",
+     "a": 39.287,
+     "b": 39.844
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "n": 1,
+   "title": "Benson, Li & Shue, \"Promotions and the Peter Principle,\" NBER Working Paper 24343 (2018)",
+   "url": "https://www.nber.org/system/files/working_papers/w24343/w24343.pdf"
+  },
+  {
+   "n": 3,
+   "title": "Pluchino, Rapisarda & Garofalo, \"The Peter principle revisited: a computational study,\" arXiv:0907.0455 / Physica A 389 (2010)",
+   "url": "https://arxiv.org/abs/0907.0455"
+  }
+ ],
+ "followups": [
+  "Why would a firm promote top sellers on purpose if they manage worse?",
+  "Could the drop just be luck running out after a great year?",
+  "Has the Peter principle been tested outside of sales jobs?"
+ ],
+ "total": 41.49,
+ "id": "has-the-peter-principle-shown-up-in-real-4413b6",
+ "question": "Is there real-world evidence for the Peter principle?",
+ "parent": null,
+ "at": 32,
+ "time": "0:32",
+ "scene": 4,
+ "sceneName": "A different job",
+ "line": "But the next job is often a different job. A great salesperson can make a terrible sales manager.",
+ "replaces": "is-there-real-world-evidence-for-the-pet-8dd2d5",
+ "made": "2026-10-19T04:37:44.081Z"
+}

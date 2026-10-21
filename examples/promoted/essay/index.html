@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Promoted</title>
+<meta name="description" content="Run the Peter Principle yourself: a company of 160 people, six floors, and why always promoting the best can make everyone worse.">
+<link rel="stylesheet" href="css/style.css">
+<style>.bar .home{font-size:13px;opacity:.55;margin-right:16px;text-decoration:none;color:inherit;white-space:nowrap;transition:opacity .2s}.bar .home:hover{opacity:1}</style>
+</head>
+<body>
+<nav class="bar" aria-label="Chapters">
+  <a class="home" href="http://localhost:8900/" title="Back to the shelf">← Shelf</a><a class="brand" href="#top">Promoted</a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="crumbs">Chapters</button>
+  <div class="crumbs" id="crumbs">
+    <a href="#rules">The rules</a><a href="#lab" class="keep">Run it</a><a href="#careers">Careers</a><a href="#six">Six companies</a><a href="#coin">Flip a coin</a><a href="#limits">Limits</a><a href="http://localhost:8902/" class="keep" style="color:var(--ink);font-weight:600">▶ Watch the explainer</a>
+  </div>
+</nav>
+
+<header class="hero wrap" id="top">
+  <canvas class="hero-art" id="c-hero" aria-label="A crayon drawing: office workers on a staircase; the one at the top has dropped a box of papers"></canvas>
+  <div class="hero-text">
+    <p class="label">A simulation you can run</p>
+    <h1>Promoted</h1>
+    <p class="lede">“In a hierarchy, every employee tends to rise to his level of incompetence.” Laurence J. Peter wrote it as a joke in 1969. Forty years later, two physicists and a sociologist built the company and ran it.</p>
+    <p class="mono cite">After Pluchino, Rapisarda &amp; Garofalo, “The Peter principle revisited: a computational study”, <em>Physica A</em> 389 (2010) · Ig Nobel Prize in Management, 2010</p>
+  </div>
+</header>
+
+<main>
+  <!-- 1 · THE RULES -->
+  <section class="chapter" id="rules">
+    <div class="wrap">
+      <header><span class="chapter-num">01 · The rules</span><h2>A company on six floors</h2></header>
+      <div class="scrolly" data-scrolly="rules">
+        <div class="plate"><canvas id="c-story"></canvas><p class="mono caption" id="cap-story"></p></div>
+        <div class="steps">
+          <div class="step"><h3>160 people</h3><p>The company is a pyramid: 81 people on the bottom floor, then 41, 21, 11, 5, and one boss at the top. Everyone starts somewhere between 18 and 40 years old, around 25 on average.</p></div>
+          <div class="step"><h3>Competence</h3><p>Each person has a <span class="hl">competence</span> from 1 to 10: how well they do the job they hold now. It starts as a bell curve around 7. Here, the darker someone’s trousers, the better they are at their job.</p></div>
+          <div class="step"><h3>Higher floors matter more</h3><p>The top job weighs most. Each floor’s work counts with a <span class="hl">weight</span>: 1.0 for the boss, then 0.9, 0.8, 0.6, 0.4, and 0.2 for the bottom floor. A bad boss costs five times what a bad junior does.</p></div>
+          <div class="step"><h3>Every year, some leave</h3><p>Anyone whose competence falls below 4 is <span class="hl">fired</span>. Anyone older than 60 <span class="hl">retires</span>. Their desks go empty.</p></div>
+          <div class="step"><h3>Then the ladder moves</h3><p>Empty desks are filled from the top down: one person from the floor below is <span class="hl">promoted</span> into each gap, which opens a gap on their old floor, and so on down. New hires fill the bottom.</p></div>
+          <div class="step"><h3>Theory one: common sense</h3><p>Good at your job, good at the next one. Under the <span class="hl">common sense</span> theory, a promoted person keeps their competence, give or take a point.</p></div>
+          <div class="step"><h3>Theory two: Peter’s</h3><p>But a great salesperson can be a poor sales manager: the new job needs different skills. Under the <span class="hl">Peter hypothesis</span>, competence in the new job has nothing to do with the old one. It’s drawn fresh from the same bell curve.</p></div>
+          <div class="step"><h3>One number for the company</h3><p>The company’s <span class="hl">efficiency</span> adds up everyone’s competence, floor by floor, times that floor’s weight, as a share of a company where everyone scores 10. A brand-new company scores about 70%.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · THE LAB -->
+  <section class="chapter" id="lab">
+    <div class="wrap">
+      <header><span class="chapter-num">02 · Run it</span><h2>Your company</h2>
+        <p class="lede">Pick a theory of how competence travels, pick who gets promoted, and watch the years go by. Hover or tap anyone to see their competence and career.</p></header>
+      <div class="lab">
+        <div class="panel">
+          <div class="controls">
+            <div class="btns">
+              <button class="btn primary" id="run">▶ Run</button>
+              <button class="btn" id="stepbtn">+1 year</button>
+              <button class="btn" id="reset">New company</button>
+            </div>
+            <div class="choice"><span class="label">How competence travels</span>
+              <div class="seg" id="mech" role="radiogroup" aria-label="How competence travels"><button role="radio" aria-checked="false" data-v="common">Common sense</button><button role="radio" aria-checked="true" data-v="peter">Peter hypothesis</button></div></div>
+            <div class="choice"><span class="label">Who gets promoted</span>
+              <div class="seg" id="strategy" role="radiogroup" aria-label="Who gets promoted"><button role="radio" aria-checked="true" data-v="best">The best</button><button role="radio" aria-checked="false" data-v="worst">The worst</button><button role="radio" aria-checked="false" data-v="random">Random</button><button role="radio" aria-checked="false" data-v="alternate">Mix</button></div></div>
+            <label class="slider" id="p-wrap" hidden>Chance of picking the best <output id="o-p">50%</output><input type="range" id="p" min="0" max="1" step="0.01" value="0.5"></label>
+            <label class="slider">Speed <output id="o-speed">2 years/s</output><input type="range" id="speed" min="0" max="7" step="1" value="2"></label>
+            <p class="mono seedline">seed <span id="seed"></span> · year <span id="yr">0</span></p>
+          </div>
+          <div class="stat-grid">
+            <div class="stat"><div class="n" id="s-eff">–</div><div class="l">efficiency now</div></div>
+            <div class="stat"><div class="n" id="s-delta">–</div><div class="l">change since year 0</div></div>
+            <div class="stat"><div class="n" id="s-boss">–</div><div class="l">the boss’s competence</div></div>
+            <div class="stat"><div class="n" id="s-fired">–</div><div class="l">people fired so far</div></div>
+          </div>
+        </div>
+        <div class="tower-box">
+          <canvas class="tower" id="c-tower" aria-label="The company: six floors of people, darker trousers meaning more competent"></canvas>
+          <div class="tip" id="tower-tip"></div>
+        </div>
+      </div>
+      <div class="lab-charts">
+        <div class="mini"><p class="label">Efficiency, year by year</p><canvas class="chart" id="c-eff" aria-label="Efficiency of the company over time"></canvas></div>
+        <div class="mini"><p class="label">Average competence on each floor</p><canvas class="chart" id="c-floors" aria-label="Average competence per floor"></canvas></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · CAREERS -->
+  <section class="chapter" id="careers">
+    <div class="wrap">
+      <header><span class="chapter-num">03 · Careers</span><h2>Climbing to your level</h2>
+        <p class="lede">Peter’s claim is about careers: you keep getting promoted while you’re good, and stop at the first job you’re bad at. Follow everyone who started on the bottom floor and see how good they were on each floor they reached.</p></header>
+      <div class="experiment">
+        <div class="prose" id="careers-text"><p class="mono">Computing a thousand years of careers with your settings…</p></div>
+        <div><p class="label">Competence on each floor, for people who climbed</p><canvas class="chart tall" id="c-careers" aria-label="Average competence on each floor of a career, grouped by how high people climbed"></canvas></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · SIX COMPANIES -->
+  <section class="chapter" id="six">
+    <div class="wrap">
+      <header><span class="chapter-num">04 · Six companies</span><h2>Who should you promote?</h2>
+        <p class="lede">Two theories times three promotion rules: six companies. Run each one for a thousand years, twenty times over, and watch where its efficiency settles.</p></header>
+      <div class="experiment wide-left">
+        <div><canvas class="chart tall" id="c-six" aria-label="Efficiency over a thousand years for six combinations of theory and promotion rule"></canvas><div class="progress"><span id="p-six"></span></div></div>
+        <div class="prose">
+          <div class="btns"><button class="btn primary" id="runsix">Run the six companies</button></div>
+          <div id="six-text" style="margin-top:18px"><p>Each line is a company type, averaged over twenty companies. The dashed line is where every company started.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · FLIP A COIN -->
+  <section class="chapter" id="coin">
+    <div class="wrap">
+      <header><span class="chapter-num">05 · Flip a coin</span><h2>When you don’t know which world you’re in</h2>
+        <p class="lede">Promoting the best wins big under common sense and loses big under Peter’s rule; promoting the worst does the opposite. Real managers don’t know which theory holds. So mix: each time, pick the best with probability p, otherwise the worst.</p></header>
+      <div class="experiment">
+        <div class="prose">
+          <div class="btns"><button class="btn primary" id="runcoin">Sweep p from 0 to 1</button></div>
+          <div class="progress"><span id="p-coin"></span></div>
+          <div id="coin-text" style="margin-top:18px"></div>
+        </div>
+        <div><p class="label">Settled efficiency against p (chance of promoting the best)</p><canvas class="chart tall" id="c-coin" aria-label="Efficiency against the probability of promoting the best, for both theories"></canvas></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · LIMITS -->
+  <section class="chapter" id="limits">
+    <div class="wrap">
+      <header><span class="chapter-num">06 · What it doesn’t prove</span><h2>A cartoon of a company</h2>
+        <p class="lede">The model is deliberately crude. It shows what follows <em>if</em> competence doesn’t carry over between jobs, not that it doesn’t.</p></header>
+      <div class="caveats">
+        <div class="caveat"><h3>Skills do partly carry over</h3><p>Real promotions sit between the two theories. Reality is probably somewhere along the mixing line in chapter 5, which is exactly why hedging helps.</p></div>
+        <div class="caveat"><h3>Nobody learns</h3><p>Competence never grows with experience or training here, and nobody is moved back down when a promotion fails.</p></div>
+        <div class="caveat"><h3>Promotions motivate</h3><p>A random promotion scheme might wreck morale. The model has no incentives: people don’t work harder to get promoted.</p></div>
+        <div class="caveat"><h3>Managers can test</h3><p>Companies can try people out in the new role before promoting them, which makes the Peter hypothesis less true. The paper’s point is cheaper: if you can’t, don’t assume.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter coda" id="coda">
+    <div class="wrap prose" style="max-width:760px">
+      <h2 style="margin-bottom:22px">Kicked upstairs</h2>
+      <p>Promoting the best feels like the only fair rule. In this model it is the best rule only when skills carry over from one job to the next. When they don’t, it lifts every good worker out of the job they’re good at and parks them in one they aren’t, floor after floor, until the company is run by people at their level of incompetence. The authors’ advice is uncomfortable but cheap: if you don’t know which world you’re in, a little randomness protects you from the worst of both.</p>
+      <h3 style="margin:34px 0 10px">Sources</h3>
+      <ol class="sources">
+        <li>A. Pluchino, A. Rapisarda, C. Garofalo, “The Peter principle revisited: a computational study”, <em>Physica A</em> 389 (2010) 467–472. <a href="https://arxiv.org/abs/0907.0455">arXiv:0907.0455</a>. Model rules from section 2; floor weights from Fig. 1; results from Figs. 2–4 and Table 1.</li>
+        <li>L. J. Peter, R. Hull, <em>The Peter Principle: Why Things Always Go Wrong</em>, William Morrow, 1969.</li>
+        <li>2010 Ig Nobel Prize in Management, awarded to Pluchino, Rapisarda and Garofalo: <a href="https://improbable.com/ig/winners/">Improbable Research</a>.</li>
+      </ol>
+      <p class="mono" id="method-note">This page re-implements the model in JavaScript (js/sim.js). Competence is clipped to 1–10, which reproduces the paper’s starting efficiency (69.96% here, 69.68% in the paper). Over 50 companies and 1,000 years, settled efficiency changes by: common sense: best +8.7, worst −2.3, random +2.9 points (paper: +9, −5, +2); Peter: best −9.0, worst +13.0, random +1.9 (paper: −10, +12, +1). The common-sense-and-worst case is the one that doesn’t match closely.</p>
+    </div>
+  </section>
+</main>
+
+<script src="js/sim.js"></script>
+<script src="js/crayon.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
