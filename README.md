@@ -2,9 +2,9 @@
 
 **A Claude skill that turns a question and a picture into an explorable.** You get a researched, illustrated scrollytelling essay drawn in the picture's style, and a short explainer video you can pause and question.
 
-![Sit, Stay, Think; Promoted; The Half Shell: three explorables made with this skill](docs/hero.png)
+![Sit, Stay, Think; Promoted; The Half Shell; Thinking Inside the Box: four explorables made with this skill](docs/hero.png)
 
-**See them live at [explorables.fly.dev](https://explorables.fly.dev)**: the three examples and more, with videos you can pause and ask (bring your own Anthropic key).
+**See them live at [explorables.fly.dev](https://explorables.fly.dev)**: the examples and more, with videos you can pause and ask (bring your own Anthropic key).
 
 ```
 /explorable why do oysters taste different in different places?   [attach a style image]
@@ -39,6 +39,7 @@ Then, in Claude Code, from the folder where you want the output:
 | **Sit, Stay, Think** (`examples/sit-stay-think`) | needle-felted animals, drawn with WebGL | the 1994 breed ranking as felt, the 9% figure as two overlapping clouds of dogs, faces, cats, brains |
 | **Promoted** (`examples/promoted`) | crayon | a runnable re-implementation of the Peter principle model (Pluchino et al. 2010): your own company of 160 people on six floors, and which promotion rule wins |
 | **The Half Shell** (`examples/half-shell`) | sunlit watercolour | why oysters taste of their water and cost a dollar or a hundred: maps from real coastlines, the months-with-an-R rule, how to tell a good one |
+| **Thinking Inside the Box** (`examples/thinking`) | grey pen and one blue watercolour | do large language models make people think worse? Small figures with translucent cubes for the machine's thought; made in a single `/explorable` run |
 
 Each example is an `essay/` (static) and a `video/` (the explainer kit). `node scripts/gallery.mjs` serves them all. Set `ANTHROPIC_API_KEY` to ask the videos questions.
 

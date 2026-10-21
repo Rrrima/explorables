@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thinking Inside the Box</title>
+<meta name="description" content="Do large language models make people think worse? An illustrated essay in pen and one blue watercolour, with a research report behind every number.">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/article.css">
+</head>
+<body>
+<header class="top-header transparent" id="header">
+  <a class="header-home" href="http://localhost:8900/" title="Back to the shelf">← Shelf</a>
+  <a class="header-title ink" href="#top">Thinking Inside the Box</a>
+  <span class="header-divider sub"></span>
+  <span class="header-subtitle ink">Do LLMs make us think worse?</span>
+  <a class="header-link report inked ink" href="report.html">Research report</a>
+  <a class="header-link watch inked ink" href="http://localhost:8908/">▶ Explainer</a>
+  <button class="menu-button" id="menu-button" aria-label="Open contents" aria-expanded="false" aria-controls="menu-panel"><span></span><span></span></button>
+</header>
+<div class="menu-panel" id="menu-panel" hidden></div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-text">
+    <p class="hero-label ink">An illustrated essay · with a <a class="inked" href="report.html">research report</a></p>
+    <h1 class="hero-title ink">Thinking <em>inside</em> the box</h1>
+    <p class="hero-teaser ink">Students who practised their maths with ChatGPT scored 48% better on the practice problems, and 17% worse on the exam that followed, once the tool was taken away <a class="note" href="report.html#c4">C6</a>.</p>
+    <p class="hero-body ink">Does a machine that thinks for you make you think worse? The honest answer is smaller and stranger than the headlines. This essay walks through the studies, the two-thousand-year history of the same worry, and the learning science that explains when handing over the effort costs you the skill, and when it doesn't.</p>
+    <p class="hero-links"><a class="watch inked" href="http://localhost:8908/">▶ Watch the explainer</a> <a class="inked" href="report.html">Read the report</a></p>
+    <p class="hero-scroll mono">Scroll ↓</p>
+  </div>
+  <div class="hero-stage">
+    <canvas id="cv-hero" class="stage-canvas" aria-label="A small figure in a white dress sits on blank paper with her legs stretched out; a translucent blue cube rests over her head, which is visible inside it"></canvas>
+    <div class="stage-tip" id="tip-hero" role="tooltip"></div>
+  </div>
+</section>
+
+<div class="layout">
+  <aside class="side-nav-wrap" aria-label="Contents">
+    <nav class="side-nav" id="side-nav"></nav>
+  </aside>
+
+  <main class="article">
+
+    <!-- ============ I. WORRY ============ -->
+    <section class="chapter" id="worry" data-chapter="An old worry" data-num="I">
+      <p class="section-label ink">I · History</p>
+      <h2 class="chapter-title ink">Two and a half thousand years of worry</h2>
+      <p class="chapter-lede ink-light">Every technology that holds memory for us has been accused of rotting it. One accusation was tested and failed. One was tested and confirmed. <span class="on-hover">Hover</span><span class="on-touch">Tap</span> each figure.</p>
+      <div class="scrolly" id="sc-worry" data-sub="The procession">
+        <div class="scrolly-stage">
+          <canvas id="cv-worry" class="stage-canvas" aria-label="A procession of small figures walks along a single pen line, each carrying its era's object over its head: a scroll, a book, a television, a calculator, a screen, a satellite, and finally a blue cube"></canvas>
+          <div class="stage-tip" id="tip-worry" role="tooltip"></div>
+          <p class="stage-readout mono" id="ro-worry"></p>
+        </div>
+        <div class="scrolly-steps prose">
+          <div class="step">
+            <p class="h-step ink">370 BCE</p>
+            <p class="ink">In Plato's <em>Phaedrus</em>, a king is shown the invention of writing and refuses it. It "will create forgetfulness in the learners' souls, because they will not use their memories; they will trust to the external written characters and not remember of themselves" <a class="note" href="report.html#h1">H1</a>. The complaint survives because Plato wrote it down.</p>
+          </div>
+          <div class="step">
+            <p class="h-step ink">1545, and the 1790s</p>
+            <p class="ink">Printing brought "that confusing and harmful abundance of books" <a class="note" href="report.html#h1">H3</a>. By the end of the eighteenth century Germany had diagnosed a reading mania, and an essayist blamed it for "the decline in domestic and public happiness" <a class="note" href="report.html#h2">H5</a>. The telephone, oddly, caused no panic at all: forty thousand articles from its first thirty years contain none <a class="note" href="report.html#h2">H8</a>.</p>
+          </div>
+          <div class="step">
+            <p class="h-step ink">1961 to 1986: one worry gets tested</p>
+            <p class="ink">Television was "a vast wasteland" <a class="note" href="report.html#h2">H9</a>. Then calculators arrived in schools, and for once someone measured. Seventy-nine studies and 529 effect sizes later, children who used calculators alongside ordinary teaching had <em>better</em> paper-and-pencil skills, at every grade except the fourth <a class="note" href="report.html#h3">H11</a>.</p>
+          </div>
+          <div class="step">
+            <p class="h-step ink">2008 to 2020: two more, with different endings</p>
+            <p class="ink">"Is Google Making Us Stupid?" asked Nicholas Carr in 2008 <a class="note" href="report.html#h4">H16</a>. A 2011 study found people who expected information to be saved remembered it less, and where it was, more <a class="note" href="report.html#h4">H13</a>; its priming experiment did not replicate <a class="note" href="report.html#h4">H14</a>. Two worries did hold up. Drivers who used GPS more had worse spatial memory, and did not know it <a class="note" href="report.html#h5">H17</a>. And after Air France 447, the FAA warned in writing that "continuous use of autoflight systems could lead to degradation of the pilot's ability" to recover the aircraft <a class="note" href="report.html#h6">H24</a>.</p>
+          </div>
+          <div class="step">
+            <p class="h-step ink">2022: the cube</p>
+            <p class="ink">ChatGPT reached a hundred million users in two months <a class="note" href="report.html#h7">H26</a> and nine hundred million a week by early 2026 <a class="note" href="report.html#h7">H28</a>. In the UK, 95 of every 100 undergraduates now use generative AI, 94 of them for assessed work <a class="note" href="report.html#h8">H31</a>; 54% of American teenagers use chatbots for schoolwork, and one in ten does all or most of it that way <a class="note" href="report.html#h8">H33</a>. The old worry has never had so many people to worry about.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ II. THE ROOM ============ -->
+    <section class="chapter" id="room" data-chapter="The brain study" data-num="II">
+      <p class="section-label ink">II · The study everyone read about</p>
+      <h2 class="chapter-title ink">A room with fifty-four people</h2>
+      <p class="chapter-lede ink-light">The 2025 MIT preprint that put "cognitive debt" into the papers is smaller than its coverage. Its clearest finding is not in the brain scan.</p>
+      <div class="scrolly flip" id="sc-room" data-sub="Fifty-four drops">
+        <div class="scrolly-stage">
+          <canvas id="cv-room" class="stage-canvas" aria-label="Fifty-four small figures in three groups of eighteen; the ones who could quote their own essay fill with blue; a faint second crowd of 159 outlines appears around them"></canvas>
+          <div class="stage-tip" id="tip-room" role="tooltip"></div>
+          <p class="stage-readout mono" id="ro-room"></p>
+        </div>
+        <div class="scrolly-steps prose">
+          <div class="step">
+            <p class="ink">Fifty-four people from five Boston universities, eighteen to a group, wrote one short essay a session for three sessions: with ChatGPT, with a search engine, or with nothing but their heads. Eighteen came back for a fourth session with the tools swapped. A cap of electrodes recorded their brains while they wrote <a class="note" href="report.html#c1">C1</a>.</p>
+          </div>
+          <div class="step">
+            <p class="ink">Minutes after finishing, each was asked to quote a sentence from their own essay. In the first session, <strong>none</strong> of the eighteen ChatGPT writers could. Fifteen of the search-engine writers and sixteen of the unaided writers could <a class="note" href="report.html#c1">C1</a>. By the third session six of the ChatGPT group still could not. You do not remember what you did not write.</p>
+          </div>
+          <div class="step">
+            <p class="ink">The brain result is the one that travelled: connectivity between regions "scaled down with the amount of external support", up to 55% lower in the ChatGPT group in the bands the authors tie to meaning and monitoring <a class="note" href="report.html#c1">C1</a>. The number is a maximum over bands and regions. What it measures is how much of a twenty-minute task a person did in their own head, during that task. It does not measure ability, lasting change, or damage <a class="note" href="report.html#m8">M53</a>.</p>
+          </div>
+          <div class="step">
+            <p class="ink">A commentary calculated that the design needed about 159 participants to be adequately powered; it had 54, and 18 in the crossover <a class="note" href="report.html#c2">C2</a>. The authors' own FAQ answers "Is it safe to say that LLMs are making us dumber?" with "No!", and asks journalists not to write "stupid", "dumb", "brain rot", "harm" or "damage" <a class="note" href="report.html#c2">C3</a>. TIME's headline: "ChatGPT May Be Eroding Critical Thinking Skills" <a class="note" href="report.html#c2">H43</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ III. TWO ROOMS ============ -->
+    <section class="chapter" id="rooms" data-chapter="Practice vs exam" data-num="III">
+      <p class="section-label ink">III · The spine</p>
+      <h2 class="chapter-title ink">The practice room and the exam room</h2>
+      <p class="chapter-lede ink-light">The cleanest experiment so far put a thousand high-school students in one room with the tool, then in another without it. The same tool had opposite effects in the two rooms.</p>
+      <div class="scrolly" id="sc-rooms" data-sub="Two rooms">
+        <div class="scrolly-stage">
+          <canvas id="cv-rooms" class="stage-canvas" aria-label="Stacks of answer sheets for three groups of students, first in a practice room where the AI groups' stacks rise, then in an exam room where the plain-ChatGPT stack sinks below the control"></canvas>
+          <div class="stage-tip" id="tip-rooms" role="tooltip"></div>
+          <p class="stage-readout mono" id="ro-rooms"></p>
+        </div>
+        <div class="scrolly-steps prose">
+          <div class="step">
+            <p class="h-step ink">The practice room</p>
+            <p class="ink">In a large Turkish high school, about a thousand students were randomised by class for their in-class maths practice <a class="note" href="report.html#c4">C6</a>. One group had textbooks. One had a plain ChatGPT-style interface. One had the same model told to give teacher-written hints and never the answer. With the tool, practice scores rose <strong>48%</strong> with plain ChatGPT and <strong>127%</strong> with the hinting tutor.</p>
+          </div>
+          <div class="step">
+            <p class="h-step ink">The exam room</p>
+            <p class="ink">Then everyone sat a closed-book exam without it. The plain-ChatGPT students scored <strong>17% lower</strong> than the students who had never had access. The hint-only students scored about the same as the control: the guardrails, the paper says, "largely mitigated" the harm <a class="note" href="report.html#c4">C6</a>. Students had used the plain model, in the authors' word, as a crutch.</p>
+          </div>
+          <div class="step">
+            <p class="h-step ink">Seventeen again</p>
+            <p class="ink">Fifty-two junior programmers learned an unfamiliar Python library, half with an AI assistant, half by hand, then took a quiz <a class="note" href="report.html#c8">C21</a>. The assisted group finished about two minutes faster, not significantly, and scored <strong>50%</strong> against <strong>67%</strong>: seventeen points lower, worst on debugging. The ones who used the assistant to ask conceptual questions scored as well as anyone.</p>
+          </div>
+          <div class="step">
+            <p class="h-step ink">Product and learning come apart</p>
+            <p class="ink">The pattern repeats in smaller studies. Students writing with ChatGPT improved their essay scores most and learned no more than anyone else <a class="note" href="report.html#c5">C7</a>. Students researching with it felt less strain and reasoned worse <a class="note" href="report.html#c5">C8</a>. The work gets better. The person does not, unless something makes them do the work.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ IV. EFFORT ============ -->
+    <section class="chapter" id="effort" data-chapter="Why effort matters" data-num="IV">
+      <p class="section-label ink">IV · Mechanism</p>
+      <h2 class="chapter-title ink">Why effort is the point</h2>
+      <p class="chapter-lede ink-light">Memory is built by the work of retrieving and generating, not by exposure to the answer. A tool that removes the work removes the building. Drag the days.</p>
+      <div class="scrolly flip" id="sc-effort" data-sub="Two learners">
+        <div class="scrolly-stage">
+          <canvas id="cv-effort" class="stage-canvas" aria-label="Two figures learn the same thing: one is handed a finished blue cube, the other assembles hers from pieces; as days pass the handed cube fades and the built one keeps its colour"></canvas>
+          <div class="stage-tip" id="tip-effort" role="tooltip"></div>
+          <div class="fig-controls" id="ctl-effort"><label class="fig-range">days later <input type="range" id="rg-effort" min="0" max="7" step="0.05" value="0" aria-label="Days since learning"><output class="mono" id="out-effort">0</output></label></div>
+        </div>
+        <div class="scrolly-steps prose">
+          <div class="step">
+            <p class="ink">Two people learn the same passage. One reads it four times. The other reads it once and is made to write down what she remembers, three times, with no answer key <a class="note" href="report.html#m2">M12</a>. The first is handed the knowledge whole. The second has to build it.</p>
+          </div>
+          <div class="step">
+            <p class="h-step ink">Five minutes later</p>
+            <p class="ink">The reader wins: <strong>83%</strong> recalled against <strong>71%</strong>. She also predicts, with more confidence than anyone, that she will remember it best <a class="note" href="report.html#m2">M12</a>. This is the practice room. Fluency now feels exactly like learning.</p>
+          </div>
+          <div class="step">
+            <p class="h-step ink">A week later</p>
+            <p class="ink">The reader has <strong>40%</strong>. The builder has <strong>61%</strong> <a class="note" href="report.html#m2">M12</a>. The re-reader forgot half of what she knew at five minutes; the tested learner forgot a seventh. Across 86 studies, generating an answer rather than reading it is worth about four tenths of a standard deviation <a class="note" href="report.html#m2">M11</a>. "Conditions that create challenges and slow the rate of apparent learning often optimize long-term retention" <a class="note" href="report.html#m2">M10</a>.</p>
+          </div>
+          <div class="step">
+            <p class="h-step ink">And skills, once built, decay</p>
+            <p class="ink">A year without using a trained skill costs about 1.4 standard deviations, more for cognitive skills than physical ones <a class="note" href="report.html#m4">M22</a>. After three months of AI-assisted colonoscopy, doctors' detection rate in <em>unassisted</em> examinations fell from 28.4% to 22.4% <a class="note" href="report.html#m4">M24</a>. Lisanne Bainbridge saw it in 1983: "a formerly experienced operator who has been monitoring an automated process may now be an inexperienced one" <a class="note" href="report.html#m4">M21</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ V. MIRROR ============ -->
+    <section class="chapter" id="mirror" data-chapter="The mirror" data-num="V">
+      <p class="section-label ink">V · Calibration</p>
+      <h2 class="chapter-title ink">The mirror</h2>
+      <p class="chapter-lede ink-light">The damage is hard to see from inside, because the tool's fluency feels like your own. People are wrong about what it does for them, in both directions.</p>
+      <div class="scrolly" id="sc-mirror" data-sub="Felt vs measured">
+        <div class="scrolly-stage">
+          <canvas id="cv-mirror" class="stage-canvas" aria-label="A figure faces her reflection; beside her the cube she feels she has and beside the reflection the cube that was measured, drawn to different sizes"></canvas>
+          <div class="stage-tip" id="tip-mirror" role="tooltip"></div>
+          <p class="stage-readout mono" id="ro-mirror"></p>
+        </div>
+        <div class="scrolly-steps prose">
+          <div class="step">
+            <p class="h-step ink">Felt: 20% faster. Measured: 19% slower.</p>
+            <p class="ink">Sixteen experienced open-source developers were randomised, task by task, to use AI tools or not, on 246 real issues in code they had maintained for years <a class="note" href="report.html#c7">C18</a>. With AI the tasks took <strong>19% longer</strong>. Afterwards the developers believed they had been <strong>20% faster</strong>. A 2026 follow-up with newer tools found a small, uncertain speed-up <a class="note" href="report.html#c7">C19</a>; the gap between feeling and clock is the finding.</p>
+          </div>
+          <div class="step">
+            <p class="h-step ink">The other direction</p>
+            <p class="ink">Ninety-five developers writing a small web server with Copilot finished <strong>56%</strong> faster and guessed they had gained 35% <a class="note" href="report.html#c7">C20</a>. Writers whose AI-assisted stories judges rated better did not rate them better themselves <a class="note" href="report.html#c9">C14</a>. Self-report is not a measurement of what the tool does to you.</p>
+          </div>
+          <div class="step">
+            <p class="h-step ink">Trust in the tool, less thinking</p>
+            <p class="ink">Among 319 knowledge workers describing 936 real uses, confidence that the AI could do the task predicted <em>less</em> critical thinking (β = −0.69). Confidence in their own ability to do it, and to judge the output, predicted <em>more</em> (β = 0.26 and 0.31) <a class="note" href="report.html#c3">C4</a>. Their work shifted, in the authors' phrase, "from task execution to task stewardship".</p>
+          </div>
+          <div class="step">
+            <p class="h-step ink">The edge of the tool's competence</p>
+            <p class="ink">Seven hundred and fifty-eight consultants used GPT-4 for tasks inside its competence and one task outside it <a class="note" href="report.html#c7">C17</a>. Inside, quality rose about 40%. Outside, where the model was wrong, those using it were about a fifth less likely to reach the right answer: roughly 84% correct without it, 60–70% with <a class="note" href="report.html#c7">C30</a>. The fifty GPS drivers were the same: heavier users navigated worse, yet rated their sense of direction no lower <a class="note" href="report.html#h5">H17</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VI. SAMENESS ============ -->
+    <section class="chapter" id="same" data-chapter="Sameness" data-num="VI">
+      <p class="section-label ink">VI · Collective</p>
+      <h2 class="chapter-title ink">Everyone writes the same essay</h2>
+      <p class="chapter-lede ink-light">Individually the tool makes work a little better. Collectively it makes everyone's work more alike. Press the button under the drawing.</p>
+      <div class="scrolly flip" id="sc-same" data-sub="A hundred stories">
+        <div class="scrolly-stage">
+          <canvas id="cv-same" class="stage-canvas" aria-label="A hundred blue drops scattered across the paper, one per story; with AI ideas each moves a little outward and then they all drift toward the same place"></canvas>
+          <div class="stage-tip" id="tip-same" role="tooltip"></div>
+          <div class="fig-controls" id="ctl-same"><button type="button" class="fig-btn" id="btn-same-none" data-tag="draw">no AI</button><button type="button" class="fig-btn" id="btn-same-one" data-tag="draw">one AI idea</button><button type="button" class="fig-btn" id="btn-same-five" data-tag="draw">five AI ideas</button></div>
+        </div>
+        <div class="scrolly-steps prose">
+          <div class="step">
+            <p class="ink">Nearly three hundred people each wrote an eight-sentence story; six hundred readers judged them <a class="note" href="report.html#c9">C14</a>. Each drop is one story, placed by what it is about. Some writers worked alone. Some were given one idea from GPT-4 to start from. Some were given five.</p>
+          </div>
+          <div class="step">
+            <p class="ink">Each story got a little better: novelty up <strong>8%</strong> and usefulness up <strong>9%</strong> with five ideas, and the least creative writers gained most <a class="note" href="report.html#c9">C14</a>. But within each AI group the stories drew together, by about a tenth of the whole range of similarity, and closer to the AI's own ideas. "Writers are individually better off, but collectively a narrower scope of novel content is produced."</p>
+          </div>
+          <div class="step">
+            <p class="ink">It repeats. People who learned a topic from an LLM rather than a search engine then wrote advice that was shorter, rated less helpful, and far more alike: a similarity of 0.16 against 0.06 <a class="note" href="report.html#c5">C13</a>. Consultants with GPT-4 produced 41% less diverse ideas <a class="note" href="report.html#c7">C27</a>. The ChatGPT essays in the MIT study were the most homogeneous of the three groups <a class="note" href="report.html#c1">C1</a>. One study of a bounded scientific question found no narrowing at all <a class="note" href="report.html#c5">C8</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VII. TUTOR ============ -->
+    <section class="chapter" id="tutor" data-chapter="The tutor" data-num="VII">
+      <p class="section-label ink">VII · What good use looks like</p>
+      <h2 class="chapter-title ink">The tutor that will not answer</h2>
+      <p class="chapter-lede ink-light">Make the tool hint, explain or argue instead of answering, and the harm disappears or reverses. Choose what she asks for.</p>
+      <div class="scrolly" id="sc-tutor" data-sub="Answer or hint">
+        <div class="scrolly-stage">
+          <canvas id="cv-tutor" class="stage-canvas" aria-label="A figure faces a blue cube; if she asks for the answer the cube lands on her head, if she asks for a hint it opens into pieces she assembles herself, and an exam score is drawn beside each outcome"></canvas>
+          <div class="stage-tip" id="tip-tutor" role="tooltip"></div>
+          <div class="fig-controls" id="ctl-tutor"><button type="button" class="fig-btn" id="btn-answer" data-tag="choose">ask for the answer</button><button type="button" class="fig-btn" id="btn-hint" data-tag="choose">ask for a hint</button></div>
+        </div>
+        <div class="scrolly-steps prose">
+          <div class="step">
+            <p class="ink">Same model, two prompts. Asked for the answer, it hands over the cube: practice up 48%, the exam down 17%. Told to give the teacher's hints and nothing more, it hands over pieces: practice up 127%, and the exam about the same as never having used it <a class="note" href="report.html#c4">C6</a>.</p>
+          </div>
+          <div class="step">
+            <p class="ink">At Harvard, a GPT-4 tutor built around instructor-written, question-specific prompts, told to scaffold and not to give answers away, was tested against a well-run active-learning class on the same physics. The tutor's students learned more, by about <strong>0.7 to 1.3</strong> standard deviations, in a median 49 minutes against 60 <a class="note" href="report.html#c5">C10</a>. That is the range of a good human tutor, whose average is about 0.8 <a class="note" href="report.html#m7">M50</a>, not beyond it.</p>
+          </div>
+          <div class="step">
+            <p class="ink">Students who asked for explanations understood more (+0.25); students who asked for solutions covered more and understood less (−0.31) <a class="note" href="report.html#c5">C9</a>. And when 2,190 conspiracy believers argued with GPT-4 about their own evidence for three rounds, belief fell about 20% and stayed down two months later; 99% of the model's claims checked out <a class="note" href="report.html#c8">C22</a>. Used to argue rather than to answer, the same machine made people reason better.</p>
+          </div>
+          <div class="step">
+            <p class="ink">The companies have noticed. Anthropic's Learning mode "guides students' reasoning process rather than providing answers" <a class="note" href="report.html#h10">H47</a>; OpenAI's Study Mode asks questions back and may withhold the answer, though students can switch it off <a class="note" href="report.html#h10">H46</a>. Designs that force people to decide before seeing the AI's answer reduce over-reliance, and people dislike them for it <a class="note" href="report.html#m7">M47</a>. The effortful step has to stay with the person.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="coda" id="coda">
+      <p class="section-label ink">Coda</p>
+      <div class="coda-stage"><canvas id="cv-coda" aria-label="The figure sits with the blue cube on the paper beside her, not on her head"></canvas></div>
+      <p class="coda-text ink">Not dumber. Worse at the thing you let the tool do for you, for as long as you let it, and unable to feel the difference. The evidence is young, small and loud, but it agrees on that much.</p>
+      <p class="prose ink" style="max-width:62ch">The test, offered to a hall of teenagers in November 2025: "Use it in such a way that if it disappeared tomorrow, you would still know how to think" <a class="note" href="report.html#h10">H49</a>.</p>
+      <p class="coda-links ink-light"><a class="inked" href="report.html">Read the research report</a> · every claim, number and source behind this essay · <a class="inked" href="http://localhost:8908/">▶ Watch the explainer</a></p>
+    </section>
+  </main>
+</div>
+
+<script src="js/paper.js"></script>
+<script src="js/pen.js"></script>
+<script src="js/wash.js"></script>
+<script src="js/data.js"></script>
+<script src="js/sources.js"></script>
+<script src="js/article.js"></script>
+<script src="js/scenes.js"></script>
+<script src="js/cursor.js"></script>
+</body>
+</html>
