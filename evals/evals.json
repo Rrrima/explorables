@@ -28,7 +28,13 @@
     {
       "id": 5,
       "prompt": "/explorable how does a sourdough starter work? (no image attached)",
-      "expected_output": "The skill asks for a style reference image, or offers to proceed in the house style (pen and watercolour on a quiet page) if the user prefers. It does not invent a reference.",
+      "expected_output": "The skill does not invent a reference. It says it has built-in styles and asks with three options: pen (recommended, with its live link), see all six styles, and attach my own reference image, with the gallery link https://explorables.fly.dev/ in the question. Choosing 'see all' lists the six styles one line each with the live link to the essay in that style, then asks again. It does not start research or drawing before the answer.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "/explorable how does a sourdough starter work? in the riso style (no image attached)",
+      "expected_output": "No Look phase: STYLE.md is kit/styles/riso.md plus a drawing-vocabulary paragraph for jars, flour, bubbles and loaves in two inks. The essay copies kit/engines/riso.js, pen.js and paper.js unchanged. The master study re-creates one panel of references/exemplars/wine-essay.jpg in one round. Stages are two spot colours on cream with speckle and off-register plates, and data is drawn as printed things. The rest of the workflow (research, outline, checks, video) is unchanged.",
       "files": []
     }
   ]

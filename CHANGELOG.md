@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Built-in styles: `kit/styles/` holds six looks (`pen`, `watercolour`, `felt`, `crayon`, `riso`, `fashion-plate`) with a style sheet, an engine and an exemplar each. A prompt can name one instead of attaching a reference image; with neither, the skill shows the menu.
 - Examples: Promoted (crayon, the Peter principle model) and The Half Shell (watercolour, maps, a full report) replace Fibre by Fibre and Lucky.
 - Videos link to the essay's research report over the end card (`window.EXPLAINER.report`) instead of drawing a sources line.
 - The kit runs questions on visitors' own API keys when deployed (`REQUIRE_USER_KEYS`, `PRIVATE_ANSWERS`), with silent answer clips when there is no voice key.

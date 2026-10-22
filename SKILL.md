@@ -1,6 +1,6 @@
 ---
 name: explorable
-description: Turn a question or topic plus a style reference image into a researched, illustrated scrollytelling essay (with a linked research report) and a matching ~85-second interactive explainer video that viewers can pause and question. Use when someone asks for an explorable, a scrolly or scrollytelling essay, an explorable explanation, an illustrated explainer, or a TED-Ed style explainer video in a given visual style.
+description: Turn a question or topic plus a style reference image (or one of six built-in styles) into a researched, illustrated scrollytelling essay (with a linked research report) and a matching ~85-second interactive explainer video that viewers can pause and question. Use when someone asks for an explorable, a scrolly or scrollytelling essay, an explorable explanation, an illustrated explainer, or a TED-Ed style explainer video in a given visual style.
 license: MIT
 compatibility: Claude Code (and other Agent Skills hosts with web search, file and shell tools). Needs Node.js 20+, Chrome or Chromium for checks, ffmpeg for contact sheets and audio. The video's voice, music and ask agent use ElevenLabs, Stability and Anthropic API keys; without them you still get the essay and the video's script.
 metadata:
@@ -9,7 +9,7 @@ metadata:
 
 # Explorable
 
-Make two things from a **prompt** (a topic or a question) and a **style reference image**:
+Make two things from a **prompt** (a topic or a question) and a **style**: a reference image, or one of the built-in styles in `kit/styles/`:
 
 1. `./<slug>-scrolly/`: an illustrated scrollytelling essay. Static HTML, CSS and JS with canvas drawings in the reference's style, scroll-driven scenes, data drawn as things, and a linked research report where every number has a source.
 2. `./<slug>-explainer/`: a ~85-second TED-Ed style video drawn live on canvas in the same style, with voice, music and effects. Viewers can pause it anywhere and ask a question; an agent researches the answer and makes a short clip.
@@ -21,6 +21,8 @@ The bar is the three examples in `examples/` (open them with `node scripts/galle
 
 Read their code; don't imitate a description of them.
 
+**No reference image?** Don't invent one. If the prompt names a built-in style (`pen`, `watercolour`, `felt`, `crayon`, `riso`, `fashion-plate`), use it. Otherwise tell the user there are built-in styles to choose from and ask, the way `kit/styles/README.md` says: `pen` recommended, an option to **see all six styles** (each with the live link to the essay made in it, and the gallery at https://explorables.fly.dev/), and an option to **attach their own reference image**. A question tool's four slots never hold the six styles, so don't list styles as the options. An image the user attaches always wins over a built-in style.
+
 ## The one idea that matters
 
 **The drawings carry the explanation, in the reference's own hand, and every number comes from a source.** Research first, then the story, then the style, then the essay chapter by chapter, then the video. Look at every step in screenshots before moving on.
@@ -29,10 +31,10 @@ Read their code; don't imitate a description of them.
 
 | # | Phase | Read | Output |
 |---|---|---|---|
-| 1 | Look | `references/style.md` §1 | `Read` the reference image twice. Write `STYLE.md`: medium, light, value and saturation, edges, fills, texture, density, drawing vocabulary, type, motion, do-nots. |
+| 1 | Look | `references/style.md` §1 | With a reference image: `Read` it twice and write `STYLE.md`: medium, light, value and saturation, edges, fills, texture, density, drawing vocabulary, type, motion, do-nots. With a built-in style: copy `kit/styles/<id>.md` to `STYLE.md` and add the topic's drawing vocabulary (`references/style.md` §0). |
 | 2 | Research | `references/research.md` | A checklist from the prompt (every ask must land in the essay). Parallel research tracks (subagents), 15–30 sources each. `report.html`, `js/sources.js`, `js/data.js`. |
 | 3 | Story | `references/essay.md` §1 | `OUTLINE.md`: one spine and 6–8 chapters, each a *different kind* of visual, checked against the checklist. |
-| 4 | Style | `references/style.md` §2–4 | A drawing engine (start from `kit/engines/`), a **master study** that re-creates a crop of the reference (≤ 3 rounds), then a test sheet of topic objects (1 round). |
+| 4 | Style | `references/style.md` §2–4 | A drawing engine (start from `kit/engines/`), a **master study** that re-creates a crop of the reference (≤ 3 rounds; 1 round against the exemplar for a built-in style), then a test sheet of topic objects (1 round). |
 | 5 | Essay | `references/essay.md` §2–4, `references/house-style.md` | The hero, then each chapter: build, screenshot, fix once, next. |
 | 6 | Essay check | `references/verify.md`, `references/performance.md` | Desktop (1440/1728) and phone (390) passes, `stall.mjs` under budget, a thumbnail. |
 | 7 | Script | `references/video.md` §1 | `SCRIPT.md` (talking points and a two-column table) and `segments.json`: 75–95 s, ≤ 2.5 words/s. |
@@ -70,7 +72,7 @@ Report progress to the user in one line per phase. Don't start drawing before th
 ## References
 
 - `references/research.md`: tracks, sources, the report, `data.js`, reproducing a paper's model.
-- `references/style.md`: from a reference image to an engine and a master study.
+- `references/style.md`: from a reference image (or a built-in style) to an engine and a master study.
 - `references/essay.md`: story, page architecture, layout and pacing rules, building chapter by chapter.
 - `references/video.md`: script, audio pipeline, the style contract, scenes and pacing.
 - `references/verify.md`: the screenshot scripts and the checklist.
@@ -78,3 +80,4 @@ Report progress to the user in one line per phase. Don't start drawing before th
 - `references/house-style.md`: the default taste.
 - `kit/README.md`: the explainer kit (player, ask agent, audio pipeline, style contract).
 - `kit/engines/README.md`: the drawing engines and what each is for.
+- `kit/styles/README.md`: the built-in styles, their engines and exemplars.

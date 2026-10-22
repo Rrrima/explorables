@@ -4,6 +4,16 @@ The reference image is the art direction. Copying its *surface* (its colours, a 
 
 Known failure: an oyster essay took the reference's indigo blobs and wood streaks but lost its light, gloss, saturation and density. The result was pale, flat and decorative, and the designer called it "far worse".
 
+## 0. Built-in styles (no reference image)
+
+`kit/styles/README.md` lists six looks the kit already draws, each with a style sheet in the format of §1, a proven engine and an exemplar picture. When the user picks one instead of giving an image:
+
+- Copy `kit/styles/<id>.md` to the essay directory as `STYLE.md`. Keep its light, values, edges and do-nots as they are: they are the style.
+- Add a **Drawing vocabulary** paragraph for the topic: what its objects look like in this medium, built with the engine's existing primitives.
+- Skip the rest of §1. In §2 copy the engine unchanged and extend it for the topic's objects. In §3 the master study re-creates one panel of the exemplar and gets one round: the engine is proven, you are checking that you drive it the same way. The topic test sheet (§3) and §4–5 are unchanged.
+
+A reference image always wins over a built-in style, and the built-ins are not a fallback for a reference you found hard to copy.
+
 ## 1. Look hard, and write it down
 
 `Read` the reference image (at least twice: whole, then attending to details). Write `STYLE.md` in the essay directory. For each item, say what you see **and how you will reproduce it in canvas**.
@@ -34,6 +44,7 @@ Start from the nearest existing engine. Read the code; don't imitate a descripti
 | risograph / spot colour | `kit/engines/riso.js` |
 | fashion line art | `kit/engines/pen.js` (a fine fashion-plate line works the same way) |
 | crayon | `kit/engines/crayon.js`, `examples/promoted/essay/js/crayon.js` (cached figure sprites) |
+| felted fur, fibre | `kit/engines/fuzz.js` with `glfur.js` (hair on the GPU) |
 
 `js/<medium>.js` exposes:
 

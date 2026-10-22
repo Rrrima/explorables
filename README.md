@@ -13,7 +13,7 @@
 The skill:
 1. Researches the question with sourced numbers.
 2. Finds the story.
-3. Builds a drawing engine that paints like your reference image.
+3. Builds a drawing engine that paints like your reference image, or starts from one of six built-in styles.
 4. Writes the essay chapter by chapter, with a research report every number links to.
 5. Makes a ~85-second video in the same style, with a voice, music, and an ask box that answers follow-up questions with new clips.
 
@@ -82,10 +82,10 @@ These are read from the environment or a `.env` file in the folder you run Claud
 ## Usage
 
 ```
-/explorable <a topic or a question>    (attach a style reference image)
+/explorable <a topic or a question>    (attach a style reference image, or name a built-in style)
 ```
 
-Good prompts name what you want covered: "why some are expensive", "how to tell a good one", "the culture around it". The skill turns each ask into a checklist item, and every item must land in a chapter. The image sets the medium, light, palette, texture and drawing vocabulary. A painting, an illustration or a photo of a craft all work. Output goes to `./<slug>-scrolly/` and `./<slug>-explainer/`.
+Good prompts name what you want covered: "why some are expensive", "how to tell a good one", "the culture around it". The skill turns each ask into a checklist item, and every item must land in a chapter. The image sets the medium, light, palette, texture and drawing vocabulary. A painting, an illustration or a photo of a craft all work. Without an image, name one of the built-in styles (`pen`, `watercolour`, `felt`, `crayon`, `riso`, `fashion-plate`; see `kit/styles/README.md`), or the skill will list them with links to the live examples at [explorables.fly.dev](https://explorables.fly.dev) and ask. Output goes to `./<slug>-scrolly/` and `./<slug>-explainer/`.
 
 A full run takes a while: research with parallel subagents, several drawing and check rounds, then voice and music. Expect an hour or more for both pieces.
 
